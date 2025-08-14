@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import { ThemeProvider } from 'next-themes'
 import './globals.css'
 
 export interface Props {
@@ -13,8 +14,12 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: Props) {
   return (
-    <html lang='es'>
-      <body className='antialiased'>{children}</body>
+    <html lang='es' suppressHydrationWarning>
+      <body className='antialiased'>
+        <ThemeProvider value={{ light: 'light', dark: 'black' }} disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

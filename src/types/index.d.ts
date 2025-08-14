@@ -45,8 +45,6 @@ export interface SidebarContextProps {
   setSidebar: (sidebar: boolean) => void
   category: number
   setCategory: (category: number) => void
-  theme: string
-  setTheme: (theme: string) => void
 }
 
 export interface SidebarMenuItem {

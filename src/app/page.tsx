@@ -1,3 +1,10 @@
+import { Button } from 'rsc-daisyui'
+
 export default function Page() {
-  return <main>Home Page</main>
+  return (
+    <main>
+      <span>Home Page</span>
+      <Button>Test</Button>
+    </main>
+  )
 }
