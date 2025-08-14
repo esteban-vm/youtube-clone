@@ -40,12 +40,6 @@ export interface CommentSnippet {
   updatedAt: string
 }
 
-export interface MenuItem {
-  id: number
-  label: string
-  icon: string
-}
-
 export interface SidebarContextProps {
   sidebar: boolean
   setSidebar: (sidebar: boolean) => void
@@ -53,6 +47,12 @@ export interface SidebarContextProps {
   setCategory: (category: number) => void
   theme: string
   setTheme: (theme: string) => void
+}
+
+export interface SidebarMenuItem {
+  id: number
+  label: string
+  icon: string
 }
 
 export interface TopLevelComment {
