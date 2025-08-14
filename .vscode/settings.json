@@ -1,4 +1,6 @@
 {
+  "files.eol": "\n",
+  "prettier.endOfLine": "lf",
   "eslint.enable": true,
   "eslint.useESLintClass": true,
   "eslint.useFlatConfig": true,
