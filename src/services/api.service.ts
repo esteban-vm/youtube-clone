@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from 'axios'
 import type { ApiResponse, AxiosErrorType, VideoSearchResponse } from '@/types'
-import { getInstance } from '@/lib/axios-utils'
+import { getInstance } from '@/utils/axios.utils'
 
 export const getRequest = async <T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> => {
   const axiosInstance = getInstance()
