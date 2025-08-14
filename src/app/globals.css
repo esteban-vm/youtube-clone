@@ -1,7 +1,9 @@
 @import 'tailwindcss';
 
 @plugin "daisyui" {
-  themes: all;
+  themes:
+    light --default,
+    black --prefersdark;
 }
 
 @source "../../node_modules/rsc-daisyui/dist";
