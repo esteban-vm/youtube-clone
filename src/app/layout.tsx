@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: Props) {
   return (
-    <html lang='es'>
+    <html data-theme='synthwave' lang='es'>
       <body className='antialiased'>{children}</body>
     </html>
   )
