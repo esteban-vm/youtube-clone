@@ -7,7 +7,7 @@ export default function Home() {
         font-sans sm:p-20'
     >
       <main className='row-start-2 flex flex-col items-center gap-[32px] sm:items-start'>
-        <Image className='dark:invert' src='/next.svg' alt='Next.js logo' width={180} height={38} priority />
+        <Image alt='Next.js logo' className='dark:invert' height={38} src='/next.svg' width={180} priority />
         <ol className='list-inside list-decimal text-center font-mono text-sm/6 sm:text-left'>
           <li className='mb-2 tracking-[-.01em]'>
             Get started by editing{' '}
@@ -21,23 +21,23 @@ export default function Home() {
 
         <div className='flex flex-col items-center gap-4 sm:flex-row'>
           <a
+            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
+            rel='noopener noreferrer'
+            target='_blank'
             className='flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent
               bg-foreground px-4 text-sm font-medium text-background transition-colors hover:bg-[#383838] sm:h-12
               sm:w-auto sm:px-5 sm:text-base dark:hover:bg-[#ccc]'
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
           >
-            <Image className='dark:invert' src='/vercel.svg' alt='Vercel logomark' width={20} height={20} />
+            <Image alt='Vercel logomark' className='dark:invert' height={20} src='/vercel.svg' width={20} />
             Deploy now
           </a>
           <a
+            href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
+            rel='noopener noreferrer'
+            target='_blank'
             className='flex h-10 w-full items-center justify-center rounded-full border border-solid border-black/[.08]
               px-4 text-sm font-medium transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:w-auto
               sm:px-5 sm:text-base md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]'
-            href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
           >
             Read our docs
           </a>
@@ -47,28 +47,28 @@ export default function Home() {
         <a
           className='flex items-center gap-2 hover:underline hover:underline-offset-4'
           href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
           rel='noopener noreferrer'
+          target='_blank'
         >
-          <Image aria-hidden src='/file.svg' alt='File icon' width={16} height={16} />
+          <Image alt='File icon' height={16} src='/file.svg' width={16} aria-hidden />
           Learn
         </a>
         <a
           className='flex items-center gap-2 hover:underline hover:underline-offset-4'
           href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
           rel='noopener noreferrer'
+          target='_blank'
         >
-          <Image aria-hidden src='/window.svg' alt='Window icon' width={16} height={16} />
+          <Image alt='Window icon' height={16} src='/window.svg' width={16} aria-hidden />
           Examples
         </a>
         <a
           className='flex items-center gap-2 hover:underline hover:underline-offset-4'
           href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
           rel='noopener noreferrer'
+          target='_blank'
         >
-          <Image aria-hidden src='/globe.svg' alt='Globe icon' width={16} height={16} />
+          <Image alt='Globe icon' height={16} src='/globe.svg' width={16} aria-hidden />
           Go to nextjs.org →
         </a>
       </footer>
