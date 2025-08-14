@@ -1,3 +1,15 @@
+export const parseValue = (value: string | number) => {
+  const numValue = typeof value === 'string' ? parseFloat(value) : value
+
+  if (numValue > 1_000_000) {
+    return (numValue / 1_000_000).toFixed(2) + 'M'
+  } else if (numValue >= 1_000 && numValue < 2_000) {
+    return (numValue / 1_000).toFixed(1) + 'k'
+  } else {
+    return numValue.toFixed(2)
+  }
+}
+
 export const parseVideoDuration = (duration: string) => {
   const matches = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)/)
 
