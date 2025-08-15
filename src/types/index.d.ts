@@ -40,17 +40,17 @@ export interface CommentSnippet {
   updatedAt: string
 }
 
-export interface SidebarContextProps {
-  sidebar: boolean
-  setSidebar: (sidebar: boolean) => void
-  category: number
-  setCategory: (category: number) => void
-}
-
 export interface SidebarMenuItem {
   id: number
   label: string
   icon: string
+}
+
+export interface SidebarStore {
+  sidebar: boolean
+  setSidebar: (sidebar: boolean) => void
+  category: number
+  setCategory: (category: number) => void
 }
 
 export interface TopLevelComment {
@@ -146,4 +146,11 @@ export interface VideoSearchResponse {
   items: VideoItem[]
 }
 
-export type VideoThumbnails = Record<'default' | 'medium' | 'high', { url: string; width: number; height: number }>
+export type VideoThumbnails = Record<
+  'default' | 'medium' | 'high',
+  {
+    url: string
+    width: number
+    height: number
+  }
+>
