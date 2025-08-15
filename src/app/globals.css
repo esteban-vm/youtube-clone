@@ -5,3 +5,9 @@
 }
 
 @source "../../node_modules/rsc-daisyui/dist";
+
+@layer base {
+  body {
+    @apply font-mono antialiased;
+  }
+}

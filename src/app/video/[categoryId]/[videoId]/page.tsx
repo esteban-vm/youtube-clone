@@ -1,3 +1,7 @@
 export default function Page() {
-  return <main>Video Page</main>
+  return (
+    <section>
+      <span>Video Page</span>
+    </section>
+  )
 }

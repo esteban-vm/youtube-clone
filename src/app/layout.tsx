@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { ThemeProvider } from 'next-themes'
 import './globals.css'
+import { Navigation } from '@/components'
 
 export interface Props {
   children: ReactNode
@@ -15,9 +16,10 @@ export const metadata: Metadata = {
 export default function Layout({ children }: Props) {
   return (
     <html lang='es' suppressHydrationWarning>
-      <body className='antialiased'>
+      <body>
         <ThemeProvider value={{ light: 'light', dark: 'black' }} disableTransitionOnChange>
-          {children}
+          <Navigation />
+          <main className='text-center'>{children}</main>
         </ThemeProvider>
       </body>
     </html>

@@ -1,3 +1,7 @@
 export default function Page() {
-  return <main>Channel Page</main>
+  return (
+    <section>
+      <span>Channel Page</span>
+    </section>
+  )
 }

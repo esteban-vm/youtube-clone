@@ -1,3 +1,7 @@
 export default function Page() {
-  return <main>Query Page</main>
+  return (
+    <section>
+      <span>Query Page</span>
+    </section>
+  )
 }
