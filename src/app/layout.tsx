@@ -18,8 +18,7 @@ export default function Layout({ children }: Props) {
     <html lang='es' suppressHydrationWarning>
       <body>
         <ThemeProvider value={{ light: 'light', dark: 'black' }} disableTransitionOnChange>
-          <Navigation />
-          <main className='text-center'>{children}</main>
+          <Navigation>{children}</Navigation>
         </ThemeProvider>
       </body>
     </html>
