@@ -7,7 +7,15 @@
 @source "../../node_modules/rsc-daisyui/dist";
 
 @layer base {
+  *::selection {
+    @apply bg-primary-content text-primary;
+  }
+
   body {
     @apply font-mono antialiased;
+  }
+
+  img {
+    @apply select-none;
   }
 }
