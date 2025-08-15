@@ -5,7 +5,7 @@ import { useClickOutside } from '@react-hooks-hub/use-click-outside'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { useEffect, useId, useRef, useState } from 'react'
-import { BiMenuAltLeft } from 'react-icons/bi'
+import { FaBars, FaXmark } from 'react-icons/fa6'
 import { Button, Drawer, Menu, Navbar } from 'rsc-daisyui'
 import logoSmall from '@/assets/logo-small.png'
 
@@ -39,14 +39,15 @@ export function Navigation({ children }: NavigationProps) {
         <Navbar as='nav' className='w-full bg-base-300' vanilla>
           <div className='flex-none'>
             <Button shape='square' ghost onClick={toggle}>
-              <BiMenuAltLeft className='inline-block size-3/4 stroke-current' />
+              {!isOpen ? <FaBars className='size-8/12' /> : <FaXmark className='size-8/12' />}
             </Button>
           </div>
-          <div className='mx-2 flex-1 px-2 text-lg font-semibold'>
-            <Image alt='logo' className='inline-block size-7' src={logoSmall} /> VidTube
+          <div className='ml-1.5 flex-1 text-lg'>
+            <Image alt='logo' className='inline size-7' src={logoSmall} />
+            <span className='hidden font-semibold lg:inline'> VidTube</span>
           </div>
           <div className='hidden flex-none lg:block'>
-            <Menu horizontal vanilla>
+            <Menu className='p-0' horizontal vanilla>
               <Menu.Item>Navbar Item 1</Menu.Item>
               <Menu.Item>Navbar Item 2</Menu.Item>
             </Menu>
