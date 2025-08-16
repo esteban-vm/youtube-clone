@@ -25,7 +25,7 @@ export function Navigation({ children }: NavigationProps) {
   return (
     <Drawer className='h-screen overflow-hidden' id={id} theme={theme}>
       <Drawer.Content className='flex flex-col'>
-        <Navbar className='w-screen gap-1.5 bg-base-300' vanilla>
+        <Navbar className='w-screen gap-1.5 rounded-b-md bg-base-300 shadow-md shadow-base-200' vanilla>
           <Atoms.NavbarSide side='start'>
             <Molecules.MenuButton id={id} />
             <Molecules.NavLogo />
