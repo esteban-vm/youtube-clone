@@ -36,9 +36,9 @@ export function Navigation({ children }: NavigationProps) {
           <Atoms.NavbarSide className='pr-1' side='end'>
             <Atoms.MenuContainer>
               <Menu as='menu' className='gap-1 p-0' horizontal vanilla>
-                <Molecules.MenuItem icon={LuVideo} />
-                <Molecules.MenuItem icon={LuLayoutGrid} />
-                <Molecules.MenuItem icon={LuBell} />
+                <Molecules.MenuItem icon={LuVideo} tipPosition='bottom' tipText='Subir' />
+                <Molecules.MenuItem icon={LuLayoutGrid} tipPosition='bottom' tipText='Más' />
+                <Molecules.MenuItem icon={LuBell} tipPosition='bottom' tipText='Notificaciones' />
               </Menu>
             </Atoms.MenuContainer>
             <Molecules.NavAvatar />
@@ -48,9 +48,9 @@ export function Navigation({ children }: NavigationProps) {
       </Drawer.Content>
       <Drawer.Side className='absolute h-full' drawerId={id}>
         <Menu as='menu' className='min-h-full w-fit gap-1 bg-base-200 p-4' vanilla>
-          <Molecules.MenuItem className='lg:hidden' icon={LuVideo} />
-          <Molecules.MenuItem className='lg:hidden' icon={LuLayoutGrid} />
-          <Molecules.MenuItem className='lg:hidden' icon={LuBell} />
+          <Molecules.MenuItem className='lg:hidden' icon={LuVideo} tipText='Subir' />
+          <Molecules.MenuItem className='lg:hidden' icon={LuLayoutGrid} tipText='Más' />
+          <Molecules.MenuItem className='lg:hidden' icon={LuBell} tipText='Notificaciones' />
         </Menu>
       </Drawer.Side>
     </Drawer>
