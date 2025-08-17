@@ -13,10 +13,8 @@ export function SearchInput() {
     const searchQuery = inputRef.current.value.trim()
 
     if (searchQuery) {
-      router.push(`/query/${encodeURI(searchQuery)}`)
+      router.push(`/query?q=${searchQuery}`)
     }
-
-    inputRef.current.value = ''
   }
 
   return (
