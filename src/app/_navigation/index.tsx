@@ -36,7 +36,7 @@ export function Navigation({ children }: NavigationProps) {
           <Atoms.NavbarSide className='pr-1' side='end'>
             <Atoms.MenuContainer>
               <Menu as='menu' className='gap-1 p-0' horizontal vanilla>
-                <Molecules.MenuItem icon={LuVideo} tipPosition='bottom' tipText='Subir' />
+                <Molecules.MenuItem icon={LuVideo} tipPosition='bottom' tipText='Subir' isActive />
                 <Molecules.MenuItem icon={LuLayoutGrid} tipPosition='bottom' tipText='Más' />
                 <Molecules.MenuItem icon={LuBell} tipPosition='bottom' tipText='Notificaciones' />
               </Menu>
@@ -48,7 +48,7 @@ export function Navigation({ children }: NavigationProps) {
       </Drawer.Content>
       <Drawer.Side className='absolute h-full' drawerId={id}>
         <Menu as='menu' className='min-h-full w-fit gap-1 bg-base-200 p-4' vanilla>
-          <Molecules.MenuItem className='lg:hidden' icon={LuVideo} tipText='Subir' />
+          <Molecules.MenuItem className='lg:hidden' icon={LuVideo} tipText='Subir' isActive />
           <Molecules.MenuItem className='lg:hidden' icon={LuLayoutGrid} tipText='Más' />
           <Molecules.MenuItem className='lg:hidden' icon={LuBell} tipText='Notificaciones' />
         </Menu>
