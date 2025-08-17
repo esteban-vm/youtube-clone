@@ -12,7 +12,7 @@ export default async function Page({ searchParams }: Props) {
   return (
     <section>
       <span>Query Page</span>
-      <p>{q}</p>
+      <p>Resultados para: {q}</p>
     </section>
   )
 }

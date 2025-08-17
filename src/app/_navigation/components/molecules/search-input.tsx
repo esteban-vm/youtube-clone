@@ -20,7 +20,14 @@ export function SearchInput() {
   return (
     <form onSubmit={handleSubmit}>
       <Input as='label' className='w-full max-w-lg !rounded-3xl !outline-none'>
-        <input ref={inputRef} autoComplete='off' className='peer' placeholder='Buscar…' type='search' />
+        <input
+          ref={inputRef}
+          aria-label='Buscar videos'
+          autoComplete='off'
+          className='peer'
+          placeholder='Buscar…'
+          type='search'
+        />
         <LuSearch aria-label='icon' className='hidden text-lg opacity-50 peer-placeholder-shown:block' role='img' />
       </Input>
     </form>
