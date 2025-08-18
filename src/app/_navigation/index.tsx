@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { useTheme } from 'next-themes'
 import { useEffect, useId, useState } from 'react'
 import { Drawer } from 'rsc-daisyui'
-import { Atoms, Organisms } from './components'
+import { Atoms, Organisms, Templates } from './components'
 
 export interface NavigationProps {
   children: ReactNode
@@ -24,7 +24,7 @@ export function Navigation({ children }: NavigationProps) {
   return (
     <Drawer className='h-screen overflow-hidden' id={id} theme={theme}>
       <Drawer.Content className='flex flex-col'>
-        <Organisms.NavbarMenu id={id} />
+        <Templates.NavbarMenu id={id} />
         <Atoms.PageContainer>{children}</Atoms.PageContainer>
       </Drawer.Content>
       <Drawer.Side className='absolute h-full' drawerId={id}>

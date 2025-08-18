@@ -1,2 +1,2 @@
-export * from './navbar-menu'
+export * from './mobile-menu'
 export * from './sidebar-menu'
