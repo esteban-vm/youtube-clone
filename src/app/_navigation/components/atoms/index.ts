@@ -5,10 +5,9 @@ export interface NavbarSideProps {
   side: 'start' | 'end'
 }
 
-export const Key = tw(Kbd)`
+export const AvatarContainer = tw.div`
   hidden
-  select-none
-  peer-placeholder-shown:block
+  lg:block
 `
 
 export const LogoText = tw.span`

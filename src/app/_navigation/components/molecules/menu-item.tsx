@@ -6,7 +6,7 @@ import { cn } from '@/utils/tailwind.utils'
 export interface MenuItemProps {
   icon: IconType
   tipText: string
-  tipPosition?: 'bottom' | 'right'
+  tipPosition?: 'bottom' | 'right' | 'left'
   href?: string
   className?: string
   isActive?: boolean

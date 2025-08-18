@@ -3,9 +3,8 @@
 import type { ReactNode } from 'react'
 import { useTheme } from 'next-themes'
 import { useEffect, useId, useState } from 'react'
-import { LuBell, LuLayoutGrid, LuVideo } from 'react-icons/lu'
-import { Drawer, Menu, Navbar } from 'rsc-daisyui'
-import { Atoms, Molecules } from './components'
+import { Drawer } from 'rsc-daisyui'
+import { Atoms, Organisms } from './components'
 
 export interface NavigationProps {
   children: ReactNode
@@ -25,33 +24,11 @@ export function Navigation({ children }: NavigationProps) {
   return (
     <Drawer className='h-screen overflow-hidden' id={id} theme={theme}>
       <Drawer.Content className='flex flex-col'>
-        <Navbar className='w-screen gap-1.5 rounded-b-md bg-base-300 shadow-md shadow-base-200' vanilla>
-          <Atoms.NavbarSide side='start'>
-            <Molecules.MenuButton id={id} />
-            <Molecules.NavLogo />
-          </Atoms.NavbarSide>
-          <Atoms.NavbarCenter>
-            <Molecules.SearchInput />
-          </Atoms.NavbarCenter>
-          <Atoms.NavbarSide className='pr-1' side='end'>
-            <Atoms.MenuContainer>
-              <Menu as='menu' className='gap-1 p-0' horizontal vanilla>
-                <Molecules.MenuItem icon={LuVideo} tipPosition='bottom' tipText='Subir' isActive />
-                <Molecules.MenuItem icon={LuLayoutGrid} tipPosition='bottom' tipText='Más' />
-                <Molecules.MenuItem icon={LuBell} tipPosition='bottom' tipText='Notificaciones' />
-              </Menu>
-            </Atoms.MenuContainer>
-            <Molecules.NavAvatar />
-          </Atoms.NavbarSide>
-        </Navbar>
+        <Organisms.NavbarMenu id={id} />
         <Atoms.PageContainer>{children}</Atoms.PageContainer>
       </Drawer.Content>
       <Drawer.Side className='absolute h-full' drawerId={id}>
-        <Menu as='menu' className='min-h-full w-fit gap-1 bg-base-200 p-4' vanilla>
-          <Molecules.MenuItem className='lg:hidden' icon={LuVideo} tipText='Subir' isActive />
-          <Molecules.MenuItem className='lg:hidden' icon={LuLayoutGrid} tipText='Más' />
-          <Molecules.MenuItem className='lg:hidden' icon={LuBell} tipText='Notificaciones' />
-        </Menu>
+        <Organisms.SidebarMenu />
       </Drawer.Side>
     </Drawer>
   )
