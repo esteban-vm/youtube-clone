@@ -46,3 +46,9 @@ export const PageContainer = tw.div`
   items-center
   justify-center
 `
+
+export const StyledKbd = tw(Kbd)`
+  hidden
+  select-none
+  peer-placeholder-shown:block
+`

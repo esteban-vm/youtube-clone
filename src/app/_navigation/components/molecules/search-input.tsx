@@ -42,8 +42,8 @@ export function SearchInput() {
             placeholder='Buscar…'
             type='search'
           />
-          <Atoms.Key size='sm'>Ctrl</Atoms.Key>
-          <Atoms.Key size='sm'>K</Atoms.Key>
+          <Atoms.StyledKbd size='sm'>Ctrl</Atoms.StyledKbd>
+          <Atoms.StyledKbd size='sm'>K</Atoms.StyledKbd>
         </Join.Input>
         <Join.Button className='!rounded-r-3xl' color='neutral' shape='square' type='submit'>
           <LuSearch aria-label='icon' role='img' />
