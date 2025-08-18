@@ -40,12 +40,6 @@ export interface CommentSnippet {
   updatedAt: string
 }
 
-export interface SidebarMenuItem {
-  id: number
-  label: string
-  icon: string
-}
-
 export interface SidebarStore {
   sidebar: boolean
   setSidebar: (sidebar: boolean) => void

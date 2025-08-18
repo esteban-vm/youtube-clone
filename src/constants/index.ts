@@ -1,1 +1,1 @@
-export * from './sidebar-options'
+export * from './navigation-options'
