@@ -1,8 +1,25 @@
+import { Kbd } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
 export interface NavbarSideProps {
   side: 'start' | 'end'
 }
+
+export const Key = tw(Kbd)`
+  hidden
+  select-none
+  peer-placeholder-shown:block
+`
+
+export const LogoText = tw.span`
+  absolute
+  top-1/5
+  left-[110%]
+  hidden
+  font-semibold
+  select-none
+  lg:block
+`
 
 export const MenuContainer = tw.div`
   hidden

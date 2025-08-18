@@ -2,7 +2,8 @@ import type { FormEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { LuSearch } from 'react-icons/lu'
-import { Join, Kbd } from 'rsc-daisyui'
+import { Join } from 'rsc-daisyui'
+import { Atoms } from '../.'
 
 export function SearchInput() {
   const router = useRouter()
@@ -38,12 +39,8 @@ export function SearchInput() {
             placeholder='Buscar…'
             type='search'
           />
-          <Kbd className='hidden select-none peer-placeholder-shown:block' size='sm'>
-            Ctrl
-          </Kbd>
-          <Kbd className='hidden select-none peer-placeholder-shown:block' size='sm'>
-            K
-          </Kbd>
+          <Atoms.Key size='sm'>Ctrl</Atoms.Key>
+          <Atoms.Key size='sm'>K</Atoms.Key>
         </Join.Input>
         <Join.Button className='!rounded-r-3xl' color='neutral' shape='square' type='submit'>
           <LuSearch aria-label='icon' role='img' />
