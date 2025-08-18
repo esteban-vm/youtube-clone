@@ -8,6 +8,7 @@ export function SidebarMenu() {
       {sidebarMenuItems.map((item) => (
         <Molecules.SidebarItem key={item.id} icon={item.icon} label={item.label} />
       ))}
+      <Molecules.ThemeSwitch />
     </Menu>
   )
 }
