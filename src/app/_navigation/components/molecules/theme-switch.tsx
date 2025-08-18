@@ -10,8 +10,8 @@ export function ThemeSwitch() {
   }
 
   return (
-    <Menu.Item as='div' className='cursor-default'>
-      <label className='toggle scale-110 text-base-content'>
+    <Menu.Item as='div' className='cursor-default self-center'>
+      <label className='toggle scale-[120%] text-base-content'>
         <input
           checked={resolvedTheme === 'dark'}
           className='theme-controller'
