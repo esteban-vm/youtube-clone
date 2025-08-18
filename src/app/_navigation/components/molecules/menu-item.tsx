@@ -1,29 +1,18 @@
-import type { IconType } from 'react-icons'
+import type { SidebarItemProps } from './sidebar-item'
 import Link from 'next/link'
 import { Menu, Tooltip } from 'rsc-daisyui'
 import { cn } from '@/utils/tailwind.utils'
 
-export interface MenuItemProps {
-  icon: IconType
-  tipText: string
+export interface MenuItemProps extends SidebarItemProps {
   tipPosition?: 'bottom' | 'right' | 'left'
-  href?: string
   className?: string
-  isActive?: boolean
 }
 
-export function MenuItem({
-  icon: Icon,
-  tipText,
-  tipPosition = 'right',
-  href = '/',
-  className,
-  isActive,
-}: MenuItemProps) {
+export function MenuItem({ icon: Icon, label, href = '/', className, isActive, tipPosition = 'right' }: MenuItemProps) {
   return (
     <Tooltip color='accent' position={tipPosition} tip=''>
       <Tooltip.Content>
-        <div className='text-xs font-bold'>{tipText}</div>
+        <div className='text-xs font-bold'>{label}</div>
       </Tooltip.Content>
       <Menu.Item
         active={isActive}
