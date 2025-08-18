@@ -8,7 +8,7 @@ export interface MenuItemProps extends SidebarItemProps {
   className?: string
 }
 
-export function MenuItem({ icon: Icon, label, href = '/', className, isActive, tipPosition = 'right' }: MenuItemProps) {
+export function MenuItem({ icon: Icon, label, href = '/', isActive, className, tipPosition = 'right' }: MenuItemProps) {
   return (
     <Tooltip color='accent' position={tipPosition} tip=''>
       <Tooltip.Content>
