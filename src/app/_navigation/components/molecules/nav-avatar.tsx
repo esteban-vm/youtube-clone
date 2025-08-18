@@ -6,7 +6,7 @@ export function NavAvatar() {
   return (
     <Avatar>
       <div className='w-10 rounded-full'>
-        <Image alt='avatar' src={avatar} />
+        <Image alt='avatar' src={avatar} priority />
       </div>
     </Avatar>
   )
