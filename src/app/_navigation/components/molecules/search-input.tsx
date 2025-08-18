@@ -1,8 +1,8 @@
 import type { FormEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { LuSearch } from 'react-icons/lu'
-import { Input } from 'rsc-daisyui'
+import { Join, Kbd } from 'rsc-daisyui'
 
 export function SearchInput() {
   const router = useRouter()
@@ -17,19 +17,38 @@ export function SearchInput() {
     }
   }
 
+  useEffect(() => {
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'k' && event.ctrlKey) {
+        event.preventDefault()
+        inputRef.current.focus()
+      }
+    })
+  }, [])
+
   return (
     <form onSubmit={handleSubmit}>
-      <Input as='label' className='w-full max-w-lg !rounded-3xl !outline-none'>
-        <input
-          ref={inputRef}
-          aria-label='Buscar videos'
-          autoComplete='off'
-          className='peer'
-          placeholder='Buscar…'
-          type='search'
-        />
-        <LuSearch aria-label='icon' className='hidden text-lg opacity-50 peer-placeholder-shown:block' role='img' />
-      </Input>
+      <Join className='w-full max-w-lg'>
+        <Join.Input as='label' className='w-full !rounded-l-3xl !outline-none' color='neutral'>
+          <input
+            ref={inputRef}
+            aria-label='Buscar videos'
+            autoComplete='off'
+            className='peer'
+            placeholder='Buscar…'
+            type='search'
+          />
+          <Kbd className='hidden select-none peer-placeholder-shown:block' size='sm'>
+            Ctrl
+          </Kbd>
+          <Kbd className='hidden select-none peer-placeholder-shown:block' size='sm'>
+            K
+          </Kbd>
+        </Join.Input>
+        <Join.Button className='!rounded-r-3xl' color='neutral' shape='square' type='submit'>
+          <LuSearch aria-label='icon' role='img' />
+        </Join.Button>
+      </Join>
     </form>
   )
 }
