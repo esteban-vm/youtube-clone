@@ -5,9 +5,9 @@ import logoSmall from '@/assets/logo-small.png'
 export function NavLogo() {
   return (
     <Link href='/'>
-      <div>
-        <Image alt='logo' className='inline size-9 lg:mr-1' src={logoSmall} />
-        <span className='hidden align-middle font-semibold select-none lg:inline'>VidTube</span>
+      <div className='relative size-9'>
+        <Image alt='logo' src={logoSmall} fill />
+        <span className='absolute top-1/5 left-[110%] hidden font-semibold select-none lg:block'>VidTube</span>
       </div>
     </Link>
   )
