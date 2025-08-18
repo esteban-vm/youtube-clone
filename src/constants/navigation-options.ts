@@ -33,7 +33,7 @@ export const sidebarMenuItems: MenuItem[] = [
   { id: crypto.randomUUID(), label: 'Deportes', icon: LuVolleyball },
   { id: crypto.randomUUID(), label: 'Entretenimiento', icon: LuTv },
   { id: crypto.randomUUID(), label: 'Tecnología', icon: LuCpu },
-  { id: crypto.randomUUID(), label: 'Música2', icon: LuMusic4 },
+  { id: crypto.randomUUID(), label: 'Música', icon: LuMusic4 },
   { id: crypto.randomUUID(), label: 'Blogs', icon: LuRss },
   { id: crypto.randomUUID(), label: 'Noticias', icon: LuNewspaper },
 ]
