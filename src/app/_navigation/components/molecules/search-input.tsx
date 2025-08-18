@@ -1,5 +1,5 @@
 import type { FormEventHandler } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { LuSearch } from 'react-icons/lu'
 import { Join } from 'rsc-daisyui'
@@ -7,7 +7,9 @@ import { Atoms } from '../.'
 
 export function SearchInput() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const inputRef = useRef<HTMLInputElement>(null!)
+  const search = searchParams.get('q') ?? ''
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
@@ -36,6 +38,7 @@ export function SearchInput() {
             aria-label='Buscar videos'
             autoComplete='off'
             className='peer'
+            defaultValue={search}
             placeholder='Buscar…'
             type='search'
           />
