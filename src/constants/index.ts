@@ -1,1 +1,1 @@
-export * from './navigation-options'
+export * from './navigation-items'
