@@ -2,6 +2,7 @@
 
 @plugin "daisyui" {
   themes: light, black;
+  exclude: rootscrollgutter;
 }
 
 @source "../../node_modules/rsc-daisyui/dist";
@@ -9,10 +10,6 @@
 @layer base {
   *::selection {
     @apply bg-primary-content text-primary;
-  }
-
-  html {
-    scrollbar-width: none !important;
   }
 
   body {
