@@ -42,18 +42,18 @@ export interface CommentSnippet {
 }
 
 export interface MenuItemProps {
-  id: string
+  id: number
   label: string
   icon: IconType
   link?: string
-  isActive?: boolean
 }
 
 export interface SidebarStore {
-  sidebar: boolean
-  setSidebar: (sidebar: boolean) => void
-  category: number
-  setCategory: (category: number) => void
+  // sidebar: boolean
+  // setSidebar: (sidebar: boolean) => void
+  drawerId: string
+  currentItem: number
+  setCurrentItem: (value: number) => void
 }
 
 export interface TopLevelComment {

@@ -2,11 +2,11 @@ import { Menu, Navbar } from 'rsc-daisyui'
 import { navbarMenuItems } from '@/constants'
 import { Atoms, Molecules, Organisms } from '../.'
 
-export function NavbarMenu({ id }: Molecules.MenuButtonProps) {
+export function NavbarMenu() {
   return (
     <Navbar className='w-screen gap-1.5 rounded-b-md bg-base-300 shadow-md shadow-base-200' vanilla>
       <Atoms.NavbarSide side='start'>
-        <Molecules.MenuButton id={id} />
+        <Molecules.MenuButton />
         <Molecules.NavLogo />
       </Atoms.NavbarSide>
       <Atoms.NavbarCenter>
