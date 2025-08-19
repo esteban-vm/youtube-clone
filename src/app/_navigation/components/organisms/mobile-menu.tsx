@@ -20,7 +20,7 @@ export function MobileMenu() {
       </Dropdown.Button>
       <Dropdown.Menu as='menu' className='mt-4 w-fit bg-base-200'>
         {navbarMenuItems.map((item) => (
-          <Molecules.MenuItem key={item.id} icon={item.icon} label={item.label} tipPosition='left' />
+          <Molecules.NavbarItem key={item.id} {...item} tipPosition='left' />
         ))}
       </Dropdown.Menu>
     </Dropdown>

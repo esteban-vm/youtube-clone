@@ -16,7 +16,7 @@ export function NavbarMenu({ id }: Molecules.MenuButtonProps) {
         <Atoms.MenuContainer>
           <Menu as='menu' className='gap-1 p-0' horizontal vanilla>
             {navbarMenuItems.map((item) => (
-              <Molecules.MenuItem key={item.id} icon={item.icon} label={item.label} tipPosition='bottom' />
+              <Molecules.NavbarItem key={item.id} {...item} tipPosition='bottom' />
             ))}
           </Menu>
         </Atoms.MenuContainer>

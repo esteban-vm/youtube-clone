@@ -1,4 +1,5 @@
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { IconType } from 'react-icons'
 
 export interface ApiResponse<T> {
   items?: T[]
@@ -38,6 +39,14 @@ export interface CommentSnippet {
   textOriginal: string
   publishedAt: string
   updatedAt: string
+}
+
+export interface MenuItemProps {
+  id: string
+  label: string
+  icon: IconType
+  link?: string
+  isActive?: boolean
 }
 
 export interface SidebarStore {
