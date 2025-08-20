@@ -11,7 +11,7 @@ export const useSidebarStore = create<SidebarStore>()(
         //   set({ sidebar })
         // },
         drawerId: 'youtube-clone-drawer',
-        currentItem: 1,
+        currentItem: 0,
         setCurrentItem(value) {
           set({ currentItem: value })
         },
