@@ -23,12 +23,12 @@ export function Navigation({ children }: NavigationProps) {
   if (!isClient) return null
 
   return (
-    <Drawer className='h-screen overflow-hidden' id={drawerId} theme={theme}>
-      <Drawer.Content className='flex flex-col'>
+    <Drawer className='min-h-screen' id={drawerId} theme={theme}>
+      <Drawer.Content className='relative flex flex-col'>
         <Templates.NavbarMenu />
         <Atoms.PageContainer>{children}</Atoms.PageContainer>
       </Drawer.Content>
-      <Drawer.Side className='absolute h-full' drawerId={drawerId}>
+      <Drawer.Side className='h-full' drawerId={drawerId}>
         <Organisms.SidebarMenu />
       </Drawer.Side>
     </Drawer>
