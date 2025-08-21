@@ -8,8 +8,12 @@
 @source "../../node_modules/rsc-daisyui/dist";
 
 @layer base {
-  *::selection {
-    @apply bg-primary-content text-primary;
+  * {
+    scrollbar-width: none !important;
+
+    &::selection {
+      @apply bg-primary-content text-primary;
+    }
   }
 
   body {
