@@ -46,6 +46,12 @@ export const PageContainer = tw.div`
   justify-center
 `
 
+export const Separator = tw.hr`
+  w-full
+  border-t
+  border-base-300
+`
+
 export const StyledKbd = tw(Kbd)`
   hidden
   select-none
