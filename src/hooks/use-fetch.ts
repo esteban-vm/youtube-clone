@@ -6,7 +6,7 @@ export type DataState<T> = T | null
 export type ErrorState = string | null
 
 export interface FetchState<T> {
-  loading: boolean
+  isLoading: boolean
   data: DataState<T>
   error: ErrorState
 }
@@ -15,7 +15,7 @@ export const useFetch = <T>(url: string): FetchState<T> => {
   const router = useRouter()
   const pathname = usePathname()
 
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<DataState<T>>(null)
   const [error, setError] = useState<ErrorState>(null)
 
@@ -28,7 +28,7 @@ export const useFetch = <T>(url: string): FetchState<T> => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true)
+        setIsLoading(true)
         setData(null)
         setError(null)
 
@@ -50,12 +50,12 @@ export const useFetch = <T>(url: string): FetchState<T> => {
           setError(error.message)
         }
       } finally {
-        setLoading(false)
+        setIsLoading(false)
       }
     }
 
     fetchData()
   }, [url])
 
-  return { loading, data, error }
+  return { isLoading, data, error }
 }

@@ -15,11 +15,11 @@ export default function Page() {
     part: `${['snippet', 'contentDetails', 'statistics']}`,
   })
 
-  const { data, loading, error } = useFetch<YouTubeDataAPIVideosResponse>(`/videos?${params}`)
+  const { isLoading, data, error } = useFetch<YouTubeDataAPIVideosResponse>(`/videos?${params}`)
 
   return (
     <Atoms.PageContainer>
-      {loading && <Molecules.LoadingSpinner />}
+      {isLoading && <Molecules.LoadingSpinner />}
       {data &&
         data.items.map((item) => {
           return (
