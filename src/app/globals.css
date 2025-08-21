@@ -24,3 +24,7 @@
     @apply select-none;
   }
 }
+
+.drawer-overlay {
+  @apply cursor-default;
+}
