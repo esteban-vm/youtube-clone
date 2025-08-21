@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react'
 export type DataState<T> = T | null
 export type ErrorState = string | null
 
-export interface FetchStateV2<T> {
+export interface FetchState<T> {
   loading: boolean
   data: DataState<T>
   error: ErrorState
 }
 
-export const useFetchV2 = <T>(url: string): FetchStateV2<T> => {
+export const useFetch = <T>(url: string): FetchState<T> => {
   const router = useRouter()
   const pathname = usePathname()
 
