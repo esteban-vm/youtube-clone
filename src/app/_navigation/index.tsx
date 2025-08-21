@@ -23,7 +23,7 @@ export function Navigation({ children }: NavigationProps) {
   if (!isClient) return null
 
   return (
-    <Drawer className='min-h-[40rem]' id={drawerId} theme={theme}>
+    <Drawer className='min-h-screen' id={drawerId} theme={theme}>
       <Drawer.Content className='relative flex flex-col'>
         <Templates.NavbarMenu />
         <Atoms.PageContainer>{children}</Atoms.PageContainer>

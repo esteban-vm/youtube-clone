@@ -4,7 +4,7 @@ import { navbarMenuItems } from '@/constants'
 
 export function NavbarMenu() {
   return (
-    <Navbar className='sticky top-0 w-full gap-1.5 rounded-b-md bg-base-300 shadow-md shadow-base-200' vanilla>
+    <Navbar className='sticky top-0 w-full gap-1.5 bg-base-300' vanilla>
       <Atoms.NavbarSide side='start'>
         <Molecules.MenuButton />
         <Molecules.NavLogo />
