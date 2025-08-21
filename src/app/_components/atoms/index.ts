@@ -18,8 +18,9 @@ export const FeedbackContainer = tw.div`
   justify-center
 `
 
-export const PageContent = tw.div`
+export const PageContainer = tw.section`
   grid
+  size-full
   h-full
   gap-2.5
   p-2.5
