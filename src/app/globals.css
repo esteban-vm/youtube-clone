@@ -2,18 +2,18 @@
 
 @plugin "daisyui" {
   themes: light, black;
-  exclude: rootscrollgutter;
 }
 
 @source "../../node_modules/rsc-daisyui/dist";
 
 @layer base {
-  * {
-    scrollbar-width: none !important;
+  *::selection {
+    @apply bg-primary-content text-primary;
+  }
 
-    &::selection {
-      @apply bg-primary-content text-primary;
-    }
+  html {
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
   }
 
   body {
