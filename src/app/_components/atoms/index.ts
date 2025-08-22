@@ -21,9 +21,8 @@ export const FeedbackContainer = tw.div`
 export const PageContainer = tw.section`
   grid
   size-full
-  h-full
+  grid-cols-[repeat(auto-fit,minmax(theme(spacing.80),1fr))]
+  place-content-start
   gap-2.5
   p-2.5
-  md:grid-cols-2
-  lg:grid-cols-3
 `
