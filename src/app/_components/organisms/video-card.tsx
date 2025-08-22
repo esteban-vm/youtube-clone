@@ -2,11 +2,9 @@ import type { YouTubeDataAPIVideoItem } from '@/types'
 import Image from 'next/image'
 import { Avatar, Badge, Card } from 'rsc-daisyui'
 
-export interface VideoCardProps {
-  video: YouTubeDataAPIVideoItem
-}
+export function VideoCard(props: YouTubeDataAPIVideoItem) {
+  const { snippet } = props
 
-export function VideoCard({ video }: VideoCardProps) {
   return (
     <Card className='gap-1 !rounded-none shadow-sm'>
       <figure>
@@ -25,7 +23,7 @@ export function VideoCard({ video }: VideoCardProps) {
         </Avatar>
 
         <Card.Body className='block w-3/4 gap-1 p-1'>
-          <Card.Title className='line-clamp-2 text-base leading-tight'>{video.snippet.title}</Card.Title>
+          <Card.Title className='line-clamp-2 text-base leading-tight'>{snippet.title}</Card.Title>
           <p className='text-xs'>Channel name</p>
 
           <Card.Actions>

@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <Atoms.PageContainer>
       {isLoading && <Molecules.LoadingSpinner />}
-      {data && data.items.map((item) => <Organisms.VideoCard key={item.id} video={item} />)}
+      {data && data.items.map((item) => <Organisms.VideoCard key={item.id} {...item} />)}
       {error && <Molecules.ErrorAlert message={error} />}
     </Atoms.PageContainer>
   )
