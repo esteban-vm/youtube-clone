@@ -28,7 +28,7 @@ export function Navigation({ children }: NavigationProps) {
         <Templates.NavbarMenu />
         <Atoms.PageContainer>{children}</Atoms.PageContainer>
       </Drawer.Content>
-      <Drawer.Side className='h-full' drawerId={drawerId}>
+      <Drawer.Side className='z-10 h-full' drawerId={drawerId}>
         <Organisms.SidebarMenu />
       </Drawer.Side>
     </Drawer>
