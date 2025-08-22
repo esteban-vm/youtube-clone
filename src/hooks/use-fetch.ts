@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export type DataState<T> = T | null
@@ -12,18 +11,9 @@ export interface FetchState<T> {
 }
 
 export const useFetch = <T>(url: string): FetchState<T> => {
-  const router = useRouter()
-  const pathname = usePathname()
-
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<DataState<T>>(null)
   const [error, setError] = useState<ErrorState>(null)
-
-  useEffect(() => {
-    if (pathname !== '/') {
-      router.push('/')
-    }
-  }, [pathname, router])
 
   useEffect(() => {
     const fetchData = async () => {
