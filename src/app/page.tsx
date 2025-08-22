@@ -20,15 +20,7 @@ export default function Page() {
   return (
     <Atoms.PageContainer>
       {isLoading && <Molecules.LoadingSpinner />}
-      {data &&
-        data.items.map((item) => {
-          return (
-            <article key={item.id} className='truncate border border-neutral text-sm'>
-              <div className='aspect-video w-full border-b border-neutral bg-neutral/50' />
-              <span>{item.snippet.title}</span>
-            </article>
-          )
-        })}
+      {data && data.items.map((item) => <Molecules.VideoCard key={item.id} video={item} />)}
       {error && <Molecules.ErrorAlert message={error} />}
     </Atoms.PageContainer>
   )
