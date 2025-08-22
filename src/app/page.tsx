@@ -1,7 +1,7 @@
 'use client'
 
 import type { YouTubeDataAPIVideosResponse } from '@/types'
-import { Atoms, Molecules } from '@/_components'
+import { Atoms, Molecules, Organisms } from '@/_components'
 import { useFetch, useSidebarStore } from '@/hooks'
 
 export default function Page() {
@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <Atoms.PageContainer>
       {isLoading && <Molecules.LoadingSpinner />}
-      {data && data.items.map((item) => <Molecules.VideoCard key={item.id} video={item} />)}
+      {data && data.items.map((item) => <Organisms.VideoCard key={item.id} video={item} />)}
       {error && <Molecules.ErrorAlert message={error} />}
     </Atoms.PageContainer>
   )
