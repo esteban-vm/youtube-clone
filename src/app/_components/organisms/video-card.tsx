@@ -7,11 +7,12 @@ export function VideoCard(props: YouTubeDataAPIVideoItem) {
 
   return (
     <Card className='gap-1 !rounded-none shadow-sm'>
-      <figure>
+      <figure className='relative aspect-video'>
         <Image
           alt='Shoes'
-          className='size-full'
+          className='size-full object-cover object-center'
           src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+          fill
         />
       </figure>
 
