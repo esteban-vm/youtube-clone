@@ -17,7 +17,7 @@
   }
 
   body {
-    @apply font-mono antialiased;
+    @apply font-sans antialiased;
   }
 
   img {

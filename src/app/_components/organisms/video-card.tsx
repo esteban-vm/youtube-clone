@@ -6,11 +6,11 @@ export function VideoCard(props: YouTubeDataAPIVideoItem) {
   const { snippet } = props
 
   return (
-    <Card className='gap-1 !rounded-none shadow-sm'>
+    <Card className='gap-1 shadow-sm dark:rounded-lg'>
       <figure className='relative aspect-video'>
         <Image
           alt='Shoes'
-          className='size-full object-cover object-center'
+          className='size-full rounded-b-lg object-cover object-center'
           src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
           fill
         />
@@ -21,10 +21,8 @@ export function VideoCard(props: YouTubeDataAPIVideoItem) {
             <Image alt='avatar' src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' fill />
           </div>
         </Avatar>
-        <Card.Body className='w-4/5 gap-0 p-1 pl-0'>
-          <Card.Title className='inline-block truncate text-sm leading-tight tracking-tighter'>
-            {snippet.title}
-          </Card.Title>
+        <Card.Body className='w-4/5 gap-0 pt-1 pr-1.5 pb-2 pl-0'>
+          <Card.Title className='inline-block truncate text-sm'>{snippet.title}</Card.Title>
           <p className='text-xs'>Channel name</p>
           <Card.Actions>
             <Badge size='sm' outline>
