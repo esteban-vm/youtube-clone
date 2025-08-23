@@ -22,7 +22,7 @@ export const PageContainer = tw.section`
   grid
   size-full
   grid-cols-[repeat(auto-fit,minmax(theme(spacing.80),1fr))]
-  place-content-start
+  place-content-center
   gap-2.5
   p-2.5
 `
