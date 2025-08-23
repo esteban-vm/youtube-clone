@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { ThemeProvider } from 'next-themes'
 import { Navigation } from '@/_navigation'
+import { QueryProvider, ThemeProvider } from '@/providers'
 import '@/globals.css'
 
 export interface Props {
@@ -17,8 +17,10 @@ export default function Layout({ children }: Props) {
   return (
     <html lang='es' suppressHydrationWarning>
       <body>
-        <ThemeProvider value={{ light: 'light', dark: 'black' }} disableTransitionOnChange>
-          <Navigation>{children}</Navigation>
+        <ThemeProvider>
+          <QueryProvider>
+            <Navigation>{children}</Navigation>
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>
