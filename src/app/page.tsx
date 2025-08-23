@@ -8,7 +8,7 @@ export default function Page() {
   const categoryId = useSidebarStore((state) => state.currentItem)
 
   const params = new URLSearchParams({
-    maxResults: '9',
+    maxResults: '20',
     chart: 'mostPopular',
     videoCategoryId: `${categoryId}`,
     key: process.env.NEXT_PUBLIC_API_KEY,
