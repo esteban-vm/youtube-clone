@@ -15,18 +15,17 @@ export function VideoCard(props: YouTubeDataAPIVideoItem) {
           fill
         />
       </figure>
-
-      <div className='flex flex-row items-start justify-center'>
-        <Avatar className='h-fit w-1/4'>
-          <div className='relative mx-auto size-1/2 rounded-full'>
+      <div className='flex flex-row'>
+        <Avatar className='h-fit w-1/5'>
+          <div className='relative mx-auto size-3/4 rounded-full'>
             <Image alt='avatar' src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' fill />
           </div>
         </Avatar>
-
-        <Card.Body className='block w-3/4 gap-1 p-1'>
-          <Card.Title className='line-clamp-2 text-base leading-tight'>{snippet.title}</Card.Title>
+        <Card.Body className='w-4/5 gap-0 p-1 pl-0'>
+          <Card.Title className='inline-block truncate text-sm leading-tight tracking-tighter'>
+            {snippet.title}
+          </Card.Title>
           <p className='text-xs'>Channel name</p>
-
           <Card.Actions>
             <Badge size='sm' outline>
               Views
