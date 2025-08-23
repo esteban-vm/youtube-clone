@@ -33,3 +33,9 @@ export const getVideo = async (endpoint: string): Promise<ApiResponse<VideoSearc
 
   return await getRequest(endpoint, config)
 }
+
+export const getVideos = async <T>(url: string): Promise<T> => {
+  const instance = getInstance()
+  const { data } = await instance.get<T>(url)
+  return data
+}
