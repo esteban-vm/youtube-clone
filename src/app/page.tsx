@@ -1,8 +1,10 @@
 'use client'
 
 import type { YouTubeDataAPIVideosResponse } from '@/types'
+import { useQuery } from '@tanstack/react-query'
 import { Atoms, Molecules, Organisms } from '@/_components'
-import { useFetch, useSidebarStore } from '@/hooks'
+import { useSidebarStore } from '@/hooks'
+import { getVideos } from '@/services/api.service'
 
 export default function Page() {
   const categoryId = useSidebarStore((state) => state.currentItem)
@@ -15,13 +17,24 @@ export default function Page() {
     part: `${['snippet', 'contentDetails', 'statistics']}`,
   })
 
-  const { isLoading, data, error } = useFetch<YouTubeDataAPIVideosResponse>(`/videos?${params}`)
+  const {
+    data: videos,
+    error,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useQuery({
+    queryKey: ['videos', `category: ${categoryId}`],
+    queryFn() {
+      return getVideos<YouTubeDataAPIVideosResponse>(`/videos?${params}`)
+    },
+  })
 
   return (
     <Atoms.PageContainer>
       {isLoading && <Molecules.LoadingSpinner />}
-      {data && data.items.map((item) => <Organisms.VideoCard key={item.id} {...item} />)}
-      {error && <Molecules.ErrorAlert message={error} />}
+      {isSuccess && videos.items.map((item) => <Organisms.VideoCard key={item.id} {...item} />)}
+      {isError && <Molecules.ErrorAlert message={error.message} />}
     </Atoms.PageContainer>
   )
 }
