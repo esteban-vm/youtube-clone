@@ -33,7 +33,7 @@ export default function Page() {
   return (
     <Atoms.PageContainer>
       {isLoading && <Molecules.LoadingSpinner />}
-      {isSuccess && videos.items.map((item) => <Organisms.VideoCard key={item.id} {...item} />)}
+      {isSuccess && videos.items.map((item) => <Organisms.VideoCard key={item.id} item={item} />)}
       {isError && <Molecules.ErrorAlert message={error.message} />}
     </Atoms.PageContainer>
   )

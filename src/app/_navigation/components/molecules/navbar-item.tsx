@@ -6,9 +6,7 @@ export interface NavbarItemProps extends MenuItemProps {
   tipPosition: 'bottom' | 'left'
 }
 
-export function NavbarItem(props: NavbarItemProps) {
-  const { label, icon: Icon, link = '/', tipPosition } = props
-
+export function NavbarItem({ label, icon: Icon, link = '/', tipPosition }: NavbarItemProps) {
   return (
     <Tooltip color='accent' position={tipPosition} tip=''>
       <Tooltip.Content>

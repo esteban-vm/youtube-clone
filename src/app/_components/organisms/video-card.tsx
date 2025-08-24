@@ -4,8 +4,12 @@ import Link from 'next/link'
 import { Avatar, Badge, Card } from 'rsc-daisyui'
 import { Molecules } from '@/_components'
 
-export function VideoCard(props: YouTubeDataAPIVideoItem) {
-  const { id, snippet, contentDetails } = props
+export interface VideoCardProps {
+  item: YouTubeDataAPIVideoItem
+}
+
+export function VideoCard({ item }: VideoCardProps) {
+  const { id, snippet, contentDetails } = item
 
   return (
     <Card className='gap-1 overflow-hidden shadow-sm dark:rounded-lg'>
