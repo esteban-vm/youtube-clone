@@ -3,11 +3,13 @@
 import type { YouTubeDataAPIVideosResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import { Atoms, Molecules, Organisms } from '@/_components'
+import { sidebarMenuItems } from '@/constants'
 import { useSidebarStore } from '@/hooks'
 import { getVideos } from '@/services/api.service'
 
 export default function Page() {
   const categoryId = useSidebarStore((state) => state.currentItem)
+  const category = sidebarMenuItems.find((item) => item.id === categoryId)?.label
 
   const params = new URLSearchParams({
     maxResults: '20',
@@ -24,10 +26,8 @@ export default function Page() {
     isSuccess,
     isError,
   } = useQuery({
-    queryKey: ['videos', `category: ${categoryId}`],
-    queryFn() {
-      return getVideos<YouTubeDataAPIVideosResponse>(`/videos?${params}`)
-    },
+    queryKey: ['videos', `category: ${category}`],
+    queryFn: () => getVideos<YouTubeDataAPIVideosResponse>(`/videos?${params}`),
   })
 
   return (
