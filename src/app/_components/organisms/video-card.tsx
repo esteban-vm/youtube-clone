@@ -8,7 +8,7 @@ export function VideoCard(props: YouTubeDataAPIVideoItem) {
   const { id, snippet, contentDetails } = props
 
   return (
-    <Card className='gap-1 shadow-sm dark:rounded-lg'>
+    <Card className='gap-1 overflow-hidden shadow-sm dark:rounded-lg'>
       <Molecules.CardImage
         duration={contentDetails.duration}
         image={snippet.thumbnails.high.url}
