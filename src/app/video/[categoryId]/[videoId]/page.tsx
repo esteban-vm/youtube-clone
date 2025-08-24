@@ -1,7 +1,15 @@
-export default function Page() {
+export interface Props {
+  params: Promise<{ categoryId: string; videoId: string }>
+}
+
+export default async function Page({ params }: Props) {
+  const { categoryId, videoId } = await params
+
   return (
     <section>
-      <span>Video Page</span>
+      <h2>Video Page</h2>
+      <p>Category: {categoryId}</p>
+      <p>Video: {videoId}</p>
     </section>
   )
 }
