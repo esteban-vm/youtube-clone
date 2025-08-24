@@ -49,8 +49,6 @@ export interface MenuItemProps {
 }
 
 export interface SidebarStore {
-  // sidebar: boolean
-  // setSidebar: (sidebar: boolean) => void
   drawerId: string
   currentItem: number
   setCurrentItem: (value: number) => void
