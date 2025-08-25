@@ -2,7 +2,7 @@ import type { YouTubeDataAPIVideoItem } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar, Badge, Card } from 'rsc-daisyui'
-import { Molecules } from '@/_components'
+import { Atoms, Molecules } from '@/_components'
 
 export interface VideoCardProps {
   item: YouTubeDataAPIVideoItem
@@ -19,11 +19,11 @@ export function VideoCard({ item }: VideoCardProps) {
         link={`/video/${snippet.categoryId}/${id}`}
         title={snippet.title}
       />
-      <div className='flex items-center gap-1 p-1'>
+      <Atoms.CardBody>
         <Avatar className='h-fit w-16'>
-          <div className='relative mx-auto size-full rounded-full'>
+          <Atoms.ImageContainer>
             <Image alt='avatar' src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' fill />
-          </div>
+          </Atoms.ImageContainer>
         </Avatar>
         <Card.Body className='w-4/5 gap-1 p-0'>
           <Card.Title className='inline-block truncate text-sm'>{snippet.title}</Card.Title>
@@ -36,7 +36,7 @@ export function VideoCard({ item }: VideoCardProps) {
             </Badge>
           </Card.Actions>
         </Card.Body>
-      </div>
+      </Atoms.CardBody>
     </Card>
   )
 }

@@ -1,5 +1,18 @@
 import tw from 'tailwind-styled-components'
 
+export const CardBody = tw.div`
+  flex
+  items-center
+  gap-1
+  p-1
+`
+
+export const CardImage = tw.figure`
+  relative
+  aspect-video
+  hover:opacity-80
+`
+
 export const ErrorContainer = tw.div`
   col-span-full
   flex
@@ -16,6 +29,13 @@ export const ErrorMessage = tw.p`
 export const ErrorTitle = tw.h3`
   font-bold
   uppercase
+`
+
+export const ImageContainer = tw.div`
+  relative
+  mx-auto
+  size-full
+  rounded-full
 `
 
 export const PageContainer = tw.section`
