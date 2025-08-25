@@ -1,3 +1,3 @@
 export * from './card-image'
 export * from './error-alert'
-export * from './loading-spinner'
+export * from './loading-grid'
