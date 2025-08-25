@@ -57,3 +57,12 @@ export const StyledKbd = tw(Kbd)`
   select-none
   peer-placeholder-shown:block
 `
+
+export const ThemeLabel = tw.label`
+  toggle
+  scale-[120%]
+  text-base-content
+  dark:rounded-full
+  dark:before:rounded-full
+  [&_svg]:size-full
+`

@@ -1,8 +1,11 @@
 import { useTheme } from 'next-themes'
+import { useId } from 'react'
 import { LuMoon, LuSun } from 'react-icons/lu'
 import { Menu } from 'rsc-daisyui'
+import { Atoms } from '@/_navigation/components'
 
 export function ThemeSwitch() {
+  const id = useId()
   const { resolvedTheme, setTheme } = useTheme()
 
   const handleThemeChange = () => {
@@ -11,17 +14,11 @@ export function ThemeSwitch() {
 
   return (
     <Menu.Item as='div' className='cursor-default self-center'>
-      <label className='toggle scale-[120%] text-base-content'>
-        <input
-          checked={resolvedTheme === 'dark'}
-          className='theme-controller'
-          type='checkbox'
-          value='synthwave'
-          onChange={handleThemeChange}
-        />
-        <LuSun aria-label='sun' className='size-full fill-none stroke-current' />
-        <LuMoon aria-label='moon' className='size-full fill-none stroke-current' />
-      </label>
+      <Atoms.ThemeLabel>
+        <input checked={resolvedTheme === 'dark'} id={id} type='checkbox' onChange={handleThemeChange} />
+        <LuSun aria-label='sun' />
+        <LuMoon aria-label='moon' />
+      </Atoms.ThemeLabel>
     </Menu.Item>
   )
 }
