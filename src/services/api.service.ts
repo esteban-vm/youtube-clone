@@ -35,6 +35,10 @@ export const getVideo = async (endpoint: string): Promise<ApiResponse<VideoSearc
 }
 
 export const getVideos = async <T>(url: string): Promise<T> => {
+  if (process.env.NODE_ENV === 'development') {
+    await new Promise((resolve) => setTimeout(resolve, 5_000))
+  }
+
   const instance = getInstance()
   const { data } = await instance.get<T>(url)
   return data
