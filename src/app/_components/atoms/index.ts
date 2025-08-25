@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components'
 
-export const CardBody = tw.div`
+export const CardContent = tw.div`
   flex
   items-center
   gap-1
