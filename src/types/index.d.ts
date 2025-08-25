@@ -156,6 +156,56 @@ export type VideoThumbnails = Record<
   }
 >
 
+export interface YouTubeDataAPIChannelItem {
+  kind: string
+  etag: string
+  id: string
+  snippet: {
+    title: string
+    description: string
+    customUrl: string
+    publishedAt: string
+    thumbnails: {
+      default: {
+        url: string
+        width: number
+        height: number
+      }
+      medium: {
+        url: string
+        width: number
+        height: number
+      }
+      high: {
+        url: string
+        width: number
+        height: number
+      }
+    }
+    localized: {
+      title: string
+      description: string
+    }
+    country: string
+  }
+  contentDetails: {
+    relatedPlaylists: {
+      likes: string
+      uploads: string
+    }
+  }
+}
+
+export interface YouTubeDataAPIChannelsResponse {
+  kind: string
+  etag: string
+  items: YouTubeDataAPIChannelItem[]
+  pageInfo: {
+    totalResults: number
+    resultsPerPage: number
+  }
+}
+
 export interface YouTubeDataAPIVideoItem {
   kind: string
   etag: string
