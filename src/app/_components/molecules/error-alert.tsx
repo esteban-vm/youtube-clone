@@ -14,7 +14,7 @@ export function ErrorAlert({ message }: ErrorAlertProps) {
   }
 
   return (
-    <Atoms.FeedbackContainer>
+    <Atoms.ErrorContainer>
       <Alert className='w-fit' color='error'>
         <LuTriangleAlert aria-label='icon' className='size-6 shrink-0 stroke-current' role='img' />
         <div>
@@ -26,6 +26,6 @@ export function ErrorAlert({ message }: ErrorAlertProps) {
           Recargar página
         </Button>
       </Alert>
-    </Atoms.FeedbackContainer>
+    </Atoms.ErrorContainer>
   )
 }

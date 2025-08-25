@@ -1,5 +1,12 @@
 import tw from 'tailwind-styled-components'
 
+export const ErrorContainer = tw.div`
+  col-span-full
+  flex
+  items-center
+  justify-center
+`
+
 export const ErrorMessage = tw.p`
   text-xs
   font-semibold
@@ -9,13 +16,6 @@ export const ErrorMessage = tw.p`
 export const ErrorTitle = tw.h3`
   font-bold
   uppercase
-`
-
-export const FeedbackContainer = tw.div`
-  col-span-full
-  flex
-  items-center
-  justify-center
 `
 
 export const PageContainer = tw.section`
