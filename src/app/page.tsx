@@ -10,9 +10,10 @@ import { getVideos } from '@/services/api.service'
 export default function Page() {
   const categoryId = useSidebarStore((state) => state.currentItem)
   const category = sidebarMenuItems.find((item) => item.id === categoryId)?.label
+  const maxResults = 20
 
   const params = new URLSearchParams({
-    maxResults: '20',
+    maxResults: maxResults.toString(),
     chart: 'mostPopular',
     videoCategoryId: `${categoryId}`,
     key: process.env.NEXT_PUBLIC_API_KEY,
@@ -32,7 +33,7 @@ export default function Page() {
 
   return (
     <Atoms.PageContainer>
-      {isLoading && <Molecules.LoadingSpinner />}
+      {isLoading && <Molecules.LoadingGrid items={maxResults} />}
       {isSuccess && videos.items.map((item) => <Organisms.VideoCard key={item.id} item={item} />)}
       {isError && <Molecules.ErrorAlert message={error.message} />}
     </Atoms.PageContainer>
