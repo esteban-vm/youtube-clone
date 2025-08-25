@@ -16,7 +16,6 @@ export default function Page() {
     maxResults: maxResults.toString(),
     chart: 'mostPopular',
     videoCategoryId: `${categoryId}`,
-    key: process.env.NEXT_PUBLIC_API_KEY,
     part: `${['snippet', 'contentDetails', 'statistics']}`,
   })
 
