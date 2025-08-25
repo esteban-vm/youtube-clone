@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Atoms, Molecules, Organisms } from '@/_components'
 import { sidebarMenuItems } from '@/constants'
 import { useSidebarStore } from '@/hooks'
-import { getVideos } from '@/services/api.service'
+import { getRequest } from '@/services/api.service'
 
 export default function Page() {
   const categoryId = useSidebarStore((state) => state.currentItem)
@@ -27,7 +27,7 @@ export default function Page() {
     isError,
   } = useQuery({
     queryKey: ['videos', `category: ${category}`],
-    queryFn: () => getVideos<YouTubeDataAPIVideosResponse>(`/videos?${params}`),
+    queryFn: () => getRequest<YouTubeDataAPIVideosResponse>(`/videos?${params}`),
   })
 
   return (
