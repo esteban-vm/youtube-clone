@@ -1,6 +1,6 @@
 'use client'
 
-import type { YouTubeDataAPIVideosResponse } from '@/types'
+import type { YouTubeAPIResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import { Atoms, Molecules, Organisms } from '@/_components'
 import { sidebarMenuItems } from '@/constants'
@@ -27,7 +27,7 @@ export default function Page() {
     isError,
   } = useQuery({
     queryKey: ['videos', `category: ${category}`],
-    queryFn: () => getRequest<YouTubeDataAPIVideosResponse>(`/videos?${params}`),
+    queryFn: () => getRequest<YouTubeAPIResponse.VideoList>(`/videos?${params}`),
   })
 
   return (

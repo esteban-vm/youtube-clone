@@ -1,10 +1,10 @@
-import type { YouTubeDataAPIVideoItem } from '@/types'
+import type { YouTubeAPIResponse } from '@/types'
 import Link from 'next/link'
 import { Badge, Card } from 'rsc-daisyui'
 import { Atoms, Molecules } from '@/_components'
 
 export interface VideoCardProps {
-  item: YouTubeDataAPIVideoItem
+  item: YouTubeAPIResponse.VideoItem
 }
 
 export function VideoCard({ item }: VideoCardProps) {
