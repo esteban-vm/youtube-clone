@@ -291,18 +291,18 @@ export namespace YouTubeAPIResponse {
       description: string
       customUrl: string
       publishedAt: string
-      thumbnails: {
-        default: {
+      thumbnails?: {
+        default?: {
           url: string
           width: number
           height: number
         }
-        medium: {
+        medium?: {
           url: string
           width: number
           height: number
         }
-        high: {
+        high?: {
           url: string
           width: number
           height: number
@@ -341,18 +341,18 @@ export namespace YouTubeAPIResponse {
       channelId: string
       title: string
       description: string
-      thumbnails: {
-        default: {
+      thumbnails?: {
+        default?: {
           url: string
           width: number
           height: number
         }
-        medium: {
+        medium?: {
           url: string
           width: number
           height: number
         }
-        high: {
+        high?: {
           url: string
           width: number
           height: number
