@@ -357,12 +357,12 @@ export namespace YouTubeAPIResponse {
           width: number
           height: number
         }
-        standard: {
+        standard?: {
           url: string
           width: number
           height: number
         }
-        maxres: {
+        maxres?: {
           url: string
           width: number
           height: number
