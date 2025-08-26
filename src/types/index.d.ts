@@ -60,16 +60,13 @@ export interface SidebarStore {
 //   kind: string
 //   snippet: CommentSnippet
 // }
-
 // export interface VideoCardProps {
 //   item: VideoItem
 // }
-
 // export interface VideoDetails {
 //   duration: string
 //   viewCount: string
 // }
-
 // export interface VideoItem {
 //   id: {
 //     videoId: string
@@ -142,11 +139,9 @@ export interface SidebarStore {
 //     }
 //   }
 // }
-
 // export interface VideoSearchResponse {
 //   items: VideoItem[]
 // }
-
 // export type VideoThumbnails = Record<
 //   'default' | 'medium' | 'high',
 //   {
@@ -155,7 +150,6 @@ export interface SidebarStore {
 //     height: number
 //   }
 // >
-
 // export interface YouTubeDataAPIChannelItem {
 //   kind: string
 //   etag: string
@@ -195,7 +189,6 @@ export interface SidebarStore {
 //     }
 //   }
 // }
-
 // export interface YouTubeDataAPIChannelsResponse {
 //   kind: string
 //   etag: string
@@ -205,7 +198,6 @@ export interface SidebarStore {
 //     resultsPerPage: number
 //   }
 // }
-
 // export interface YouTubeDataAPIVideoItem {
 //   kind: string
 //   etag: string
@@ -269,7 +261,6 @@ export interface SidebarStore {
 //     commentCount: string
 //   }
 // }
-
 // export interface YouTubeDataAPIVideosResponse {
 //   kind: string
 //   etag: string
@@ -280,6 +271,12 @@ export interface SidebarStore {
 //     resultsPerPage: number
 //   }
 // }
+
+export namespace Props {
+  declare interface WithVideoItem {
+    item: YouTubeAPIResponse.VideoItem
+  }
+}
 
 export namespace YouTubeAPIResponse {
   declare interface ChannelItem {

@@ -1,15 +1,11 @@
-import type { YouTubeAPIResponse } from '@/types'
+import type { Props, YouTubeAPIResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { Avatar } from 'rsc-daisyui'
 import { Atoms } from '@/_components'
 import { getRequest } from '@/services/api.service'
 
-export interface CardAvatarProps {
-  item: YouTubeAPIResponse.VideoItem
-}
-
-export function CardAvatar({ item }: CardAvatarProps) {
+export function CardAvatar({ item }: Props.WithVideoItem) {
   const { channelId } = item.snippet
 
   const params = new URLSearchParams({

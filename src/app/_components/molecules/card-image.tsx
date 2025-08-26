@@ -1,15 +1,11 @@
-import type { YouTubeAPIResponse } from '@/types'
+import type { Props } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from 'rsc-daisyui'
 import { Atoms } from '@/_components'
 import { parseVideoDuration } from '@/utils/helpers.utils'
 
-export interface CardImageProps {
-  item: YouTubeAPIResponse.VideoItem
-}
-
-export function CardImage({ item }: CardImageProps) {
+export function CardImage({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails } = item
   const thumbnail = snippet.thumbnails?.standard?.url
 

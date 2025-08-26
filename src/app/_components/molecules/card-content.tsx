@@ -1,12 +1,8 @@
-import type { YouTubeAPIResponse } from '@/types'
+import type { Props } from '@/types'
 import Link from 'next/link'
 import { Badge, Card } from 'rsc-daisyui'
 
-export interface CardContentProps {
-  item: YouTubeAPIResponse.VideoItem
-}
-
-export function CardContent({ item }: CardContentProps) {
+export function CardContent({ item }: Props.WithVideoItem) {
   const {
     snippet: { title, channelId, channelTitle },
   } = item

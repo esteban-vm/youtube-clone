@@ -1,12 +1,8 @@
-import type { YouTubeAPIResponse } from '@/types'
+import type { Props } from '@/types'
 import { Card } from 'rsc-daisyui'
 import { Atoms, Molecules } from '@/_components'
 
-export interface VideoCardProps {
-  item: YouTubeAPIResponse.VideoItem
-}
-
-export function VideoCard(props: VideoCardProps) {
+export function VideoCard(props: Props.WithVideoItem) {
   return (
     <Card className='gap-1 overflow-hidden shadow-sm dark:rounded-lg'>
       <Molecules.CardImage {...props} />
