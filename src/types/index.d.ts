@@ -41,19 +41,6 @@ import type { IconType } from 'react-icons'
 //   updatedAt: string
 // }
 
-export interface MenuItemProps {
-  id: number
-  label: string
-  icon: IconType
-  link?: string
-}
-
-export interface SidebarStore {
-  drawerId: string
-  currentItem: number
-  setCurrentItem: (value: number) => void
-}
-
 // export interface TopLevelComment {
 //   etag: string
 //   id: string
@@ -272,13 +259,20 @@ export interface SidebarStore {
 //   }
 // }
 
-export namespace Props {
-  declare interface WithVideoItem {
-    item: YouTubeAPIResponse.VideoItem
-  }
+export interface MenuItemProps {
+  id: number
+  label: string
+  icon: IconType
+  link?: string
 }
 
-export namespace YouTubeAPIResponse {
+export interface SidebarStore {
+  drawerId: string
+  currentItem: number
+  setCurrentItem: (value: number) => void
+}
+
+export namespace APIResponse {
   declare interface ChannelItem {
     kind: string
     etag: string
@@ -402,5 +396,11 @@ export namespace YouTubeAPIResponse {
       totalResults: number
       resultsPerPage: number
     }
+  }
+}
+
+export namespace Props {
+  declare interface WithVideoItem {
+    item: APIResponse.VideoItem
   }
 }

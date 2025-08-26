@@ -1,4 +1,4 @@
-import type { Props, YouTubeAPIResponse } from '@/types'
+import type { APIResponse, Props } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { Avatar } from 'rsc-daisyui'
@@ -15,7 +15,7 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
 
   const { data: channels } = useQuery({
     queryKey: ['channel', `id: ${channelId}`],
-    queryFn: () => getRequest<YouTubeAPIResponse.ChannelList>(`/channels?${params}`),
+    queryFn: () => getRequest<APIResponse.ChannelList>(`/channels?${params}`),
   })
 
   const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url
