@@ -25,11 +25,9 @@ export function VideoCard({ item }: VideoCardProps) {
           <Link className='block text-xs' href={`/channel/${snippet.channelId}`}>
             {snippet.channelTitle}
           </Link>
-          <Card.Actions>
-            <Badge className='dark:rounded-lg' size='sm' outline>
-              Views
-            </Badge>
-          </Card.Actions>
+          <Badge className='dark:rounded-lg' size='sm' outline>
+            Views
+          </Badge>
         </Card.Body>
       </Atoms.CardContent>
     </Card>

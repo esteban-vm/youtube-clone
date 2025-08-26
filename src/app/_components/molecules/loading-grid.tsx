@@ -25,7 +25,7 @@ export function LoadingItem() {
         <div className='flex w-full flex-col gap-1.5'>
           <Skeleton className='h-4 w-full rounded-lg' />
           <Skeleton className='h-4 w-full rounded-lg' />
-          <Skeleton className='h-4 w-1/4 self-end rounded-lg' />
+          <Skeleton className='h-4 w-1/4 rounded-lg' />
         </div>
       </div>
     </div>
