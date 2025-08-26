@@ -14,7 +14,7 @@ export function VideoCard({ item }: VideoCardProps) {
     <Card className='gap-1 overflow-hidden shadow-sm dark:rounded-lg'>
       <Molecules.CardImage
         duration={contentDetails.duration}
-        image={snippet.thumbnails.standard.url}
+        image={snippet.thumbnails.standard?.url}
         link={`/video/${snippet.categoryId}/${id}`}
         title={snippet.title}
       />

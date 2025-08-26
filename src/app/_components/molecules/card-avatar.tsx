@@ -15,16 +15,16 @@ export function CardAvatar({ channelId }: CardAvatarProps) {
     part: `${['snippet', 'contentDetails']}`,
   })
 
-  const { data: channel, isSuccess } = useQuery({
+  const { data: channel } = useQuery({
     queryKey: ['channel', channelId],
     queryFn: () => getRequest<YouTubeDataAPIChannelsResponse>(`/channels?${params}`),
   })
 
+  const imageSrc = channel?.items[0].snippet.thumbnails.default?.url
+
   return (
     <Avatar className='h-fit w-14'>
-      <Atoms.ImageContainer>
-        {isSuccess && <Image alt='avatar' src={channel.items[0].snippet.thumbnails.default.url} fill />}
-      </Atoms.ImageContainer>
+      <Atoms.ImageContainer>{imageSrc && <Image alt='avatar' src={imageSrc} fill />}</Atoms.ImageContainer>
     </Avatar>
   )
 }
