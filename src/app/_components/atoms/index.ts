@@ -1,5 +1,12 @@
 import tw from 'tailwind-styled-components'
 
+export const AvatarImage = tw.div`
+  relative
+  mx-auto
+  size-full
+  rounded-full
+`
+
 export const CardContent = tw.div`
   flex
   items-center
@@ -29,13 +36,6 @@ export const ErrorMessage = tw.p`
 export const ErrorTitle = tw.h3`
   font-bold
   uppercase
-`
-
-export const ImageContainer = tw.div`
-  relative
-  mx-auto
-  size-full
-  rounded-full
 `
 
 export const PageContainer = tw.section`

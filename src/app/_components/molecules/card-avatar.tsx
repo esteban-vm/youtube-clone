@@ -26,7 +26,7 @@ export function CardAvatar({ item }: CardAvatarProps) {
 
   return (
     <Avatar className='h-fit w-14'>
-      <Atoms.ImageContainer>{thumbnail && <Image alt='avatar' src={thumbnail} fill />}</Atoms.ImageContainer>
+      <Atoms.AvatarImage>{thumbnail && <Image alt='avatar' src={thumbnail} fill />}</Atoms.AvatarImage>
     </Avatar>
   )
 }
