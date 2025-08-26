@@ -6,25 +6,27 @@ import { Atoms } from '@/_components'
 import { getRequest } from '@/services/api.service'
 
 export interface CardAvatarProps {
-  channelId: string
+  item: YouTubeAPIResponse.VideoItem
 }
 
-export function CardAvatar({ channelId }: CardAvatarProps) {
+export function CardAvatar({ item }: CardAvatarProps) {
+  const { channelId } = item.snippet
+
   const params = new URLSearchParams({
     id: channelId,
     part: `${['snippet', 'contentDetails']}`,
   })
 
-  const { data: channel } = useQuery({
+  const { data: channels } = useQuery({
     queryKey: ['channel', `id: ${channelId}`],
     queryFn: () => getRequest<YouTubeAPIResponse.ChannelList>(`/channels?${params}`),
   })
 
-  const imageSrc = channel?.items[0].snippet.thumbnails.default?.url
+  const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url
 
   return (
     <Avatar className='h-fit w-14'>
-      <Atoms.ImageContainer>{imageSrc && <Image alt='avatar' src={imageSrc} fill />}</Atoms.ImageContainer>
+      <Atoms.ImageContainer>{thumbnail && <Image alt='avatar' src={thumbnail} fill />}</Atoms.ImageContainer>
     </Avatar>
   )
 }

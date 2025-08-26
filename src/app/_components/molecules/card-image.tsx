@@ -1,3 +1,4 @@
+import type { YouTubeAPIResponse } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from 'rsc-daisyui'
@@ -5,19 +6,26 @@ import { Atoms } from '@/_components'
 import { parseVideoDuration } from '@/utils/helpers.utils'
 
 export interface CardImageProps {
-  title: string
-  duration: string
-  link: string
-  image?: string
+  item: YouTubeAPIResponse.VideoItem
 }
 
-export function CardImage({ title, duration, link, image }: CardImageProps) {
+export function CardImage({ item }: CardImageProps) {
+  const { id, snippet, contentDetails } = item
+  const thumbnail = snippet.thumbnails?.standard?.url
+
   return (
-    <Link href={link}>
+    <Link href={`/video/${snippet.categoryId}/${id}`}>
       <Atoms.CardImage>
-        {image && <Image alt={title} className='size-full rounded-b-lg object-cover object-center' src={image} fill />}
+        {thumbnail && (
+          <Image
+            alt={snippet.title}
+            className='size-full rounded-b-lg object-cover object-center'
+            src={thumbnail}
+            fill
+          />
+        )}
         <Badge className='absolute right-1.5 bottom-2 rounded-md' color='neutral' size='sm'>
-          {parseVideoDuration(duration)}
+          {parseVideoDuration(contentDetails.duration)}
         </Badge>
       </Atoms.CardImage>
     </Link>

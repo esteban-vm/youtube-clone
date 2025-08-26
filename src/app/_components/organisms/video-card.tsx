@@ -8,18 +8,13 @@ export interface VideoCardProps {
 }
 
 export function VideoCard({ item }: VideoCardProps) {
-  const { id, snippet, contentDetails } = item
+  const { snippet } = item
 
   return (
     <Card className='gap-1 overflow-hidden shadow-sm dark:rounded-lg'>
-      <Molecules.CardImage
-        duration={contentDetails.duration}
-        image={snippet.thumbnails.standard?.url}
-        link={`/video/${snippet.categoryId}/${id}`}
-        title={snippet.title}
-      />
+      <Molecules.CardImage item={item} />
       <Atoms.CardContent>
-        <Molecules.CardAvatar channelId={snippet.channelId} />
+        <Molecules.CardAvatar item={item} />
         <Card.Body className='w-4/5 gap-1 p-0'>
           <Card.Title className='inline-block truncate text-sm'>{snippet.title}</Card.Title>
           <Link className='block text-xs' href={`/channel/${snippet.channelId}`}>
