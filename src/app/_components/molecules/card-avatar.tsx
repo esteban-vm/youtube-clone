@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar } from 'rsc-daisyui'
 import { Atoms } from '@/_components'
-import { getRequest } from '@/services/api.service'
+import { api } from '@/services'
 
 export function CardAvatar({ item }: Props.WithVideoItem) {
   const { channelId } = item.snippet
@@ -16,7 +16,7 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
 
   const { data: channels } = useQuery({
     queryKey: ['channel', `id: ${channelId}`],
-    queryFn: () => getRequest<APIResponse.ChannelList>(`/channels?${params}`),
+    queryFn: () => api.getRequest<APIResponse.ChannelList>(`/channels?${params}`),
   })
 
   const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url
