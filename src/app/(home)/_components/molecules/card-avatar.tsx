@@ -16,7 +16,7 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
 
   const { data: channels } = useQuery({
     queryKey: ['channel', `id: ${channelId}`],
-    queryFn: () => api.getRequest<APIResponse.ChannelList>(`/channels?${params}`),
+    queryFn: () => api.makeRequest<APIResponse.ChannelList>(`/channels?${params}`),
   })
 
   const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url

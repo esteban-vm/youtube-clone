@@ -33,7 +33,7 @@ import { api } from '@/utils'
 //   return await getRequest(endpoint)
 // }
 
-export const getRequest = async <T>(url: string): Promise<T> => {
+export const makeRequest = async <T>(url: string): Promise<T> => {
   if (process.env.NODE_ENV === 'development') {
     await new Promise((resolve) => setTimeout(resolve, 5_000))
   }

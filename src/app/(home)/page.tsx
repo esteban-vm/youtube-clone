@@ -13,9 +13,9 @@ export default function HomePage() {
   const maxResults = 20
 
   const params = new URLSearchParams({
-    maxResults: maxResults.toString(),
     chart: 'mostPopular',
     videoCategoryId: `${categoryId}`,
+    maxResults: maxResults.toString(),
     part: `${['snippet', 'contentDetails', 'statistics']}`,
   })
 
@@ -27,7 +27,7 @@ export default function HomePage() {
     isError,
   } = useQuery({
     queryKey: ['videos', `category: ${category}`],
-    queryFn: () => api.getRequest<APIResponse.VideoList>(`/videos?${params}`),
+    queryFn: () => api.makeRequest<APIResponse.VideoList>(`/videos?${params}`),
   })
 
   return (
