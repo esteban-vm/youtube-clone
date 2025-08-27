@@ -24,8 +24,8 @@ export function LoadingItem() {
         <Skeleton className='size-16 shrink-0 rounded-full' />
         <div className='flex w-full flex-col gap-1.5'>
           <Skeleton className='h-4 w-full rounded-lg' />
-          <Skeleton className='h-4 w-full rounded-lg' />
-          <Skeleton className='h-4 w-1/4 rounded-lg' />
+          <Skeleton className='h-4 w-1/2 rounded-lg' />
+          <Skeleton className='h-4 w-1/2 rounded-lg' />
         </div>
       </div>
     </div>
