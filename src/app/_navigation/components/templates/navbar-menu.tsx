@@ -1,6 +1,6 @@
 import { Menu, Navbar } from 'rsc-daisyui'
 import { navbarMenuItems } from '@/constants'
-import { Atoms, Molecules, Organisms } from '@/navigation'
+import { Atoms, Molecules, Organisms } from '@/nav/components'
 
 export function NavbarMenu() {
   return (

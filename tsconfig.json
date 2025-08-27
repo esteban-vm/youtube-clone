@@ -16,8 +16,8 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./src/*", "./public/*"],
-      "@/navigation": ["./src/app/_navigation/components"],
-      "@/home": ["./src/app/(home)/_components"]
+      "@/nav/components": ["./src/app/_navigation/components"],
+      "@/home/components": ["./src/app/(home)/_components"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "*.config.mjs"],

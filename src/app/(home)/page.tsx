@@ -3,7 +3,7 @@
 import type { APIResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import { sidebarMenuItems } from '@/constants'
-import { Atoms, Molecules, Organisms } from '@/home'
+import { Atoms, Molecules, Organisms } from '@/home/components'
 import { useSidebarStore } from '@/hooks'
 import { api } from '@/services'
 

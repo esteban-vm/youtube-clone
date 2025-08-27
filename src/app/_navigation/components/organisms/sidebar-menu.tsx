@@ -1,6 +1,6 @@
 import { Menu } from 'rsc-daisyui'
 import { sidebarMenuItems } from '@/constants'
-import { Atoms, Molecules } from '@/navigation'
+import { Atoms, Molecules } from '@/nav/components'
 
 export function SidebarMenu() {
   return (

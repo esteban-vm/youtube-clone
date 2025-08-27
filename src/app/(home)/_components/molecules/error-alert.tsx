@@ -1,7 +1,7 @@
 import type { MouseEventHandler } from 'react'
 import { LuRefreshCcw, LuTriangleAlert } from 'react-icons/lu'
 import { Alert, Button } from 'rsc-daisyui'
-import { Atoms } from '@/home'
+import { Atoms } from '@/home/components'
 
 export interface ErrorAlertProps {
   message: string

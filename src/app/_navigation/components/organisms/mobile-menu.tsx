@@ -2,7 +2,7 @@ import { useClickOutside } from '@react-hooks-hub/use-click-outside'
 import { useRef } from 'react'
 import { Dropdown } from 'rsc-daisyui'
 import { navbarMenuItems } from '@/constants'
-import { Molecules } from '@/navigation'
+import { Molecules } from '@/nav/components'
 
 export function MobileMenu() {
   const menuRef = useRef<HTMLDetailsElement>(null!)

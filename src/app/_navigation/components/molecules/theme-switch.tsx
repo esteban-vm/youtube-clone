@@ -2,7 +2,7 @@ import { useTheme } from 'next-themes'
 import { useId } from 'react'
 import { LuMoon, LuSun } from 'react-icons/lu'
 import { Menu } from 'rsc-daisyui'
-import { Atoms } from '@/navigation'
+import { Atoms } from '@/nav/components'
 
 export function ThemeSwitch() {
   const id = useId()
