@@ -4,7 +4,7 @@ export interface Props {
   searchParams: Promise<{ q?: string }>
 }
 
-export default async function Page({ searchParams }: Props) {
+export default async function QueryPage({ searchParams }: Props) {
   const { q } = await searchParams
 
   if (!q) notFound()

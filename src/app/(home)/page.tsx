@@ -7,7 +7,7 @@ import { Atoms, Molecules, Organisms } from '@/home/components'
 import { useSidebarStore } from '@/hooks'
 import { api } from '@/services'
 
-export default function Page() {
+export default function HomePage() {
   const categoryId = useSidebarStore((state) => state.currentItem)
   const category = sidebarMenuItems.find((item) => item.id === categoryId)?.label
   const maxResults = 20

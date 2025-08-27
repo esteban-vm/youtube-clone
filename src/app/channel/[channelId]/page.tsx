@@ -2,7 +2,7 @@ export interface Props {
   params: Promise<{ channelId: string }>
 }
 
-export default async function Page({ params }: Props) {
+export default async function ChannelPage({ params }: Props) {
   const { channelId } = await params
 
   return (

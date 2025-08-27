@@ -2,7 +2,7 @@ export interface Props {
   params: Promise<{ categoryId: string; videoId: string }>
 }
 
-export default async function Page({ params }: Props) {
+export default async function VideoPage({ params }: Props) {
   const { categoryId, videoId } = await params
 
   return (
