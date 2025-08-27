@@ -2,8 +2,8 @@
 
 import type { APIResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
-import { Atoms, Molecules, Organisms } from '@/app/_components'
 import { sidebarMenuItems } from '@/constants'
+import { Atoms, Molecules, Organisms } from '@/home'
 import { useSidebarStore } from '@/hooks'
 import { api } from '@/services'
 

@@ -1,6 +1,6 @@
 import type { Props } from '@/types'
 import { Card } from 'rsc-daisyui'
-import { Atoms, Molecules } from '@/app/_components'
+import { Atoms, Molecules } from '@/home'
 
 export function VideoCard(props: Props.WithVideoItem) {
   return (

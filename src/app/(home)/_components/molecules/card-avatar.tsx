@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar } from 'rsc-daisyui'
-import { Atoms } from '@/app/_components'
+import { Atoms } from '@/home'
 import { api } from '@/services'
 
 export function CardAvatar({ item }: Props.WithVideoItem) {

@@ -2,7 +2,7 @@ import type { Props } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from 'rsc-daisyui'
-import { Atoms } from '@/app/_components'
+import { Atoms } from '@/home'
 import { helpers } from '@/utils'
 
 export function CardImage({ item }: Props.WithVideoItem) {
