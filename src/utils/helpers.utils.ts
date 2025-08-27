@@ -1,15 +1,3 @@
-export const parseValue = (value: string | number) => {
-  const numValue = typeof value === 'string' ? parseFloat(value) : value
-
-  if (numValue > 1_000_000) {
-    return (numValue / 1_000_000).toFixed(2) + 'M'
-  } else if (numValue >= 1_000 && numValue < 2_000) {
-    return (numValue / 1_000).toFixed(1) + 'k'
-  } else {
-    return numValue.toFixed(2)
-  }
-}
-
 export const parseVideoDuration = (duration: string) => {
   const matches = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)/)
 
@@ -24,4 +12,22 @@ export const parseVideoDuration = (duration: string) => {
   }
 
   return `${minutes}:${seconds.toString().padStart(2, '0')}`
+}
+
+export const parseVideoViews = (views: string | number) => {
+  const numViews = typeof views === 'string' ? parseFloat(views) : views
+
+  if (numViews < 1_000) return numViews.toString()
+
+  const units = [
+    { value: 1e9, suffix: ' mil M' },
+    { value: 1e6, suffix: 'M' },
+    { value: 1e3, suffix: ' mil' },
+  ]
+
+  for (const unit of units) {
+    if (numViews >= unit.value) {
+      return (numViews / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix
+    }
+  }
 }
