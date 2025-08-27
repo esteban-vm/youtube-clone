@@ -3,13 +3,16 @@ import { formatDistance } from 'date-fns'
 import { es } from 'date-fns/locale'
 import Link from 'next/link'
 import { Card } from 'rsc-daisyui'
-import { parseVideoViews } from '@/utils/helpers.utils'
+import { helpers } from '@/utils'
 
 export function CardContent({ item }: Props.WithVideoItem) {
   const {
     statistics: { viewCount },
     snippet: { title, channelId, channelTitle, publishedAt },
   } = item
+
+  const views = helpers.parseVideoViews(viewCount)
+  const date = formatDistance(publishedAt, new Date(), { addSuffix: true, locale: es })
 
   return (
     <Card.Body className='w-4/5 gap-1 p-0'>
@@ -18,7 +21,7 @@ export function CardContent({ item }: Props.WithVideoItem) {
         {channelTitle}
       </Link>
       <small className='text-xs'>
-        {parseVideoViews(viewCount)} • {formatDistance(publishedAt, new Date(), { addSuffix: true, locale: es })}
+        {views} • {date}
       </small>
     </Card.Body>
   )

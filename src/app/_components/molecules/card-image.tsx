@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from 'rsc-daisyui'
 import { Atoms } from '@/_components'
-import { parseVideoDuration } from '@/utils/helpers.utils'
+import { helpers } from '@/utils'
 
 export function CardImage({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails } = item
@@ -21,7 +21,7 @@ export function CardImage({ item }: Props.WithVideoItem) {
           />
         )}
         <Badge className='absolute right-1.5 bottom-2 rounded-md' color='neutral' size='sm'>
-          {parseVideoDuration(contentDetails.duration)}
+          {helpers.parseVideoDuration(contentDetails.duration)}
         </Badge>
       </Atoms.CardImage>
     </Link>

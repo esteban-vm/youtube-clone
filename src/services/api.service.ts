@@ -1,4 +1,4 @@
-import { getInstance } from '@/utils/axios.utils'
+import { api } from '@/utils'
 
 // import type { AxiosRequestConfig } from 'axios'
 // import type { ApiResponse, VideoSearchResponse } from '@/types'
@@ -38,7 +38,7 @@ export const getRequest = async <T>(url: string): Promise<T> => {
     await new Promise((resolve) => setTimeout(resolve, 5_000))
   }
 
-  const instance = getInstance()
+  const instance = api.getInstance()
   const { data } = await instance.get<T>(url)
   return data
 }
