@@ -27,7 +27,7 @@ export const parseVideoViews = (views: string | number) => {
 
   for (const unit of units) {
     if (numViews >= unit.value) {
-      return (numViews / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix
+      return (numViews / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix + ' vistas'
     }
   }
 }
