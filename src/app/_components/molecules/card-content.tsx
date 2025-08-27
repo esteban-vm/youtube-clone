@@ -1,21 +1,25 @@
 import type { Props } from '@/types'
+import { formatDistance } from 'date-fns'
+import { es } from 'date-fns/locale'
 import Link from 'next/link'
-import { Badge, Card } from 'rsc-daisyui'
+import { Card } from 'rsc-daisyui'
+import { parseVideoViews } from '@/utils/helpers.utils'
 
 export function CardContent({ item }: Props.WithVideoItem) {
   const {
-    snippet: { title, channelId, channelTitle },
+    statistics: { viewCount },
+    snippet: { title, channelId, channelTitle, publishedAt },
   } = item
 
   return (
     <Card.Body className='w-4/5 gap-1 p-0'>
       <Card.Title className='inline-block truncate text-sm'>{title}</Card.Title>
-      <Link className='block text-xs' href={`/channel/${channelId}`}>
+      <Link className='block text-sm' href={`/channel/${channelId}`}>
         {channelTitle}
       </Link>
-      <Badge className='dark:rounded-lg' size='sm' outline>
-        Views
-      </Badge>
+      <small className='text-xs'>
+        {parseVideoViews(viewCount)} • {formatDistance(publishedAt, new Date(), { addSuffix: true, locale: es })}
+      </small>
     </Card.Body>
   )
 }
