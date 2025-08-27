@@ -7,7 +7,9 @@ import { helpers } from '@/utils'
 
 export function CardImage({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails } = item
+
   const thumbnail = snippet.thumbnails?.standard?.url
+  const duration = helpers.parseVideoDuration(contentDetails.duration)
 
   return (
     <Link href={`/video/${snippet.categoryId}/${id}`}>
@@ -21,7 +23,7 @@ export function CardImage({ item }: Props.WithVideoItem) {
           />
         )}
         <Badge className='absolute right-1.5 bottom-2 rounded-md' color='neutral' size='sm'>
-          {helpers.parseVideoDuration(contentDetails.duration)}
+          {duration}
         </Badge>
       </Atoms.CardImage>
     </Link>
