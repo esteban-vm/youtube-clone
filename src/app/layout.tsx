@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Navigation } from '@/_navigation'
+import { Navigation } from '@/app/_navigation'
 import { QueryProvider, ThemeProvider } from '@/providers'
-import '@/globals.css'
+import '@/app/globals.css'
 
 export interface Props {
   children: ReactNode

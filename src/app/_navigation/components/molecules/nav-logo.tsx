@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Atoms } from '@/_navigation/components'
 import logoSmall from '@/assets/logo-small.png'
 import { useSidebarStore } from '@/hooks'
+import { Atoms } from '@/navigation'
 
 export function NavLogo() {
   const setItem = useSidebarStore((state) => state.setCurrentItem)

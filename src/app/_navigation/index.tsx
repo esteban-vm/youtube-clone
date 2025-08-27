@@ -4,8 +4,8 @@ import type { ReactNode } from 'react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { Drawer } from 'rsc-daisyui'
-import { Atoms, Organisms, Templates } from '@/_navigation/components'
 import { useSidebarStore } from '@/hooks'
+import { Atoms, Organisms, Templates } from '@/navigation'
 
 export interface NavigationProps {
   children: ReactNode

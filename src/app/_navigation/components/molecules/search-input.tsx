@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { LuSearch } from 'react-icons/lu'
 import { Join } from 'rsc-daisyui'
-import { Atoms } from '@/_navigation/components'
+import { Atoms } from '@/navigation'
 
 export function SearchInput() {
   const router = useRouter()
