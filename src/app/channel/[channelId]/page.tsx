@@ -1,10 +1,8 @@
-interface Props {
-  params: Promise<{
-    channelId: string
-  }>
-}
+import type { Props } from '@/types'
 
-export default async function ChannelPage({ params }: Props) {
+export type PageProps = Props.WithParams<{ channelId: string }>
+
+export default async function ChannelPage({ params }: PageProps) {
   const { channelId } = await params
 
   return (

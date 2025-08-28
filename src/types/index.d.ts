@@ -387,8 +387,16 @@ export namespace APIResponse {
 }
 
 export namespace Props {
-  declare interface WithChildren {
+  declare interface WithChildren<T extends object = unknown> extends T {
     children: ReactNode
+  }
+
+  declare interface WithParams<T extends object> {
+    params: Promise<T>
+  }
+
+  declare interface WithSearchParams<T extends object> {
+    searchParams: Promise<T>
   }
 
   declare interface WithVideoItem {

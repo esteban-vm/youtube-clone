@@ -1,13 +1,9 @@
+import type { Props } from '@/types'
 import { RecommendedVideos, VideoPlayer } from '@/video/components'
 
-interface Props {
-  params: Promise<{
-    videoId: string
-    categoryId: string
-  }>
-}
+export type PageProps = Props.WithParams<{ videoId: string; categoryId: string }>
 
-export default async function VideoPage({ params }: Props) {
+export default async function VideoPage({ params }: PageProps) {
   const { videoId, categoryId } = await params
 
   return (
