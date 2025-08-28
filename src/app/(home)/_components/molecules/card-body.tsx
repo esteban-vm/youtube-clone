@@ -15,9 +15,9 @@ export function CardBody({ item }: Props.WithVideoItem) {
   const date = formatDistance(publishedAt, new Date(), { addSuffix: true, locale: es })
 
   return (
-    <Card.Body className='w-4/5 gap-1 p-0'>
-      <Card.Title className='inline-block truncate text-sm'>{title}</Card.Title>
-      <Link className='block text-sm' href={`/channel/${channelId}`}>
+    <Card.Body className='w-4/5 gap-0.5 p-0'>
+      <Card.Title className='inline-block truncate text-sm font-semibold'>{title}</Card.Title>
+      <Link className='block text-sm hover:opacity-80' href={`/channel/${channelId}`}>
         {channelTitle}
       </Link>
       <small className='text-xs'>

@@ -22,7 +22,7 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
   const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url
 
   return (
-    <Link href={`/channel/${channelId}`}>
+    <Link className='hover:opacity-90' href={`/channel/${channelId}`}>
       <Avatar className='h-fit w-14'>
         <Atoms.AvatarImage>{thumbnail && <Image alt='avatar' src={thumbnail} fill />}</Atoms.AvatarImage>
       </Avatar>
