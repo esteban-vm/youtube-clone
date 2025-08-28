@@ -1,4 +1,4 @@
-// import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { ReactNode } from 'react'
 import type { IconType } from 'react-icons'
 
 // export interface ApiResponse<T> {
@@ -387,6 +387,10 @@ export namespace APIResponse {
 }
 
 export namespace Props {
+  declare interface WithChildren {
+    children: ReactNode
+  }
+
   declare interface WithVideoItem {
     item: APIResponse.VideoItem
   }
