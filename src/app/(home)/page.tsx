@@ -2,14 +2,12 @@
 
 import type { APIResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
-import { sidebarMenuItems } from '@/constants'
 import { Atoms, Molecules, Organisms } from '@/home/components'
 import { useSidebarStore } from '@/hooks'
 import { api } from '@/services'
 
 export default function HomePage() {
   const categoryId = useSidebarStore((state) => state.currentItem)
-  const category = sidebarMenuItems.find((item) => item.id === categoryId)?.label
   const maxResults = 20
 
   const params = new URLSearchParams({
@@ -26,7 +24,7 @@ export default function HomePage() {
     isSuccess,
     isError,
   } = useQuery({
-    queryKey: ['videos', `category: ${category}`],
+    queryKey: ['videos', `category: ${categoryId}`],
     queryFn: () => api.makeRequest<APIResponse.VideoList>(`/videos?${params}`),
   })
 
