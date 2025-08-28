@@ -5,11 +5,11 @@ import { useSidebarStore } from '@/hooks'
 import { Atoms } from '@/nav/components'
 
 export function NavLogo() {
-  const setItem = useSidebarStore((state) => state.setCurrentItem)
+  const setCategory = useSidebarStore((state) => state.setCategory)
 
   return (
     <Link href='/'>
-      <div className='relative size-9' onClick={() => setItem('0')}>
+      <div className='relative size-9' onClick={() => setCategory('0')}>
         <Image alt='logo' src={logoSmall} fill />
         <Atoms.LogoText>VidTube</Atoms.LogoText>
       </div>

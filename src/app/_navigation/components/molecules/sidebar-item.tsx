@@ -11,17 +11,17 @@ export interface SidebarItemProps extends Props.BaseMenuItem {
 export function SidebarItem({ categoryId, label, icon: Icon, link = '/' }: SidebarItemProps) {
   const router = useRouter()
   const pathname = usePathname()
-  const { drawerId, currentItem, setCurrentItem } = useSidebarStore()
+  const { drawerId, category, setCategory } = useSidebarStore()
 
   const handleClick = () => {
-    setCurrentItem(categoryId)
+    setCategory(categoryId)
     const checkbox = document.getElementById(drawerId) as HTMLInputElement
     checkbox.checked = false
     if (pathname !== '/') router.push('/')
   }
 
   return (
-    <Menu.Item active={currentItem === categoryId} as={Link} href={link} onClick={handleClick}>
+    <Menu.Item active={category === categoryId} as={Link} href={link} onClick={handleClick}>
       <Icon aria-label='icon' className='size-4' role='img' />
       {label}
     </Menu.Item>

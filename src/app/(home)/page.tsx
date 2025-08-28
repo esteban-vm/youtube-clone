@@ -7,12 +7,12 @@ import { useSidebarStore } from '@/hooks'
 import { api } from '@/services'
 
 export default function HomePage() {
-  const categoryId = useSidebarStore((state) => state.currentItem)
+  const category = useSidebarStore((state) => state.category)
   const maxResults = 20
 
   const params = new URLSearchParams({
     chart: 'mostPopular',
-    videoCategoryId: `${categoryId}`,
+    videoCategoryId: `${category}`,
     maxResults: maxResults.toString(),
     part: ['snippet', 'contentDetails', 'statistics'].toString(),
   })
@@ -24,7 +24,7 @@ export default function HomePage() {
     isSuccess,
     isError,
   } = useQuery({
-    queryKey: ['Home videos', categoryId],
+    queryKey: ['Home videos', category],
     queryFn: () => api.makeRequest<APIResponse.VideoList>(`/videos?${params}`),
   })
 

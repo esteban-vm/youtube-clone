@@ -3,8 +3,8 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface SidebarStore {
   drawerId: string
-  currentItem: `${number}`
-  setCurrentItem: (value: `${number}`) => void
+  category: `${number}`
+  setCategory: (value: `${number}`) => void
 }
 
 export const useSidebarStore = create<SidebarStore>()(
@@ -12,9 +12,9 @@ export const useSidebarStore = create<SidebarStore>()(
     (set) => {
       return {
         drawerId: 'youtube-clone-drawer',
-        currentItem: '0',
-        setCurrentItem(value) {
-          set({ currentItem: value })
+        category: '0',
+        setCategory(value) {
+          set({ category: value })
         },
       }
     },
@@ -22,7 +22,7 @@ export const useSidebarStore = create<SidebarStore>()(
       name: 'youtube-clone/sidebar-store',
       storage: createJSONStorage(() => localStorage),
       partialize(state) {
-        return { currentItem: state.currentItem }
+        return { currentItem: state.category }
       },
     }
   )
