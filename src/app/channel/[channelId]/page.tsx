@@ -1,5 +1,7 @@
-export interface Props {
-  params: Promise<{ channelId: string }>
+interface Props {
+  params: Promise<{
+    channelId: string
+  }>
 }
 
 export default async function ChannelPage({ params }: Props) {

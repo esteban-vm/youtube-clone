@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation'
 
-export interface Props {
-  searchParams: Promise<{ q?: string }>
+interface Props {
+  searchParams: Promise<{
+    q?: string
+  }>
 }
 
 export default async function QueryPage({ searchParams }: Props) {

@@ -1,11 +1,14 @@
 import { RecommendedVideos, VideoPlayer } from '@/video/components'
 
-export interface Props {
-  params: Promise<{ categoryId: string; videoId: string }>
+interface Props {
+  params: Promise<{
+    videoId: string
+    categoryId: string
+  }>
 }
 
 export default async function VideoPage({ params }: Props) {
-  const { categoryId, videoId } = await params
+  const { videoId, categoryId } = await params
 
   return (
     <section className='grid gap-3 lg:grid-cols-3'>
