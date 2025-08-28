@@ -1,5 +1,5 @@
 import { Menu, Navbar } from 'rsc-daisyui'
-import { navbarMenuItems } from '@/constants'
+import { navbarItems } from '@/constants'
 import { Atoms, Molecules, Organisms } from '@/nav/components'
 
 export function NavbarMenu() {
@@ -15,8 +15,8 @@ export function NavbarMenu() {
       <Atoms.NavbarSide className='pr-1' side='end'>
         <Atoms.MenuContainer>
           <Menu as='menu' className='gap-1 p-0' horizontal vanilla>
-            {navbarMenuItems.map((item) => (
-              <Molecules.NavbarItem key={item.id} {...item} tipPosition='bottom' />
+            {navbarItems.map((item) => (
+              <Molecules.NavbarItem key={item.id} {...item} tip='bottom' />
             ))}
           </Menu>
         </Atoms.MenuContainer>

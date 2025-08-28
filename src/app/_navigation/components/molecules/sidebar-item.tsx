@@ -1,16 +1,20 @@
-import type { MenuItemProps } from '@/types'
+import type { Props } from '@/types'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Menu } from 'rsc-daisyui'
 import { useSidebarStore } from '@/hooks'
 
-export function SidebarItem({ id, label, icon: Icon, link = '/' }: MenuItemProps) {
+export interface SidebarItemProps extends Props.BaseMenuItem {
+  categoryId: `${number}`
+}
+
+export function SidebarItem({ id, categoryId, label, icon: Icon, link = '/' }: SidebarItemProps) {
   const router = useRouter()
   const pathname = usePathname()
   const { drawerId, currentItem, setCurrentItem } = useSidebarStore()
 
   const handleClick = () => {
-    setCurrentItem(id)
+    setCurrentItem(categoryId)
     const checkbox = document.getElementById(drawerId) as HTMLInputElement
     checkbox.checked = false
     if (pathname !== '/') router.push('/')

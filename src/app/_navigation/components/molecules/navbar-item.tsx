@@ -1,14 +1,14 @@
-import type { MenuItemProps } from '@/types'
+import type { Props } from '@/types'
 import Link from 'next/link'
 import { Menu, Tooltip } from 'rsc-daisyui'
 
-export interface NavbarItemProps extends MenuItemProps {
-  tipPosition: 'bottom' | 'left'
+export interface NavbarItemProps extends Props.BaseMenuItem {
+  tip: 'bottom' | 'left'
 }
 
-export function NavbarItem({ label, icon: Icon, link = '/', tipPosition }: NavbarItemProps) {
+export function NavbarItem({ label, icon: Icon, link = '/', tip }: NavbarItemProps) {
   return (
-    <Tooltip color='accent' position={tipPosition} tip=''>
+    <Tooltip color='accent' position={tip} tip=''>
       <Tooltip.Content>
         <div className='text-xs font-bold'>{label}</div>
       </Tooltip.Content>

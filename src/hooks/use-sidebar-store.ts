@@ -3,8 +3,8 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface SidebarStore {
   drawerId: string
-  currentItem: number
-  setCurrentItem: (value: number) => void
+  currentItem: `${number}`
+  setCurrentItem: (value: `${number}`) => void
 }
 
 export const useSidebarStore = create<SidebarStore>()(
@@ -12,7 +12,7 @@ export const useSidebarStore = create<SidebarStore>()(
     (set) => {
       return {
         drawerId: 'youtube-clone-drawer',
-        currentItem: 0,
+        currentItem: '0',
         setCurrentItem(value) {
           set({ currentItem: value })
         },

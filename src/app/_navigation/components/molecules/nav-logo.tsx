@@ -9,7 +9,7 @@ export function NavLogo() {
 
   return (
     <Link href='/'>
-      <div className='relative size-9' onClick={() => setItem(0)}>
+      <div className='relative size-9' onClick={() => setItem('0')}>
         <Image alt='logo' src={logoSmall} fill />
         <Atoms.LogoText>VidTube</Atoms.LogoText>
       </div>

@@ -259,13 +259,6 @@ import type { IconType } from 'react-icons'
 //   }
 // }
 
-export interface MenuItemProps {
-  id: number
-  label: string
-  icon: IconType
-  link?: string
-}
-
 export namespace APIResponse {
   declare interface ChannelItem {
     kind: string
@@ -396,5 +389,12 @@ export namespace APIResponse {
 export namespace Props {
   declare interface WithVideoItem {
     item: APIResponse.VideoItem
+  }
+
+  declare interface BaseMenuItem {
+    id: string
+    label: string
+    icon: IconType
+    link?: string
   }
 }
