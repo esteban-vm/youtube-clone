@@ -11,13 +11,16 @@ export function CardBody({ item }: Props.WithVideoItem) {
     snippet: { title, channelId, channelTitle, publishedAt },
   } = item
 
+  const link = `/channel/${channelId}`
   const views = helpers.parseVideoViews(viewCount)
   const date = formatDistance(publishedAt, new Date(), { addSuffix: true, locale: es })
 
   return (
     <Card.Body className='w-4/5 gap-0.5 p-0'>
-      <Card.Title className='inline-block truncate text-sm font-semibold'>{title}</Card.Title>
-      <Link className='block text-sm hover:opacity-80' href={`/channel/${channelId}`}>
+      <Card.Title className='inline-block truncate text-sm font-semibold hover:opacity-80'>
+        <Link href={link}>{title}</Link>
+      </Card.Title>
+      <Link className='block text-sm hover:opacity-80' href={link}>
         {channelTitle}
       </Link>
       <small className='text-xs'>
