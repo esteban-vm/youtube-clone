@@ -1,6 +1,11 @@
-import type { SidebarStore } from '@/types'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
+
+export interface SidebarStore {
+  drawerId: string
+  currentItem: number
+  setCurrentItem: (value: number) => void
+}
 
 export const useSidebarStore = create<SidebarStore>()(
   persist(

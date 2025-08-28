@@ -266,12 +266,6 @@ export interface MenuItemProps {
   link?: string
 }
 
-export interface SidebarStore {
-  drawerId: string
-  currentItem: number
-  setCurrentItem: (value: number) => void
-}
-
 export namespace APIResponse {
   declare interface ChannelItem {
     kind: string
