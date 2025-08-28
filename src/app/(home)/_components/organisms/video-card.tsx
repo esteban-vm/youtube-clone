@@ -8,7 +8,7 @@ export function VideoCard(props: Props.WithVideoItem) {
       <Molecules.CardImage {...props} />
       <Atoms.CardContent>
         <Molecules.CardAvatar {...props} />
-        <Molecules.CardContent {...props} />
+        <Molecules.CardBody {...props} />
       </Atoms.CardContent>
     </Card>
   )

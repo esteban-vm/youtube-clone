@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Card } from 'rsc-daisyui'
 import { helpers } from '@/utils'
 
-export function CardContent({ item }: Props.WithVideoItem) {
+export function CardBody({ item }: Props.WithVideoItem) {
   const {
     statistics: { viewCount },
     snippet: { title, channelId, channelTitle, publishedAt },
