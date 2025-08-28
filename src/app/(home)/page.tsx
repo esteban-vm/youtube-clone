@@ -14,7 +14,7 @@ export default function HomePage() {
     chart: 'mostPopular',
     videoCategoryId: `${categoryId}`,
     maxResults: maxResults.toString(),
-    part: `${['snippet', 'contentDetails', 'statistics']}`,
+    part: ['snippet', 'contentDetails', 'statistics'].toString(),
   })
 
   const {
@@ -24,7 +24,7 @@ export default function HomePage() {
     isSuccess,
     isError,
   } = useQuery({
-    queryKey: ['videos', `category: ${categoryId}`],
+    queryKey: ['Home videos', categoryId],
     queryFn: () => api.makeRequest<APIResponse.VideoList>(`/videos?${params}`),
   })
 

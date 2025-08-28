@@ -11,11 +11,11 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
 
   const params = new URLSearchParams({
     id: channelId,
-    part: `${['snippet', 'contentDetails']}`,
+    part: ['snippet', 'contentDetails'].toString(),
   })
 
   const { data: channels } = useQuery({
-    queryKey: ['channel', `id: ${channelId}`],
+    queryKey: ['Channel avatar', channelId],
     queryFn: () => api.makeRequest<APIResponse.ChannelList>(`/channels?${params}`),
   })
 
