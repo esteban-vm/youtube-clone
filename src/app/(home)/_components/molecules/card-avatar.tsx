@@ -9,14 +9,14 @@ import { api } from '@/services'
 export function CardAvatar({ item }: Props.WithVideoItem) {
   const { channelId } = item.snippet
 
-  const params = new URLSearchParams({
+  const params = {
     id: channelId,
     part: ['snippet', 'contentDetails'].toString(),
-  })
+  }
 
   const { data: channels } = useQuery({
     queryKey: ['Channel avatar', channelId],
-    queryFn: () => api.makeRequest<APIResponse.ChannelList>(`/channels?${params}`),
+    queryFn: () => api.makeRequest<APIResponse.ChannelList>('channels', params),
   })
 
   const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url

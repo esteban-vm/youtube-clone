@@ -10,12 +10,13 @@ export default function HomePage() {
   const category = useSidebarStore((state) => state.category)
   const maxResults = 20
 
-  const params = new URLSearchParams({
+  const params = {
+    regionCode: 'MX',
     chart: 'mostPopular',
-    videoCategoryId: `${category}`,
+    videoCategoryId: category,
     maxResults: maxResults.toString(),
     part: ['snippet', 'contentDetails', 'statistics'].toString(),
-  })
+  }
 
   const {
     data: videos,
@@ -25,7 +26,7 @@ export default function HomePage() {
     isError,
   } = useQuery({
     queryKey: ['Home videos', category],
-    queryFn: () => api.makeRequest<APIResponse.VideoList>(`/videos?${params}`),
+    queryFn: () => api.makeRequest<APIResponse.VideoList>('videos', params),
   })
 
   return (

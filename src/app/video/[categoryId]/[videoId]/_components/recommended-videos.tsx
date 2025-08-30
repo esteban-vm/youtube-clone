@@ -9,17 +9,17 @@ export interface RecommendedVideosProps {
 }
 
 export function RecommendedVideos({ categoryId }: RecommendedVideosProps) {
-  const params = new URLSearchParams({
-    regionCode: 'US',
+  const params = {
+    regionCode: 'MX',
     maxResults: '12',
     chart: 'mostPopular',
     videoCategoryId: categoryId,
     part: ['snippet', 'contentDetails', 'statistics'].toString(),
-  })
+  }
 
   const { data: videos, isSuccess } = useQuery({
     queryKey: ['Recommended videos', categoryId],
-    queryFn: () => api.makeRequest<APIResponse.VideoList>(`/videos?${params}`),
+    queryFn: () => api.makeRequest<APIResponse.VideoList>('videos', params),
   })
 
   return (

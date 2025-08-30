@@ -33,12 +33,12 @@ import { api } from '@/utils'
 //   return await getRequest(endpoint)
 // }
 
-export const makeRequest = async <T>(url: string): Promise<T> => {
+export const makeRequest = async <T>(url: 'videos' | 'channels', params: Record<string, string>): Promise<T> => {
   if (process.env.NODE_ENV === 'development') {
     await new Promise((resolve) => setTimeout(resolve, 5_000))
   }
 
   const instance = api.getInstance()
-  const { data } = await instance.get<T>(url)
+  const { data } = await instance.get<T>(url, { params })
   return data
 }
