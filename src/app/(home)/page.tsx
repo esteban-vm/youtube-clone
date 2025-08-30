@@ -31,7 +31,7 @@ export default function HomePage() {
 
   return (
     <Atoms.PageContainer>
-      {isLoading && <Molecules.LoadingGrid items={maxResults} />}
+      {isLoading && <Molecules.LoadingGrid items={maxResults / 4} />}
       {isSuccess && videos.items.map((item) => <Organisms.VideoCard key={item.id} item={item} />)}
       {isError && <Molecules.ErrorAlert message={error.message} />}
     </Atoms.PageContainer>
