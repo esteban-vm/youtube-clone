@@ -38,11 +38,29 @@ export const ErrorTitle = tw.h3`
   uppercase
 `
 
+export const LoadingItemContainer = tw.div`
+  flex
+  flex-col
+  gap-1
+`
+
+export const LoadingItemContent = tw.div`
+  flex
+  items-center
+  gap-1
+`
+
+export const LoadingItemLines = tw.div`
+  flex
+  w-full
+  flex-col
+  gap-1.5
+`
+
 export const PageContainer = tw.section`
   grid
   size-full
   grid-cols-[repeat(auto-fit,minmax(theme(spacing.80),1fr))]
-  place-content-center
   gap-2.5
   p-2.5
 `

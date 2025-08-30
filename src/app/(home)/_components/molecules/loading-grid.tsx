@@ -1,4 +1,5 @@
 import { Skeleton } from 'rsc-daisyui'
+import { Atoms } from '@/home/components'
 
 export interface LoadingGridProps {
   items: number
@@ -18,16 +19,16 @@ export function LoadingGrid({ items }: LoadingGridProps) {
 
 export function LoadingItem() {
   return (
-    <div className='flex flex-col gap-1'>
+    <Atoms.LoadingItemContainer>
       <Skeleton className='aspect-video w-full rounded-lg' />
-      <div className='flex items-center gap-1'>
+      <Atoms.LoadingItemContent>
         <Skeleton className='size-16 shrink-0 rounded-full' />
-        <div className='flex w-full flex-col gap-1.5'>
+        <Atoms.LoadingItemLines>
           <Skeleton className='h-4 w-full rounded-lg' />
           <Skeleton className='h-4 w-1/2 rounded-lg' />
           <Skeleton className='h-4 w-1/2 rounded-lg' />
-        </div>
-      </div>
-    </div>
+        </Atoms.LoadingItemLines>
+      </Atoms.LoadingItemContent>
+    </Atoms.LoadingItemContainer>
   )
 }
