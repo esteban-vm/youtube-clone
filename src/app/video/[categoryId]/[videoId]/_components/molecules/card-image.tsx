@@ -8,15 +8,14 @@ import { Atoms } from '@/video/components'
 export function CardImage({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails } = item
 
+  const link = `/video/${snippet.categoryId}/${id}`
   const thumbnail = snippet.thumbnails?.standard?.url
   const duration = helpers.parseVideoDuration(contentDetails.duration)
 
   return (
-    <Link className='w-2/5' href={`/video/${snippet.categoryId}/${id}`}>
+    <Link className='w-2/5' href={link}>
       <Atoms.CardImage>
-        {thumbnail && (
-          <Image alt={snippet.title} className='size-full rounded-lg object-cover object-center' src={thumbnail} fill />
-        )}
+        {thumbnail && <Image alt={snippet.title} src={thumbnail} fill />}
         <Badge className='absolute right-1 bottom-1 size-fit rounded-md' color='neutral' size='xs'>
           {duration}
         </Badge>

@@ -4,6 +4,10 @@ export const CardImage = tw.figure`
   relative
   aspect-video
   hover:opacity-80
+  [&_img]:size-full
+  [&_img]:rounded-lg
+  [&_img]:object-cover
+  [&_img]:object-center
 `
 
 export const PageContainer = tw.section`
