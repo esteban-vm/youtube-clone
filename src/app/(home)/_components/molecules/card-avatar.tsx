@@ -2,7 +2,7 @@ import type { APIResponse, Props } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Avatar } from 'rsc-daisyui'
+import { Avatar, Loading } from 'rsc-daisyui'
 import { Atoms } from '@/home/components'
 import { api } from '@/services'
 
@@ -14,7 +14,11 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
     part: ['snippet', 'contentDetails'].toString(),
   }
 
-  const { data: channels } = useQuery({
+  const {
+    data: channels,
+    isLoading,
+    isSuccess,
+  } = useQuery({
     queryKey: ['Channel avatar', channelId],
     queryFn: () => api.makeRequest<APIResponse.ChannelList>('channels', params),
   })
@@ -23,8 +27,9 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
 
   return (
     <Link className='hover:opacity-90' href={`/channel/${channelId}`}>
-      <Avatar className='h-fit w-14'>
-        <Atoms.AvatarImage>{thumbnail && <Image alt='avatar' src={thumbnail} fill />}</Atoms.AvatarImage>
+      <Avatar className='relative h-fit w-14'>
+        {isLoading && <Loading className='absolute top-1/2 left-1/2 -translate-1/2' color='neutral' />}
+        {isSuccess && <Atoms.AvatarImage>{thumbnail && <Image alt='avatar' src={thumbnail} fill />}</Atoms.AvatarImage>}
       </Avatar>
     </Link>
   )
