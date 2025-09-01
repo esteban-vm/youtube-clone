@@ -1,2 +1,4 @@
-export * from './recommended-videos'
-export * from './video-player'
+export * as Atoms from './atoms'
+export * as Molecules from './molecules'
+export * as Organisms from './organisms'
+export * as Templates from './templates'
