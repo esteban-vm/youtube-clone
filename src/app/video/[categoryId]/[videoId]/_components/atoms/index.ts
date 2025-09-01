@@ -18,7 +18,7 @@ export const PageContainer = tw.section`
   lg:grid-cols-3
 `
 
-export const VideosContainer = tw.article`
+export const VideosContainer = tw.aside`
   flex
   w-full
   flex-col
