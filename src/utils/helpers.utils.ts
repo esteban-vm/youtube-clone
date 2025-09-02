@@ -1,3 +1,10 @@
+import { formatDistance } from 'date-fns'
+import { es } from 'date-fns/locale'
+
+export const formatDate = (date: string) => {
+  return formatDistance(date, new Date(), { addSuffix: true, locale: es })
+}
+
 export const parseVideoDuration = (duration: string) => {
   const matches = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)/)
 
