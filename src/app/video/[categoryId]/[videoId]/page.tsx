@@ -1,9 +1,9 @@
 import type { Props } from '@/types'
 import { Atoms, Organisms, Templates } from '@/video/components'
 
-export type PageProps = Props.WithParams<{ videoId: string; categoryId: string }>
+export type VideoPageProps = Props.WithParams<{ videoId: string; categoryId: string }>
 
-export default async function VideoPage({ params }: PageProps) {
+export default async function VideoPage({ params }: VideoPageProps) {
   const { videoId, categoryId } = await params
 
   return (
