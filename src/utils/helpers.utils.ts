@@ -5,7 +5,7 @@ export const formatDate = (date: string) => {
   return formatDistance(date, new Date(), { addSuffix: true, locale: es })
 }
 
-export const parseVideoDuration = (duration: string) => {
+export const formatDuration = (duration: string) => {
   const matches = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)/)
 
   if (!matches) return '00:00'
@@ -21,7 +21,7 @@ export const parseVideoDuration = (duration: string) => {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`
 }
 
-export const parseVideoViews = (views: string | number) => {
+export const formatViews = (views: string | number) => {
   const numViews = typeof views === 'string' ? parseFloat(views) : views
 
   if (numViews < 1_000) return numViews.toString()

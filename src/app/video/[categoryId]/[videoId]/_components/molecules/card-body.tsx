@@ -12,7 +12,7 @@ export function CardBody({ item }: Props.WithVideoItem) {
 
   const videoLink = `/video/${categoryId}/${id}`
   const channelLink = `/channel/${channelId}`
-  const views = helpers.parseVideoViews(viewCount)
+  const views = helpers.formatViews(viewCount)
   const date = helpers.formatDate(publishedAt)
 
   return (

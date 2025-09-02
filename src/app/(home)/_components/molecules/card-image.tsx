@@ -10,7 +10,7 @@ export function CardImage({ item }: Props.WithVideoItem) {
 
   const link = `/video/${snippet.categoryId}/${id}`
   const thumbnail = snippet.thumbnails?.standard?.url
-  const duration = helpers.parseVideoDuration(contentDetails.duration)
+  const duration = helpers.formatDuration(contentDetails.duration)
 
   return (
     <Link href={link}>
