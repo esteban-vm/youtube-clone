@@ -34,10 +34,6 @@ import { api } from '@/utils'
 // }
 
 export const makeRequest = async <T>(url: 'videos' | 'channels', params: Record<string, string>): Promise<T> => {
-  if (process.env.NODE_ENV === 'development') {
-    await new Promise((resolve) => setTimeout(resolve, 5_000))
-  }
-
   const instance = api.getInstance()
   const { data } = await instance.get<T>(url, { params })
   return data
