@@ -10,21 +10,28 @@ export interface RecommendedVideosProps {
 }
 
 export function RecommendedVideos({ categoryId }: RecommendedVideosProps) {
+  const maxResults = 12
+
   const params = {
     regionCode: 'MX',
-    maxResults: '12',
+    maxResults: maxResults.toString(),
     chart: 'mostPopular',
     videoCategoryId: categoryId,
     part: ['snippet', 'contentDetails', 'statistics'].toString(),
   }
 
-  const { data: videos, isSuccess } = useQuery({
+  const {
+    data: videos,
+    isLoading,
+    isSuccess,
+  } = useQuery({
     queryKey: ['Recommended videos', categoryId],
     queryFn: () => api.makeRequest<APIResponse.VideoList>('videos', params),
   })
 
   return (
     <Atoms.VideosContainer>
+      {isLoading && <Organisms.LoadingGrid items={maxResults / 2} />}
       {isSuccess && videos.items.map((item) => <Organisms.RecommendedCard key={item.id} item={item} />)}
     </Atoms.VideosContainer>
   )

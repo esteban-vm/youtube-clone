@@ -10,6 +10,26 @@ export const CardImage = tw.figure`
   [&_img]:object-center
 `
 
+export const LoadingItemContainer = tw.div`
+  flex
+  h-fit
+  w-full
+  max-w-xl
+  gap-1
+  rounded-lg
+  border
+  border-secondary
+`
+
+export const LoadingItemContent = tw.div`
+  flex
+  w-3/5
+  flex-col
+  gap-0.5
+  p-1
+  pl-0
+`
+
 export const PageContainer = tw.section`
   grid
   size-full
