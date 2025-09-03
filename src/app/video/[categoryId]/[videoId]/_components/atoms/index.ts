@@ -17,8 +17,6 @@ export const LoadingItemContainer = tw.div`
   max-w-xl
   gap-1
   rounded-lg
-  border
-  border-secondary
 `
 
 export const LoadingItemContent = tw.div`

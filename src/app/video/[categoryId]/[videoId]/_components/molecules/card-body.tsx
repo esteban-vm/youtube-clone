@@ -16,7 +16,7 @@ export function CardBody({ item }: Props.WithVideoItem) {
   const date = helpers.formatDate(publishedAt)
 
   return (
-    <Card.Body className='w-3/5 gap-0.5 p-0'>
+    <Card.Body className='w-3/5 gap-0.5 p-1 pl-0'>
       <Card.Title className='inline-block truncate text-sm font-semibold hover:opacity-80'>
         <Link href={videoLink}>{title}</Link>
       </Card.Title>
