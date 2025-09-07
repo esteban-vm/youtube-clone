@@ -1,9 +1,7 @@
 'use client'
 
 import type { APIResponse } from '@/types'
-import { useQuery } from '@tanstack/react-query'
-import { useEffect } from 'react'
-import { api } from '@/services'
+import { useFetch } from '@/hooks'
 
 export interface VideoPlayerProps {
   videoId: string
@@ -15,14 +13,15 @@ export function VideoPlayer({ videoId }: VideoPlayerProps) {
     part: ['snippet', 'contentDetails', 'statistics'].toString(),
   }
 
-  const { data } = useQuery({
-    queryKey: ['Video Detail', videoId],
-    queryFn: () => api.makeRequest<APIResponse.VideoList>('videos', params),
+  const { data: videos, isSuccess } = useFetch<APIResponse.VideoList>({
+    params,
+    url: 'videos',
+    queryKey: ['Video Player', videoId],
   })
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
-
-  return <p>Video: {videoId}</p>
+  return (
+    <div>
+      <p>Video: {isSuccess && videos.items[0].snippet.title}</p>
+    </div>
+  )
 }

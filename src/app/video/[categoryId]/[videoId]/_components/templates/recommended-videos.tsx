@@ -1,8 +1,7 @@
 'use client'
 
 import type { APIResponse } from '@/types'
-import { useQuery } from '@tanstack/react-query'
-import { api } from '@/services'
+import { useFetch } from '@/hooks'
 import { Atoms, Organisms } from '@/video/components'
 
 export interface RecommendedVideosProps {
@@ -14,9 +13,9 @@ export function RecommendedVideos({ categoryId }: RecommendedVideosProps) {
 
   const params = {
     regionCode: 'MX',
-    maxResults: maxResults.toString(),
     chart: 'mostPopular',
     videoCategoryId: categoryId,
+    maxResults: maxResults.toString(),
     part: ['snippet', 'contentDetails', 'statistics'].toString(),
   }
 
@@ -24,9 +23,10 @@ export function RecommendedVideos({ categoryId }: RecommendedVideosProps) {
     data: videos,
     isLoading,
     isSuccess,
-  } = useQuery({
+  } = useFetch<APIResponse.VideoList>({
+    params,
+    url: 'videos',
     queryKey: ['Recommended videos', categoryId],
-    queryFn: () => api.makeRequest<APIResponse.VideoList>('videos', params),
   })
 
   return (

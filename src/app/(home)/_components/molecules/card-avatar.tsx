@@ -1,10 +1,9 @@
 import type { APIResponse, Props } from '@/types'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar, Loading } from 'rsc-daisyui'
 import { Atoms } from '@/home/components'
-import { api } from '@/services'
+import { useFetch } from '@/hooks'
 
 export function CardAvatar({ item }: Props.WithVideoItem) {
   const { channelId } = item.snippet
@@ -18,9 +17,10 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
     data: channels,
     isLoading,
     isSuccess,
-  } = useQuery({
-    queryKey: ['Channel avatar', channelId],
-    queryFn: () => api.makeRequest<APIResponse.ChannelList>('channels', params),
+  } = useFetch<APIResponse.ChannelList>({
+    params,
+    url: 'channels',
+    queryKey: ['Card avatar', channelId],
   })
 
   const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url
