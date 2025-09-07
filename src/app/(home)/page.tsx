@@ -1,10 +1,8 @@
 'use client'
 
 import type { APIResponse } from '@/types'
-import { useQuery } from '@tanstack/react-query'
 import { Atoms, Molecules, Organisms } from '@/home/components'
-import { useSidebarStore } from '@/hooks'
-import { api } from '@/services'
+import { useFetch, useSidebarStore } from '@/hooks'
 
 export default function HomePage() {
   const category = useSidebarStore((state) => state.category)
@@ -24,9 +22,10 @@ export default function HomePage() {
     isLoading,
     isSuccess,
     isError,
-  } = useQuery({
+  } = useFetch<APIResponse.VideoList>({
+    params,
+    url: 'videos',
     queryKey: ['Home videos', category],
-    queryFn: () => api.makeRequest<APIResponse.VideoList>('videos', params),
   })
 
   return (
