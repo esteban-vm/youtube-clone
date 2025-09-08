@@ -14,7 +14,7 @@ export default function HomePage() {
     isSuccess,
     isError,
   } = useFetchVideos({
-    queryKey: ['Home videos', category],
+    queryKey: [category],
     params: {
       regionCode: 'MX',
       chart: 'mostPopular',

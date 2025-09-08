@@ -15,7 +15,7 @@ export function RecommendedVideos({ categoryId }: RecommendedVideosProps) {
     isLoading,
     isSuccess,
   } = useFetchVideos({
-    queryKey: ['Recommended videos', categoryId],
+    queryKey: [categoryId],
     params: {
       regionCode: 'MX',
       chart: 'mostPopular',

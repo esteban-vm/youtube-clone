@@ -13,8 +13,8 @@ export function CardAvatar({ item }: Props.WithVideoItem) {
     isLoading,
     isSuccess,
   } = useFetchChannels({
+    queryKey: [channelId],
     params: { id: channelId },
-    queryKey: ['Card avatar', channelId],
   })
 
   const thumbnail = channels?.items[0].snippet.thumbnails?.default?.url

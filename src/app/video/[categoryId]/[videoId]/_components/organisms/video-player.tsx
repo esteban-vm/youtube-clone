@@ -9,8 +9,8 @@ export interface VideoPlayerProps {
 
 export function VideoPlayer({ videoId }: VideoPlayerProps) {
   const { data: videos, isSuccess } = useFetchVideos({
+    queryKey: [videoId],
     params: { id: videoId },
-    queryKey: ['Video Player', videoId],
   })
 
   return (
