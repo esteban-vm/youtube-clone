@@ -1,6 +1,7 @@
 'use client'
 
 import { useFetchVideos } from '@/hooks'
+import { Molecules } from '@/video/components'
 
 export interface VideoPlayerProps {
   videoId: string
@@ -15,6 +16,7 @@ export function VideoPlayer({ videoId }: VideoPlayerProps) {
   return (
     <div>
       <p>Video: {isSuccess && videos.items[0].snippet.title}</p>
+      {isSuccess && <Molecules.ChannelInfo item={videos.items[0]} />}
     </div>
   )
 }
