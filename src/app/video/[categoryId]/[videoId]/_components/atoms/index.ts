@@ -36,10 +36,19 @@ export const PageContainer = tw.section`
   lg:grid-cols-3
 `
 
-export const VideosContainer = tw.aside`
+export const RecommendedVideos = tw.aside`
   flex
   w-full
   flex-col
   gap-1
   lg:basis-1/3
+`
+
+export const VideoPlayer = tw.div`
+  flex
+  w-full
+  min-w-72
+  flex-col
+  space-y-4
+  md:col-span-2
 `

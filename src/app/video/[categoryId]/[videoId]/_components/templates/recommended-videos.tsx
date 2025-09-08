@@ -25,9 +25,9 @@ export function RecommendedVideos({ categoryId }: RecommendedVideosProps) {
   })
 
   return (
-    <Atoms.VideosContainer>
+    <Atoms.RecommendedVideos>
       {isLoading && <Organisms.LoadingGrid items={maxResults / 2} />}
       {isSuccess && videos.items.map((item) => <Organisms.RecommendedCard key={item.id} item={item} />)}
-    </Atoms.VideosContainer>
+    </Atoms.RecommendedVideos>
   )
 }
