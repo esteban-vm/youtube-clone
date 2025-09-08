@@ -18,7 +18,7 @@ export const useFetch = <TData, TError = AxiosError>({
   requestConfig,
   queryOptions,
 }: UseFetchProps<TData, TError>) => {
-  const makeRequest = async (): Promise<TData> => {
+  const queryFn = async (): Promise<TData> => {
     const instance = api.getInstance()
 
     const { data } = await instance.request<TData, AxiosResponse<TData, TError>>({
@@ -31,8 +31,8 @@ export const useFetch = <TData, TError = AxiosError>({
   }
 
   return useQuery<TData, TError>({
+    queryFn,
     queryKey,
-    queryFn: makeRequest,
     ...queryOptions,
   })
 }
