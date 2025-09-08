@@ -1,7 +1,6 @@
 'use client'
 
-import type { APIResponse } from '@/types'
-import { useFetch } from '@/hooks'
+import { useFetchVideos } from '@/hooks'
 import { Atoms, Organisms } from '@/video/components'
 
 export interface RecommendedVideosProps {
@@ -11,22 +10,18 @@ export interface RecommendedVideosProps {
 export function RecommendedVideos({ categoryId }: RecommendedVideosProps) {
   const maxResults = 12
 
-  const params = {
-    regionCode: 'MX',
-    chart: 'mostPopular',
-    videoCategoryId: categoryId,
-    maxResults: maxResults.toString(),
-    part: ['snippet', 'contentDetails', 'statistics'].toString(),
-  }
-
   const {
     data: videos,
     isLoading,
     isSuccess,
-  } = useFetch<APIResponse.VideoList>({
-    params,
-    url: 'videos',
+  } = useFetchVideos({
     queryKey: ['Recommended videos', categoryId],
+    params: {
+      regionCode: 'MX',
+      chart: 'mostPopular',
+      videoCategoryId: categoryId,
+      maxResults: maxResults.toString(),
+    },
   })
 
   return (

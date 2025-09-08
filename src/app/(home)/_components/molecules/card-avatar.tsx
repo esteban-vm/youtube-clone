@@ -1,25 +1,19 @@
-import type { APIResponse, Props } from '@/types'
+import type { Props } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar, Loading } from 'rsc-daisyui'
 import { Atoms } from '@/home/components'
-import { useFetch } from '@/hooks'
+import { useFetchChannels } from '@/hooks'
 
 export function CardAvatar({ item }: Props.WithVideoItem) {
   const { channelId } = item.snippet
-
-  const params = {
-    id: channelId,
-    part: ['snippet', 'contentDetails'].toString(),
-  }
 
   const {
     data: channels,
     isLoading,
     isSuccess,
-  } = useFetch<APIResponse.ChannelList>({
-    params,
-    url: 'channels',
+  } = useFetchChannels({
+    params: { id: channelId },
     queryKey: ['Card avatar', channelId],
   })
 

@@ -1,21 +1,14 @@
 'use client'
 
-import type { APIResponse } from '@/types'
-import { useFetch } from '@/hooks'
+import { useFetchVideos } from '@/hooks'
 
 export interface VideoPlayerProps {
   videoId: string
 }
 
 export function VideoPlayer({ videoId }: VideoPlayerProps) {
-  const params = {
-    id: videoId,
-    part: ['snippet', 'contentDetails', 'statistics'].toString(),
-  }
-
-  const { data: videos, isSuccess } = useFetch<APIResponse.VideoList>({
-    params,
-    url: 'videos',
+  const { data: videos, isSuccess } = useFetchVideos({
+    params: { id: videoId },
     queryKey: ['Video Player', videoId],
   })
 

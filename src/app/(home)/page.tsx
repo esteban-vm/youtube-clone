@@ -1,20 +1,11 @@
 'use client'
 
-import type { APIResponse } from '@/types'
 import { Atoms, Molecules, Organisms } from '@/home/components'
-import { useFetch, useSidebarStore } from '@/hooks'
+import { useFetchVideos, useSidebarStore } from '@/hooks'
 
 export default function HomePage() {
   const category = useSidebarStore((state) => state.category)
   const maxResults = 20
-
-  const params = {
-    regionCode: 'MX',
-    chart: 'mostPopular',
-    videoCategoryId: category,
-    maxResults: maxResults.toString(),
-    part: ['snippet', 'contentDetails', 'statistics'].toString(),
-  }
 
   const {
     data: videos,
@@ -22,10 +13,14 @@ export default function HomePage() {
     isLoading,
     isSuccess,
     isError,
-  } = useFetch<APIResponse.VideoList>({
-    params,
-    url: 'videos',
+  } = useFetchVideos({
     queryKey: ['Home videos', category],
+    params: {
+      regionCode: 'MX',
+      chart: 'mostPopular',
+      videoCategoryId: category,
+      maxResults: maxResults.toString(),
+    },
   })
 
   return (

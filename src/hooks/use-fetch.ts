@@ -1,12 +1,16 @@
 import type { QueryKey, UseQueryOptions } from '@tanstack/react-query'
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { APIResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/utils'
 
-export interface UseFetchProps<TData, TError> {
+export interface UseFetchBaseProps {
   queryKey: QueryKey
-  url: 'videos' | 'channels'
   params: Record<string, string>
+}
+
+export interface UseFetchProps<TData, TError> extends UseFetchBaseProps {
+  url: 'videos' | 'channels' | 'comments'
   requestConfig?: Omit<AxiosRequestConfig, 'baseURL' | 'url' | 'params'>
   queryOptions?: Omit<UseQueryOptions<TData, TError>, 'queryKey' | 'queryFn'>
 }
@@ -34,5 +38,27 @@ export const useFetch = <TData, TError = AxiosError>({
     queryFn,
     queryKey,
     ...queryOptions,
+  })
+}
+
+export const useFetchChannels = ({ params, queryKey }: UseFetchBaseProps) => {
+  return useFetch<APIResponse.ChannelList>({
+    queryKey,
+    url: 'channels',
+    params: {
+      ...params,
+      part: ['snippet', 'contentDetails'].toString(),
+    },
+  })
+}
+
+export const useFetchVideos = ({ params, queryKey }: UseFetchBaseProps) => {
+  return useFetch<APIResponse.VideoList>({
+    queryKey,
+    url: 'videos',
+    params: {
+      ...params,
+      part: ['snippet', 'statistics', 'contentDetails'].toString(),
+    },
   })
 }
