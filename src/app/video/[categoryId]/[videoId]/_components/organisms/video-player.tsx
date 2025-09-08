@@ -13,10 +13,22 @@ export function VideoPlayer({ videoId }: VideoPlayerProps) {
     params: { id: videoId },
   })
 
+  if (!isSuccess) return null
+
+  const [video] = videos.items
+
   return (
-    <div>
-      <p>Video: {isSuccess && videos.items[0].snippet.title}</p>
-      {isSuccess && <Molecules.ChannelInfo item={videos.items[0]} />}
+    <div className='flex w-full min-w-72 flex-col space-y-4 md:col-span-2'>
+      <iframe
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+        className='aspect-video w-full'
+        referrerPolicy='strict-origin-when-cross-origin'
+        src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
+        allowFullScreen
+      />
+      <h3 className='text-xl font-semibold'>{video.snippet.title}</h3>
+      <Molecules.ChannelInfo item={video} />
+      <Molecules.CommentBox item={video} />
     </div>
   )
 }
