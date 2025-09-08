@@ -10,7 +10,7 @@ export interface UseFetchBaseProps {
 }
 
 export interface UseFetchProps<TData, TError> extends UseFetchBaseProps {
-  url: 'videos' | 'channels' | 'comments'
+  url: 'videos' | 'channels' | 'commentThreads'
   requestConfig?: Omit<AxiosRequestConfig, 'baseURL' | 'url' | 'params'>
   queryOptions?: Omit<UseQueryOptions<TData, TError>, 'queryKey' | 'queryFn'>
 }
@@ -48,6 +48,17 @@ export const useFetchChannels = ({ params, queryKey }: UseFetchBaseProps) => {
     params: {
       ...params,
       part: ['snippet', 'contentDetails'].toString(),
+    },
+  })
+}
+
+export const useFetchComments = ({ params, queryKey }: UseFetchBaseProps) => {
+  return useFetch({
+    queryKey,
+    url: 'commentThreads',
+    params: {
+      ...params,
+      part: ['snippet', 'replies'].toString(),
     },
   })
 }
