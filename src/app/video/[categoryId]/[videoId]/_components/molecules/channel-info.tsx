@@ -9,5 +9,5 @@ export function ChannelInfo({ item }: Props.WithVideoItem) {
     params: { id: channelId },
   })
 
-  return <p> {isSuccess && channels.items[0].snippet.title} </p>
+  return <p>{isSuccess && channels.items[0].snippet.title}</p>
 }
