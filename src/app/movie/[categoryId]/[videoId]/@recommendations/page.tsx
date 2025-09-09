@@ -1,17 +1,31 @@
 'use client'
 
-import type { Props } from '@/types'
 import { use } from 'react'
+import { useFetchVideos } from '@/hooks'
+import { RecommendedVideo } from '@/movie/components'
 
-export type RecommendationsPageProps = Props.WithParams<{ categoryId: string }>
+type Props = PageProps<'/movie/[categoryId]/[videoId]'>
 
-export default function RecommendationsPage({ params }: RecommendationsPageProps) {
+export default function RecommendationsPage({ params }: Props) {
   const { categoryId } = use(params)
 
+  const { data: videos, isSuccess } = useFetchVideos({
+    queryKey: [categoryId],
+    params: {
+      maxResults: '12',
+      regionCode: 'MX',
+      chart: 'mostPopular',
+      videoCategoryId: categoryId,
+    },
+  })
+
+  if (!isSuccess) return null
+
   return (
-    <aside className='flex w-full flex-col gap-1 lg:basis-1/3'>
-      <h2>Recommendations Page</h2>
-      <p>Category ID: {categoryId}</p>
-    </aside>
+    <>
+      {videos.items.map((item) => (
+        <RecommendedVideo key={item.id} item={item} />
+      ))}
+    </>
   )
 }

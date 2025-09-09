@@ -1,17 +1,28 @@
 'use client'
 
-import type { Props } from '@/types'
 import { use } from 'react'
+import { useFetchVideos } from '@/hooks'
+import { ChannelInfo, CommentList, VideoPlayer } from '@/movie/components'
 
-export type DetailsPageProps = Props.WithParams<{ videoId: string }>
+type Props = PageProps<'/movie/[categoryId]/[videoId]'>
 
-export default function DetailsPage({ params }: DetailsPageProps) {
+export default function DetailsPage({ params }: Props) {
   const { videoId } = use(params)
 
+  const { data: videos, isSuccess } = useFetchVideos({
+    queryKey: [videoId],
+    params: { id: videoId },
+  })
+
+  if (!isSuccess) return null
+
+  const [video] = videos.items
+
   return (
-    <main className='flex w-full min-w-72 flex-col space-y-4 md:col-span-2'>
-      <h2>Details Page</h2>
-      <p>Video ID: {videoId}</p>
-    </main>
+    <>
+      <VideoPlayer item={video} />
+      <ChannelInfo item={video} />
+      <CommentList item={video} />
+    </>
   )
 }
