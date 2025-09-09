@@ -1,3 +1,4 @@
+import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge, Card } from 'rsc-daisyui'
@@ -9,8 +10,8 @@ export function RecommendedVideo({ item }: Props.WithVideoItem) {
   const { categoryId, channelId, channelTitle, title, publishedAt, thumbnails } = snippet
 
   const thumbnail = thumbnails?.standard?.url
-  const channelLink = `/channel/${channelId}`
-  const videoLink = `/video/${categoryId}/${id}`
+  const channelLink = `/channel/${channelId}` as Route
+  const videoLink = `/video/${categoryId}/${id}` as Route
   const date = helpers.formatDate(publishedAt)
   const views = helpers.formatViews(statistics.viewCount)
   const duration = helpers.formatDuration(contentDetails.duration)
