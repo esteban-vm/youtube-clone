@@ -131,13 +131,6 @@ declare global {
     interface IntrinsicElements extends React.JSX.IntrinsicElements {}
   }
 
-  namespace NodeJS {
-    interface ProcessEnv {
-      NEXT_PUBLIC_API_KEY: string
-      NEXT_PUBLIC_BASE_URL: string
-    }
-  }
-
   namespace Props {
     interface WithVideoItem {
       item: APIResponse.VideoItem
