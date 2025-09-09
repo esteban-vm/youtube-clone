@@ -21,15 +21,17 @@ export default function DetailsPage({ params }: Props) {
 
   if (isLoading) return <Loading />
 
-  if (!isSuccess) return null
+  if (isSuccess) {
+    const [video] = videos.items
 
-  const [video] = videos.items
+    return (
+      <>
+        <VideoPlayer item={video} />
+        <ChannelInfo item={video} />
+        <CommentList item={video} />
+      </>
+    )
+  }
 
-  return (
-    <>
-      <VideoPlayer item={video} />
-      <ChannelInfo item={video} />
-      <CommentList item={video} />
-    </>
-  )
+  return null
 }

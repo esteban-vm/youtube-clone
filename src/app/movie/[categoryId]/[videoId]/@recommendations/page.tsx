@@ -24,10 +24,11 @@ export default function RecommendationsPage({ params }: Props) {
     },
   })
 
-  return (
-    <>
-      {isLoading && <Loading />}
-      {isSuccess && videos.items.map((item) => <RecommendedVideo key={item.id} item={item} />)}
-    </>
-  )
+  if (isLoading) return <Loading />
+
+  if (isSuccess) {
+    return videos.items.map((item) => <RecommendedVideo key={item.id} item={item} />)
+  }
+
+  return null
 }
