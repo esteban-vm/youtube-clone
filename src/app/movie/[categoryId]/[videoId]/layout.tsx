@@ -1,11 +1,6 @@
-import type { ReactNode } from 'react'
 import tw from 'tailwind-styled-components'
 
-interface Props {
-  children: ReactNode
-  details: ReactNode
-  recommendations: ReactNode
-}
+export type Props = LayoutProps<'/movie/[categoryId]/[videoId]'>
 
 export default function MovieLayout({ children, details, recommendations }: Props) {
   return (
