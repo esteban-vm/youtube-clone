@@ -1,6 +1,5 @@
 import type { QueryKey, UseQueryOptions } from '@tanstack/react-query'
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
-import type { APIResponse } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/utils'
 
