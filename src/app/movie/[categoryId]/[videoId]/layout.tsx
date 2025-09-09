@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components'
 
-export type Props = LayoutProps<'/movie/[categoryId]/[videoId]'>
+type Props = LayoutProps<'/movie/[categoryId]/[videoId]'>
 
 export default function MovieLayout({ children, details, recommendations }: Props) {
   return (
