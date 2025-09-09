@@ -1,6 +1,5 @@
 'use client'
 
-import type { Props } from '@/types'
 import { useEffect } from 'react'
 import { useFetchComments } from '@/hooks'
 

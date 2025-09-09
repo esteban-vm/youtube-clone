@@ -1,4 +1,3 @@
-import type { Props } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge, Card } from 'rsc-daisyui'

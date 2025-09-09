@@ -1,5 +1,3 @@
-import type { Props } from '@/types'
-
 export function VideoPlayer({ item }: Props.WithVideoItem) {
   return (
     <>

@@ -1,4 +1,3 @@
-import type { Props } from '@/types'
 import { useFetchChannels } from '@/hooks'
 
 export function ChannelInfo({ item }: Props.WithVideoItem) {
