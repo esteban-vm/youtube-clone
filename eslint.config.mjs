@@ -9,6 +9,7 @@ const compat = new FlatCompat({ baseDirectory: __dirname })
 
 const eslintConfig = [
   ...compat.config({
+    ignorePatterns: ['.next'],
     plugins: ['sort-exports', 'sort-keys'],
     parser: '@typescript-eslint/parser',
     extends: ['next/core-web-vitals', 'next/typescript'],
