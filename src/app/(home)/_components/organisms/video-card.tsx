@@ -1,4 +1,3 @@
-import type { Props } from '@/types'
 import { Card } from 'rsc-daisyui'
 import { Atoms, Molecules } from '@/home/components'
 

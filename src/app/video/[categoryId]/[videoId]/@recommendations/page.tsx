@@ -2,7 +2,7 @@
 
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
-import { RecommendationItem } from '@/video/components'
+import { VideoCard } from '@/video/components'
 import RecommendationsLoading from './loading'
 
 export type RecommendationsPageProps = PageProps<'/video/[categoryId]/[videoId]'>
@@ -27,7 +27,7 @@ export default function RecommendationsPage({ params }: RecommendationsPageProps
   if (isLoading) return <RecommendationsLoading />
 
   if (isSuccess) {
-    return videos.items.map((item) => <RecommendationItem key={item.id} item={item} />)
+    return videos.items.map((item) => <VideoCard key={item.id} item={item} />)
   }
 
   return null
