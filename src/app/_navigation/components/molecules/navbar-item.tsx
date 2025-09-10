@@ -1,8 +1,7 @@
-import type { Props } from '@/types'
 import Link from 'next/link'
 import { Menu, Tooltip } from 'rsc-daisyui'
 
-export interface NavbarItemProps extends Props.BaseMenuItem {
+export interface NavbarItemProps extends Props.NavbarItem {
   tip: 'bottom' | 'left'
 }
 

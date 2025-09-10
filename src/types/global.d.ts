@@ -1,3 +1,5 @@
+import type { Route } from 'next'
+
 declare global {
   namespace APIResponse {
     interface ChannelItem {
@@ -134,6 +136,17 @@ declare global {
   namespace Props {
     interface WithVideoItem {
       item: APIResponse.VideoItem
+    }
+
+    interface NavbarItem {
+      id: string
+      label: string
+      icon: IconType
+      link?: Route
+    }
+
+    interface SidebarItem extends NavbarItem {
+      categoryId: `${number}`
     }
   }
 }

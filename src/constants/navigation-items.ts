@@ -1,14 +1,12 @@
-import type { Molecules } from '@/nav/components'
-import type { Props } from '@/types'
 import * as lu from 'react-icons/lu'
 
-export const navbarItems: Props.BaseMenuItem[] = [
+export const navbarItems: Props.NavbarItem[] = [
   { id: crypto.randomUUID(), label: 'Subir', icon: lu.LuVideo },
   { id: crypto.randomUUID(), label: 'Más', icon: lu.LuLayoutGrid },
   { id: crypto.randomUUID(), label: 'Notificaciones', icon: lu.LuBell },
 ]
 
-export const sidebarItems: Molecules.SidebarItemProps[] = [
+export const sidebarItems: Props.SidebarItem[] = [
   { id: crypto.randomUUID(), categoryId: '0', label: 'Inicio', icon: lu.LuHouse },
   { id: crypto.randomUUID(), categoryId: '20', label: 'Juegos', icon: lu.LuGamepad2 },
   { id: crypto.randomUUID(), categoryId: '2', label: 'Autos', icon: lu.LuCar },

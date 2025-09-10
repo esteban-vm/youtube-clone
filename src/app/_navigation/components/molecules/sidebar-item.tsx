@@ -1,14 +1,9 @@
-import type { Props } from '@/types'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Menu } from 'rsc-daisyui'
 import { useSidebarStore } from '@/hooks'
 
-export interface SidebarItemProps extends Props.BaseMenuItem {
-  categoryId: `${number}`
-}
-
-export function SidebarItem({ categoryId, label, icon: Icon, link = '/' }: SidebarItemProps) {
+export function SidebarItem({ categoryId, label, icon: Icon, link = '/' }: Props.SidebarItem) {
   const router = useRouter()
   const pathname = usePathname()
   const { drawerId, category, setCategory } = useSidebarStore()
