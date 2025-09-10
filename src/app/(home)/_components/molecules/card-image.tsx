@@ -1,4 +1,3 @@
-import type { Props } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from 'rsc-daisyui'
@@ -8,9 +7,9 @@ import { helpers } from '@/utils'
 export function CardImage({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails } = item
 
-  const link = `/video/${snippet.categoryId}/${id}`
   const thumbnail = snippet.thumbnails?.standard?.url
   const duration = helpers.formatDuration(contentDetails.duration)
+  const link = helpers.typedRoute(`/video/${snippet.categoryId}/${id}`)
 
   return (
     <Link href={link}>
