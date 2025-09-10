@@ -1,8 +1,8 @@
 import tw from 'tailwind-styled-components'
 
-type Props = LayoutProps<'/movie/[categoryId]/[videoId]'>
+type Props = LayoutProps<'/video/[categoryId]/[videoId]'>
 
-export default async function MovieLayout({ children, details, recommendations }: Props) {
+export default async function VideoLayout({ children, details, recommendations }: Props) {
   return (
     <$.Container>
       {children}

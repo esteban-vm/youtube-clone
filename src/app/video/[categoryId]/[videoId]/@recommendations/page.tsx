@@ -2,10 +2,10 @@
 
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
-import { RecommendedVideo } from '@/movie/components'
+import { RecommendedVideo } from '@/video/components'
 import Loading from './loading'
 
-type Props = PageProps<'/movie/[categoryId]/[videoId]'>
+type Props = PageProps<'/video/[categoryId]/[videoId]'>
 
 export default function RecommendationsPage({ params }: Props) {
   const { categoryId } = use(params)

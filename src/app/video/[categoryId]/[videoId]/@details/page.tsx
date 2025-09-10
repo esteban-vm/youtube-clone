@@ -2,10 +2,10 @@
 
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
-import { ChannelInfo, CommentList, VideoPlayer } from '@/movie/components'
+import { ChannelInfo, CommentList, VideoPlayer } from '@/video/components'
 import Loading from './loading'
 
-type Props = PageProps<'/movie/[categoryId]/[videoId]'>
+type Props = PageProps<'/video/[categoryId]/[videoId]'>
 
 export default function DetailsPage({ params }: Props) {
   const { videoId } = use(params)

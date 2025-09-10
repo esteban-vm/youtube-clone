@@ -1,4 +1,4 @@
-export * as Atoms from './atoms'
-export * as Molecules from './molecules'
-export * as Organisms from './organisms'
-export * as Templates from './templates'
+export * from './channel-info'
+export * from './comment-list'
+export * from './recommended-video'
+export * from './video-player'
