@@ -2,15 +2,9 @@ import { Skeleton } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
 export default function RecommendationsLoading() {
-  return (
-    <>
-      {Array(2)
-        .fill(null)
-        .map(() => (
-          <RecommendationsLoadingItem key={crypto.randomUUID()} />
-        ))}
-    </>
-  )
+  return Array(2)
+    .fill(null)
+    .map(() => <RecommendationsLoadingItem key={crypto.randomUUID()} />)
 }
 
 function RecommendationsLoadingItem() {
