@@ -1,7 +1,9 @@
 'use client'
 
-import { Atoms, Molecules, Organisms, VideoCard } from '@/home/components'
+import { VideoCard } from '@/home/components'
 import { useFetchVideos, useSidebarStore } from '@/hooks'
+import HomeError from './error'
+import HomeLoading from './loading'
 
 export default function HomePage() {
   const category = useSidebarStore((state) => state.category)
@@ -23,11 +25,17 @@ export default function HomePage() {
     },
   })
 
-  return (
-    <Atoms.PageContainer>
-      {isLoading && <Organisms.LoadingGrid items={maxResults / 4} />}
-      {isSuccess && videos.items.map((item) => <VideoCard key={item.id} item={item} />)}
-      {isError && <Molecules.ErrorAlert message={error.message} />}
-    </Atoms.PageContainer>
-  )
+  if (isLoading) {
+    return <HomeLoading />
+  }
+
+  if (isSuccess) {
+    return videos.items.map((item) => <VideoCard key={item.id} item={item} />)
+  }
+
+  if (isError) {
+    return <HomeError error={error} />
+  }
+
+  return null
 }
