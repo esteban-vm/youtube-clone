@@ -1,6 +1,6 @@
 import { Skeleton } from 'rsc-daisyui'
 
-export default function Loading() {
+export default function DetailsLoading() {
   return (
     <>
       <Skeleton className='aspect-video w-full dark:rounded-xl' />

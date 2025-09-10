@@ -3,11 +3,11 @@
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
 import { RecommendedVideo } from '@/video/components'
-import Loading from './loading'
+import RecommendationsLoading from './loading'
 
-type Props = PageProps<'/video/[categoryId]/[videoId]'>
+export type RecommendationsPageProps = PageProps<'/video/[categoryId]/[videoId]'>
 
-export default function RecommendationsPage({ params }: Props) {
+export default function RecommendationsPage({ params }: RecommendationsPageProps) {
   const { categoryId } = use(params)
 
   const {
@@ -24,7 +24,7 @@ export default function RecommendationsPage({ params }: Props) {
     },
   })
 
-  if (isLoading) return <Loading />
+  if (isLoading) return <RecommendationsLoading />
 
   if (isSuccess) {
     return videos.items.map((item) => <RecommendedVideo key={item.id} item={item} />)

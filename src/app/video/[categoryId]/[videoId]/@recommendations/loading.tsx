@@ -1,19 +1,19 @@
 import { Skeleton } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
-export default function Loading() {
+export default function RecommendationsLoading() {
   return (
     <>
       {Array(2)
         .fill(null)
         .map(() => (
-          <LoadingItem key={crypto.randomUUID()} />
+          <RecommendationsLoadingItem key={crypto.randomUUID()} />
         ))}
     </>
   )
 }
 
-function LoadingItem() {
+function RecommendationsLoadingItem() {
   return (
     <$.Container>
       <Skeleton className='aspect-video w-2/5 rounded-lg' />
