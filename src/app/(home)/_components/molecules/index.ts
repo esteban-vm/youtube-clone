@@ -1,5 +1,2 @@
-export * from './card-avatar'
-export * from './card-body'
-export * from './card-image'
 export * from './error-alert'
 export * from './loading-item'

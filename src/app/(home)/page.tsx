@@ -1,6 +1,6 @@
 'use client'
 
-import { Atoms, Molecules, Organisms } from '@/home/components'
+import { Atoms, Molecules, Organisms, VideoCard } from '@/home/components'
 import { useFetchVideos, useSidebarStore } from '@/hooks'
 
 export default function HomePage() {
@@ -26,7 +26,7 @@ export default function HomePage() {
   return (
     <Atoms.PageContainer>
       {isLoading && <Organisms.LoadingGrid items={maxResults / 4} />}
-      {isSuccess && videos.items.map((item) => <Organisms.VideoCard key={item.id} item={item} />)}
+      {isSuccess && videos.items.map((item) => <VideoCard key={item.id} item={item} />)}
       {isError && <Molecules.ErrorAlert message={error.message} />}
     </Atoms.PageContainer>
   )

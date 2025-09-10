@@ -1,29 +1,5 @@
 import tw from 'tailwind-styled-components'
 
-export const AvatarImage = tw.div`
-  relative
-  mx-auto
-  size-full
-  rounded-full
-`
-
-export const CardContent = tw.div`
-  flex
-  items-center
-  gap-1
-  p-1
-`
-
-export const CardImage = tw.figure`
-  relative
-  aspect-video
-  hover:opacity-80
-  [&_img]:size-full
-  [&_img]:rounded-lg
-  [&_img]:object-cover
-  [&_img]:object-center
-`
-
 export const ErrorContainer = tw.div`
   col-span-full
   flex
