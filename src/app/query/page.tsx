@@ -1,7 +1,6 @@
-import type { Props } from '@/types'
 import { notFound } from 'next/navigation'
 
-export type QueryPageProps = Props.WithSearchParams<{ q?: string }>
+export type QueryPageProps = PageProps<'/query'>
 
 export default async function QueryPage({ searchParams }: QueryPageProps) {
   const { q } = await searchParams
