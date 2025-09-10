@@ -1,4 +1,3 @@
-import type { Props } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar, Loading } from 'rsc-daisyui'

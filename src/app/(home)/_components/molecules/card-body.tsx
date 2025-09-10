@@ -1,4 +1,3 @@
-import type { Props } from '@/types'
 import Link from 'next/link'
 import { Card } from 'rsc-daisyui'
 import { helpers } from '@/utils'
@@ -10,10 +9,10 @@ export function CardBody({ item }: Props.WithVideoItem) {
     snippet: { title, channelId, channelTitle, publishedAt, categoryId },
   } = item
 
-  const videoLink = `/video/${categoryId}/${id}`
-  const channelLink = `/channel/${channelId}`
   const views = helpers.formatViews(viewCount)
   const date = helpers.formatDate(publishedAt)
+  const channelLink = helpers.typedRoute(`/channel/${channelId}`)
+  const videoLink = helpers.typedRoute(`/video/${categoryId}/${id}`)
 
   return (
     <Card.Body className='w-4/5 gap-0.5 p-0'>
