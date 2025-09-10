@@ -4,7 +4,7 @@ import { Badge, Card } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 import { helpers } from '@/utils'
 
-export function RecommendedVideo({ item }: Props.WithVideoItem) {
+export function RecommendationItem({ item }: Props.WithVideoItem) {
   const { id, contentDetails, snippet, statistics } = item
   const { categoryId, channelId, channelTitle, title, publishedAt, thumbnails } = snippet
 
