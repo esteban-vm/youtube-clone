@@ -1,3 +1,4 @@
+import type { Route } from 'next'
 import { formatDistance } from 'date-fns'
 import { es } from 'date-fns/locale'
 
@@ -38,3 +39,5 @@ export const formatViews = (views: string | number) => {
     }
   }
 }
+
+export const typedRoute = <T extends string>(route: Route<T>) => route

@@ -1,4 +1,3 @@
-import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge, Card } from 'rsc-daisyui'
@@ -10,30 +9,32 @@ export function RecommendedVideo({ item }: Props.WithVideoItem) {
   const { categoryId, channelId, channelTitle, title, publishedAt, thumbnails } = snippet
 
   const thumbnail = thumbnails?.standard?.url
-  const channelLink = `/channel/${channelId}` as Route
-  const videoLink = `/video/${categoryId}/${id}` as Route
   const date = helpers.formatDate(publishedAt)
   const views = helpers.formatViews(statistics.viewCount)
   const duration = helpers.formatDuration(contentDetails.duration)
+  const channelLink = helpers.typedRoute(`/channel/${channelId}`)
+  const videoLink = helpers.typedRoute(`/video/${categoryId}/${id}`)
 
   return (
     <$.Card side>
-      <$.VideoLink href={videoLink}>
+      <Link className='w-2/5' href={videoLink}>
         <$.ThumbnailContainer>
           {thumbnail && <$.Thumbnail alt={title} src={thumbnail} fill />}
           <$.DurationBadge color='neutral' size='xs'>
             {duration}
           </$.DurationBadge>
         </$.ThumbnailContainer>
-      </$.VideoLink>
+      </Link>
       <$.CardBody>
         <$.CardTitle>
           <Link href={videoLink}>{title}</Link>
         </$.CardTitle>
-        <$.ChannelLink href={channelLink}>{channelTitle}</$.ChannelLink>
-        <$.Small>
+        <Link className='block text-sm hover:opacity-80' href={channelLink}>
+          {channelTitle}
+        </Link>
+        <small className='text-xs'>
           {views} • {date}
-        </$.Small>
+        </small>
       </$.CardBody>
     </$.Card>
   )
@@ -63,16 +64,6 @@ $.CardTitle = tw(Card.Title)`
   hover:opacity-80
 `
 
-$.ChannelLink = tw(Link)`
-  block
-  text-sm
-  hover:opacity-80
-`
-
-$.VideoLink = tw(Link)`
-  w-2/5
-`
-
 $.Thumbnail = tw(Image)`
   size-full
   rounded-lg
@@ -84,10 +75,6 @@ $.ThumbnailContainer = tw.figure`
   relative
   aspect-video
   hover:opacity-80
-`
-
-$.Small = tw.small`
-  text-xs
 `
 
 $.DurationBadge = tw(Badge)`
