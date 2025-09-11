@@ -19,7 +19,9 @@ export default function DetailsPage({ params }: DetailsPageProps) {
     params: { id: videoId },
   })
 
-  if (isLoading) return <DetailsLoading />
+  if (isLoading) {
+    return <DetailsLoading />
+  }
 
   if (isSuccess) {
     return <VideoPlayer item={videos.items[0]} />

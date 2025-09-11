@@ -24,7 +24,9 @@ export default function RecommendationsPage({ params }: RecommendationsPageProps
     },
   })
 
-  if (isLoading) return <RecommendationsLoading />
+  if (isLoading) {
+    return <RecommendationsLoading />
+  }
 
   if (isSuccess) {
     return videos.items.map((item) => <VideoCard key={item.id} item={item} />)

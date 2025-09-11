@@ -1,8 +1,7 @@
 'use client'
 
-import { VideoCard } from '@/home/components'
+import { ErrorAlert, VideoCard } from '@/home/components'
 import { useFetchVideos, useSidebarStore } from '@/hooks'
-import HomeError from './error'
 import HomeLoading from './loading'
 
 export default function HomePage() {
@@ -34,7 +33,7 @@ export default function HomePage() {
   }
 
   if (isError) {
-    return <HomeError error={error} />
+    return <ErrorAlert error={error} />
   }
 
   return null
