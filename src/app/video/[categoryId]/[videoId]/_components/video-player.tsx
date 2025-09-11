@@ -9,16 +9,16 @@ export function VideoPlayer({ item }: Props.WithVideoItem) {
   const { id, snippet } = item
   const { channelId } = snippet
 
-  const { data: channels, isSuccess } = useFetchChannels({
+  const { data: channels } = useFetchChannels({
     queryKey: [channelId],
     params: { id: channelId },
   })
 
   const videoTitle = snippet.title
   const youtubeLink = `https://www.youtube.com/embed/${id}?autoplay=1`
+  const channelTitle = channels?.items[0].snippet.title ?? ''
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
-  const channelTitle = (isSuccess && channels.items[0].snippet.title) || ''
-  const channelThumbnail = isSuccess && channels.items[0].snippet.thumbnails?.default?.url
+  const channelThumbnail = channels?.items[0].snippet.thumbnails?.default?.url
 
   return (
     <>
