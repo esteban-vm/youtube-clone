@@ -2,8 +2,7 @@
 
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
-import { VideoCard } from '@/video/components'
-import RecommendationsLoading from './loading'
+import { LoadingGrid, VideoCard } from '@/video/components'
 
 export type RecommendationsPageProps = PageProps<'/video/[categoryId]/[videoId]'>
 
@@ -25,7 +24,7 @@ export default function RecommendationsPage({ params }: RecommendationsPageProps
   })
 
   if (isLoading) {
-    return <RecommendationsLoading />
+    return <LoadingGrid />
   }
 
   if (isSuccess) {

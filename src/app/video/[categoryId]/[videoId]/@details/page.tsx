@@ -2,8 +2,7 @@
 
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
-import { VideoPlayer } from '@/video/components'
-import DetailsLoading from './loading'
+import { LoadingSpinner, VideoPlayer } from '@/video/components'
 
 export type DetailsPageProps = PageProps<'/video/[categoryId]/[videoId]'>
 
@@ -20,7 +19,7 @@ export default function DetailsPage({ params }: DetailsPageProps) {
   })
 
   if (isLoading) {
-    return <DetailsLoading />
+    return <LoadingSpinner />
   }
 
   if (isSuccess) {
