@@ -22,7 +22,7 @@ export const useSidebarStore = create<SidebarStore>()(
       name: 'youtube-clone/sidebar-store',
       storage: createJSONStorage(() => localStorage),
       partialize(state) {
-        return { currentItem: state.category }
+        return { category: state.category }
       },
     }
   )
