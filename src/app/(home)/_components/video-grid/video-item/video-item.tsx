@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
-import * as $ from './video-card.styled'
+import * as $ from './video-item.styled'
 
-export function VideoCard({ item }: Props.WithVideoItem) {
+export function VideoItem({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails, statistics } = item
   const { categoryId, channelId, channelTitle, title, publishedAt, thumbnails } = snippet
 

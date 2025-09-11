@@ -11,20 +11,15 @@ export default function DetailsPage({ params }: DetailsPageProps) {
 
   const {
     data: videos,
-    isSuccess,
     isLoading,
+    isSuccess,
   } = useFetchVideos({
     queryKey: [videoId],
     params: { id: videoId },
   })
 
-  if (isLoading) {
-    return <LoadingSpinner />
-  }
-
-  if (isSuccess) {
-    return <VideoPlayer item={videos.items[0]} />
-  }
+  if (isLoading) return <LoadingSpinner />
+  if (isSuccess) return <VideoPlayer item={videos.items[0]} />
 
   return null
 }

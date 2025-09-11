@@ -1,11 +1,12 @@
 'use client'
 
-import { ErrorAlert, LoadingGrid, VideoCard } from '@/home/components'
+import { ErrorAlert, LoadingGrid, VideoGrid } from '@/home/components'
 import { useFetchVideos, useSidebarStore } from '@/hooks'
 
+export type HomePageProps = PageProps<'/'>
+
 export default function HomePage() {
-  const category = useSidebarStore((state) => state.category)
-  const maxResults = 20
+  const categoryId = useSidebarStore((state) => state.category)
 
   const {
     data: videos,
@@ -14,26 +15,18 @@ export default function HomePage() {
     isSuccess,
     isError,
   } = useFetchVideos({
-    queryKey: [category],
+    queryKey: [categoryId],
     params: {
       regionCode: 'MX',
+      maxResults: '20',
       chart: 'mostPopular',
-      videoCategoryId: category,
-      maxResults: maxResults.toString(),
+      videoCategoryId: categoryId,
     },
   })
 
-  if (isLoading) {
-    return <LoadingGrid />
-  }
-
-  if (isError) {
-    return <ErrorAlert error={error} />
-  }
-
-  if (isSuccess) {
-    return videos.items.map((item) => <VideoCard key={item.id} item={item} />)
-  }
+  if (isLoading) return <LoadingGrid />
+  if (isSuccess) return <VideoGrid items={videos.items} />
+  if (isError) return <ErrorAlert error={error} />
 
   return null
 }

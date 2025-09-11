@@ -2,7 +2,7 @@
 
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
-import { LoadingGrid, VideoCard } from '@/video/components'
+import { LoadingGrid, VideoList } from '@/video/components'
 
 export type RecommendationsPageProps = PageProps<'/video/[categoryId]/[videoId]'>
 
@@ -11,25 +11,20 @@ export default function RecommendationsPage({ params }: RecommendationsPageProps
 
   const {
     data: videos,
-    isSuccess,
     isLoading,
+    isSuccess,
   } = useFetchVideos({
     queryKey: [categoryId],
     params: {
-      maxResults: '12',
       regionCode: 'MX',
+      maxResults: '12',
       chart: 'mostPopular',
       videoCategoryId: categoryId,
     },
   })
 
-  if (isLoading) {
-    return <LoadingGrid />
-  }
-
-  if (isSuccess) {
-    return videos.items.map((item) => <VideoCard key={item.id} item={item} />)
-  }
+  if (isLoading) return <LoadingGrid />
+  if (isSuccess) return <VideoList items={videos.items} />
 
   return null
 }

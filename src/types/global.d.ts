@@ -138,6 +138,10 @@ declare global {
       item: APIResponse.VideoItem
     }
 
+    interface WithVideoItems {
+      items: APIResponse.VideoItem[]
+    }
+
     interface NavbarItem {
       id: string
       label: string
