@@ -2,7 +2,7 @@
 
 import { use } from 'react'
 import { useFetchVideos } from '@/hooks'
-import { ChannelInfo, CommentList, VideoPlayer } from '@/video/components'
+import { CommentList, VideoPlayer } from '@/video/components'
 import DetailsLoading from './loading'
 
 export type DetailsPageProps = PageProps<'/video/[categoryId]/[videoId]'>
@@ -27,7 +27,6 @@ export default function DetailsPage({ params }: DetailsPageProps) {
     return (
       <>
         <VideoPlayer item={video} />
-        <ChannelInfo item={video} />
         <CommentList item={video} />
       </>
     )
