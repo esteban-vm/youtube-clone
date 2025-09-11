@@ -42,7 +42,7 @@ export function VideoCard({ item }: Props.WithVideoItem) {
         <Link className='hover:opacity-90' href={channelLink}>
           <$.Avatar>
             {isLoading && <$.Loading color='neutral' />}
-            {isSuccess && <$.AvatarContainer>{avatar && <Image alt='avatar' src={avatar} fill />}</$.AvatarContainer>}
+            {isSuccess && <$.ImageContainer>{avatar && <Image alt='avatar' src={avatar} fill />}</$.ImageContainer>}
           </$.Avatar>
         </Link>
         <$.CardBody>
@@ -110,7 +110,7 @@ $.Avatar = tw(Avatar)`
   w-14
 `
 
-$.AvatarContainer = tw.div`
+$.ImageContainer = tw.div`
   relative
   mx-auto
   size-full
