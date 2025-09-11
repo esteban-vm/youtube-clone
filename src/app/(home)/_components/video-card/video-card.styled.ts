@@ -1,0 +1,68 @@
+import Image from 'next/image'
+import { Avatar, Badge, Card, Loading } from 'rsc-daisyui'
+import tw from 'tailwind-styled-components'
+
+export const AvatarImage = tw(Image)`
+  size-full
+  rounded-full
+`
+
+export const CardBody = tw(Card.Body)`
+  w-4/5
+  gap-0.5
+  p-0
+`
+
+export const CardContent = tw.div`
+  flex
+  items-center
+  gap-1
+  p-1
+`
+
+export const CardTitle = tw(Card.Title)`
+  inline-block
+  truncate
+  text-sm
+  font-semibold
+  hover:opacity-80
+`
+
+export const StyledAvatar = tw(Avatar)`
+  relative
+  size-14
+`
+
+export const StyledBadge = tw(Badge)`
+  absolute
+  right-1.5
+  bottom-2
+  rounded-md
+`
+
+export const StyledCard = tw(Card)`
+  gap-1
+  overflow-hidden
+  shadow-sm
+  dark:rounded-lg
+`
+
+export const StyledLoading = tw(Loading)`
+  absolute
+  top-1/2
+  left-1/2
+  -translate-1/2
+`
+
+export const ThumbnailContainer = tw.figure`
+  relative
+  aspect-video
+  hover:opacity-80
+`
+
+export const ThumbnailImage = tw(Image)`
+  size-full
+  rounded-lg
+  object-cover
+  object-center
+`

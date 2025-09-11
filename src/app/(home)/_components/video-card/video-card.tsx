@@ -1,9 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { Avatar, Badge, Card, Loading } from 'rsc-daisyui'
-import tw from 'tailwind-styled-components'
 import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
+import * as $ from './video-card.styled'
 
 export function VideoCard({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails, statistics } = item
@@ -23,21 +21,21 @@ export function VideoCard({ item }: Props.WithVideoItem) {
   const avatarLink = channels?.items[0].snippet.thumbnails?.default?.url
 
   return (
-    <$.Card>
+    <$.StyledCard>
       <Link href={videoLink}>
         <$.ThumbnailContainer>
-          {thumbnail && <$.Thumbnail alt={title} src={thumbnail} fill />}
-          <$.DurationBadge color='neutral' size='sm'>
+          {thumbnail && <$.ThumbnailImage alt={title} src={thumbnail} fill />}
+          <$.StyledBadge color='neutral' size='sm'>
             {duration}
-          </$.DurationBadge>
+          </$.StyledBadge>
         </$.ThumbnailContainer>
       </Link>
-      <$.Content>
+      <$.CardContent>
         <Link className='hover:opacity-90' href={channelLink}>
-          <$.Avatar>
-            {isLoading && <$.Loading color='neutral' />}
+          <$.StyledAvatar>
+            {isLoading && <$.StyledLoading color='neutral' />}
             {avatarLink && <$.AvatarImage alt='avatar' src={avatarLink} fill />}
-          </$.Avatar>
+          </$.StyledAvatar>
         </Link>
         <$.CardBody>
           <$.CardTitle>
@@ -50,74 +48,7 @@ export function VideoCard({ item }: Props.WithVideoItem) {
             {views} • {date}
           </small>
         </$.CardBody>
-      </$.Content>
-    </$.Card>
+      </$.CardContent>
+    </$.StyledCard>
   )
 }
-
-function $() {}
-
-$.Card = tw(Card)`
-  gap-1
-  overflow-hidden
-  shadow-sm
-  dark:rounded-lg
-`
-
-$.CardBody = tw(Card.Body)`
-  w-4/5
-  gap-0.5
-  p-0
-`
-
-$.CardTitle = tw(Card.Title)`
-  inline-block
-  truncate
-  text-sm
-  font-semibold
-  hover:opacity-80
-`
-
-$.Content = tw.div`
-  flex
-  items-center
-  gap-1
-  p-1
-`
-
-$.Thumbnail = tw(Image)`
-  size-full
-  rounded-lg
-  object-cover
-  object-center
-`
-
-$.ThumbnailContainer = tw.figure`
-  relative
-  aspect-video
-  hover:opacity-80
-`
-
-$.Avatar = tw(Avatar)`
-  relative
-  size-14
-`
-
-$.AvatarImage = tw(Image)`
-  size-full
-  rounded-full
-`
-
-$.Loading = tw(Loading)`
-  absolute
-  top-1/2
-  left-1/2
-  -translate-1/2
-`
-
-$.DurationBadge = tw(Badge)`
-  absolute
-  right-1.5
-  bottom-2
-  rounded-md
-`

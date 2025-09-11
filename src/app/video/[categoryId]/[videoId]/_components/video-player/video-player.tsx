@@ -1,9 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { Avatar } from 'rsc-daisyui'
-import tw from 'tailwind-styled-components'
 import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
+import * as $ from './video-player.styled'
 
 export function VideoPlayer({ item }: Props.WithVideoItem) {
   const { id, snippet } = item
@@ -22,7 +20,7 @@ export function VideoPlayer({ item }: Props.WithVideoItem) {
 
   return (
     <>
-      <$.Video
+      <$.VideoFrame
         allow='accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share'
         referrerPolicy='strict-origin-when-cross-origin'
         src={youtubeLink}
@@ -32,47 +30,12 @@ export function VideoPlayer({ item }: Props.WithVideoItem) {
       <$.InfoContainer>
         <$.InfoContent>
           <Link href={channelLink}>
-            <$.Avatar>{channelThumbnail && <$.AvatarImage alt={channelTitle} src={channelThumbnail} fill />}</$.Avatar>
+            <$.StyledAvatar>
+              {channelThumbnail && <$.AvatarImage alt={channelTitle} src={channelThumbnail} fill />}
+            </$.StyledAvatar>
           </Link>
         </$.InfoContent>
       </$.InfoContainer>
     </>
   )
 }
-
-function $() {}
-
-$.Video = tw.iframe`
-  aspect-video
-  w-full
-`
-
-$.VideoTitle = tw.h3`
-  text-xl
-  font-semibold
-`
-
-$.InfoContainer = tw.div`
-  flex
-  flex-col
-  justify-between
-  space-x-4
-  md:flex-row
-`
-
-$.InfoContent = tw.div`
-  flex
-  items-center
-  justify-between
-  gap-3
-`
-
-$.Avatar = tw(Avatar)`
-  relative
-  size-14
-  hover:opacity-90
-`
-
-$.AvatarImage = tw(Image)`
-  rounded-full
-`

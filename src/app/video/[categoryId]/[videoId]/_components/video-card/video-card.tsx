@@ -1,8 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { Badge, Card } from 'rsc-daisyui'
-import tw from 'tailwind-styled-components'
 import { helpers } from '@/utils'
+import * as $ from './video-card.styled'
 
 export function VideoCard({ item }: Props.WithVideoItem) {
   const { id, contentDetails, snippet, statistics } = item
@@ -16,13 +14,13 @@ export function VideoCard({ item }: Props.WithVideoItem) {
   const videoLink = helpers.typedRoute(`/video/${categoryId}/${id}`)
 
   return (
-    <$.Card side>
+    <$.StyledCard side>
       <Link className='w-2/5' href={videoLink}>
         <$.ThumbnailContainer>
-          {thumbnail && <$.Thumbnail alt={title} src={thumbnail} fill />}
-          <$.DurationBadge color='neutral' size='xs'>
+          {thumbnail && <$.ThumbnailImage alt={title} src={thumbnail} fill />}
+          <$.StyledBadge color='neutral' size='xs'>
             {duration}
-          </$.DurationBadge>
+          </$.StyledBadge>
         </$.ThumbnailContainer>
       </Link>
       <$.CardBody>
@@ -36,51 +34,6 @@ export function VideoCard({ item }: Props.WithVideoItem) {
           {views} • {date}
         </small>
       </$.CardBody>
-    </$.Card>
+    </$.StyledCard>
   )
 }
-
-function $() {}
-
-$.Card = tw(Card)`
-  max-w-xl
-  gap-1
-  overflow-hidden
-  dark:rounded-lg
-`
-
-$.CardBody = tw(Card.Body)`
-  w-3/5
-  gap-0.5
-  p-1
-  pl-0
-`
-
-$.CardTitle = tw(Card.Title)`
-  inline-block
-  truncate
-  text-sm
-  font-semibold
-  hover:opacity-80
-`
-
-$.Thumbnail = tw(Image)`
-  size-full
-  rounded-lg
-  object-cover
-  object-center
-`
-
-$.ThumbnailContainer = tw.figure`
-  relative
-  aspect-video
-  hover:opacity-80
-`
-
-$.DurationBadge = tw(Badge)`
-  absolute
-  right-1
-  bottom-1
-  size-fit
-  rounded-md
-`
