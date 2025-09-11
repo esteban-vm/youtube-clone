@@ -9,24 +9,18 @@ export function VideoCard({ item }: Props.WithVideoItem) {
   const { id, snippet, contentDetails, statistics } = item
   const { categoryId, channelId, channelTitle, title, publishedAt, thumbnails } = snippet
 
-  const {
-    data: channels,
-    isLoading,
-    isSuccess,
-  } = useFetchChannels({
+  const { data: channels, isLoading } = useFetchChannels({
     queryKey: [channelId],
     params: { id: channelId },
   })
 
   const thumbnail = thumbnails?.standard?.url
-  const avatar = channels?.items[0].snippet.thumbnails?.default?.url
-
-  const views = helpers.formatViews(statistics.viewCount)
   const date = helpers.formatDate(publishedAt)
+  const views = helpers.formatViews(statistics.viewCount)
   const duration = helpers.formatDuration(contentDetails.duration)
-
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
   const videoLink = helpers.typedRoute(`/video/${categoryId}/${id}`)
+  const avatarLink = channels?.items[0].snippet.thumbnails?.default?.url
 
   return (
     <$.Card>
@@ -42,7 +36,7 @@ export function VideoCard({ item }: Props.WithVideoItem) {
         <Link className='hover:opacity-90' href={channelLink}>
           <$.Avatar>
             {isLoading && <$.Loading color='neutral' />}
-            {isSuccess && <$.ImageContainer>{avatar && <Image alt='avatar' src={avatar} fill />}</$.ImageContainer>}
+            {avatarLink && <$.AvatarImage alt='avatar' src={avatarLink} fill />}
           </$.Avatar>
         </Link>
         <$.CardBody>
@@ -106,13 +100,10 @@ $.ThumbnailContainer = tw.figure`
 
 $.Avatar = tw(Avatar)`
   relative
-  h-fit
-  w-14
+  size-14
 `
 
-$.ImageContainer = tw.div`
-  relative
-  mx-auto
+$.AvatarImage = tw(Image)`
   size-full
   rounded-full
 `
