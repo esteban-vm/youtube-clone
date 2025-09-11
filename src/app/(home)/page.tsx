@@ -1,8 +1,7 @@
 'use client'
 
-import { ErrorAlert, VideoCard } from '@/home/components'
+import { ErrorAlert, LoadingGrid, VideoCard } from '@/home/components'
 import { useFetchVideos, useSidebarStore } from '@/hooks'
-import HomeLoading from './loading'
 
 export default function HomePage() {
   const category = useSidebarStore((state) => state.category)
@@ -25,15 +24,15 @@ export default function HomePage() {
   })
 
   if (isLoading) {
-    return <HomeLoading />
-  }
-
-  if (isSuccess) {
-    return videos.items.map((item) => <VideoCard key={item.id} item={item} />)
+    return <LoadingGrid />
   }
 
   if (isError) {
     return <ErrorAlert error={error} />
+  }
+
+  if (isSuccess) {
+    return videos.items.map((item) => <VideoCard key={item.id} item={item} />)
   }
 
   return null
