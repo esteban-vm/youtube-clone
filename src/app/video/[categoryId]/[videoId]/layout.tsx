@@ -2,7 +2,7 @@ import tw from 'tailwind-styled-components'
 
 export type VideoLayoutProps = LayoutProps<'/video/[categoryId]/[videoId]'>
 
-export default async function VideoLayout({ children, details, recommendations }: VideoLayoutProps) {
+export default function VideoLayout({ children, details, recommendations }: VideoLayoutProps) {
   return (
     <Container>
       {children}
