@@ -4,17 +4,15 @@ export type VideoLayoutProps = LayoutProps<'/video/[categoryId]/[videoId]'>
 
 export default async function VideoLayout({ children, details, recommendations }: VideoLayoutProps) {
   return (
-    <$.Container>
+    <Container>
       {children}
-      <$.Details>{details}</$.Details>
-      <$.Recommendations>{recommendations}</$.Recommendations>
-    </$.Container>
+      <Details>{details}</Details>
+      <Recommendations>{recommendations}</Recommendations>
+    </Container>
   )
 }
 
-function $() {}
-
-$.Container = tw.section`
+const Container = tw.section`
   grid
   size-full
   gap-3
@@ -22,7 +20,7 @@ $.Container = tw.section`
   lg:grid-cols-3
 `
 
-$.Details = tw.main`
+const Details = tw.main`
   flex
   w-full
   min-w-72
@@ -31,7 +29,7 @@ $.Details = tw.main`
   md:col-span-2
 `
 
-$.Recommendations = tw.aside`
+const Recommendations = tw.aside`
   flex
   w-full
   flex-col
