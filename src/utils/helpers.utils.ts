@@ -22,10 +22,10 @@ export const formatDuration = (duration: string) => {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`
 }
 
-export const formatViews = (views: string | number) => {
-  const numViews = typeof views === 'string' ? parseFloat(views) : views
+export const formatValue = (value: string | number, type: 'vistas' | 'suscriptores' = 'vistas') => {
+  const numValue = typeof value === 'string' ? parseFloat(value) : value
 
-  if (numViews < 1_000) return numViews.toString()
+  if (numValue < 1_000) return numValue.toString()
 
   const units = [
     { value: 1e9, suffix: ' mil M' },
@@ -34,8 +34,8 @@ export const formatViews = (views: string | number) => {
   ]
 
   for (const unit of units) {
-    if (numViews >= unit.value) {
-      return (numViews / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix + ' vistas'
+    if (numValue >= unit.value) {
+      return (numValue / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix + ' ' + type
     }
   }
 }

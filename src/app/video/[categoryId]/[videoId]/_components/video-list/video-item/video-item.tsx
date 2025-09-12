@@ -8,7 +8,7 @@ export function VideoItem({ item }: Props.WithVideoItem) {
 
   const thumbnail = thumbnails?.standard?.url
   const date = helpers.formatDate(publishedAt)
-  const views = helpers.formatViews(statistics.viewCount)
+  const views = helpers.formatValue(statistics.viewCount)
   const duration = helpers.formatDuration(contentDetails.duration)
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
   const videoLink = helpers.typedRoute(`/video/${categoryId}/${id}`)
