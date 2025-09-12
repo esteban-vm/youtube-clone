@@ -1,5 +1,5 @@
 import { VideoItem } from './video-item'
 
-export function VideoList({ items }: Props.WithVideoItems) {
-  return items.map((item) => <VideoItem key={item.id} item={item} />)
+export function VideoList({ videos }: Props.WithVideos) {
+  return videos.map((video) => <VideoItem key={video.id} video={video} />)
 }

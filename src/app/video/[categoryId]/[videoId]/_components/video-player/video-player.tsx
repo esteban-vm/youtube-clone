@@ -3,8 +3,8 @@ import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
 import * as $ from './video-player.styled'
 
-export function VideoPlayer({ item }: Props.WithVideoItem) {
-  const { id, snippet } = item
+export function VideoPlayer({ video }: Props.WithVideo) {
+  const { id, snippet } = video
   const { channelId } = snippet
 
   const { data: channels } = useFetchChannels({

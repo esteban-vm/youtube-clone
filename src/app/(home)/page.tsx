@@ -25,7 +25,7 @@ export default function HomePage() {
   })
 
   if (isLoading) return <LoadingGrid />
-  if (isSuccess) return <VideoGrid items={videos.items} />
+  if (isSuccess) return <VideoGrid videos={videos.items} />
   if (isError) return <ErrorAlert error={error} />
 
   return null

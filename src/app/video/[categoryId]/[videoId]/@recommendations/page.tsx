@@ -24,7 +24,7 @@ export default function RecommendationsPage({ params }: RecommendationsPageProps
   })
 
   if (isLoading) return <LoadingGrid />
-  if (isSuccess) return <VideoList items={videos.items} />
+  if (isSuccess) return <VideoList videos={videos.items} />
 
   return null
 }

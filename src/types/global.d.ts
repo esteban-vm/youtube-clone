@@ -189,12 +189,12 @@ declare global {
   }
 
   namespace Props {
-    interface WithVideoItem {
-      item: APIResponse.Video
+    interface WithVideo {
+      video: APIResponse.Video
     }
 
-    interface WithVideoItems {
-      items: APIResponse.Video[]
+    interface WithVideos {
+      videos: APIResponse.Video[]
     }
 
     interface NavbarItem {

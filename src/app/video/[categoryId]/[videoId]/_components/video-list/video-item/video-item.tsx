@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { helpers } from '@/utils'
 import * as $ from './video-item.styled'
 
-export function VideoItem({ item }: Props.WithVideoItem) {
-  const { id, contentDetails, snippet, statistics } = item
+export function VideoItem({ video }: Props.WithVideo) {
+  const { id, contentDetails, snippet, statistics } = video
   const { categoryId, channelId, channelTitle, title, publishedAt, thumbnails } = snippet
 
   const thumbnail = thumbnails?.standard?.url

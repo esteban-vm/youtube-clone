@@ -19,7 +19,7 @@ export default function DetailsPage({ params }: DetailsPageProps) {
   })
 
   if (isLoading) return <LoadingSpinner />
-  if (isSuccess) return <VideoPlayer item={videos.items[0]} />
+  if (isSuccess) return <VideoPlayer video={videos.items[0]} />
 
   return null
 }
