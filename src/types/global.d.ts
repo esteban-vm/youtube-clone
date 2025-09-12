@@ -2,8 +2,8 @@ import type { Route } from 'next'
 
 declare global {
   namespace APIResponse {
-    interface ChannelItem {
-      kind: string
+    interface Channel {
+      kind: 'youtube#channel'
       etag: string
       id: string
       snippet: {
@@ -28,6 +28,7 @@ declare global {
             height: number
           }
         }
+        defaultLanguage: string
         localized: {
           title: string
           description: string
@@ -37,30 +38,73 @@ declare global {
       contentDetails: {
         relatedPlaylists: {
           likes: string
+          favorites: string
           uploads: string
         }
       }
       statistics: {
-        viewCount: string
-        likeCount: string
-        favoriteCount: string
-        commentCount: string
-        subscriberCount: string
+        viewCount: number
+        subscriberCount: number
+        hiddenSubscriberCount: boolean
+        videoCount: number
       }
     }
 
     interface ChannelList {
-      kind: string
+      kind: 'youtube#channelListResponse'
       etag: string
-      items: ChannelItem[]
+      nextPageToken: string
+      prevPageToken: string
+      items: Channel[]
       pageInfo: {
         totalResults: number
         resultsPerPage: number
       }
     }
 
-    interface VideoItem {
-      kind: string
+    interface Comment {
+      kind: 'youtube#comment'
+      etag: string
+      id: string
+      snippet: {
+        authorDisplayName: string
+        authorProfileImageUrl: string
+        authorChannelUrl: string
+        authorChannelId: {
+          value: string
+        }
+        channelId: string
+        textDisplay: string
+        textOriginal: string
+        parentId: string
+        canRate: boolean
+        viewerRating: string
+        likeCount: number
+        moderationStatus: string
+        publishedAt: string
+        updatedAt: string
+      }
+    }
+
+    interface CommentThread {
+      kind: 'youtube#commentThread'
+      etag: string
+      id: string
+      snippet: {
+        channelId: string
+        videoId: string
+        topLevelComment: Comment
+        canReply: boolean
+        totalReplyCount: number
+        isPublic: boolean
+      }
+      replies: {
+        comments: Comment[]
+      }
+    }
+
+    interface Video {
+      kind: 'youtube#video'
       etag: string
       id: string
       snippet: {
@@ -96,15 +140,15 @@ declare global {
           }
         }
         channelTitle: string
-        tags?: string[]
+        tags: string[]
         categoryId: string
         liveBroadcastContent: string
+        defaultLanguage: string
         localized: {
           title: string
           description: string
         }
         defaultAudioLanguage: string
-        defaultLanguage?: string
       }
       contentDetails: {
         duration: string
@@ -112,22 +156,26 @@ declare global {
         definition: string
         caption: string
         licensedContent: boolean
+        regionRestriction: object
         contentRating: object
         projection: string
+        hasCustomThumbnail: boolean
       }
       statistics: {
         viewCount: string
         likeCount: string
+        dislikeCount: string
         favoriteCount: string
         commentCount: string
       }
     }
 
     interface VideoList {
-      kind: string
+      kind: 'youtube#videoListResponse'
       etag: string
-      items: VideoItem[]
       nextPageToken: string
+      prevPageToken: string
+      items: Video[]
       pageInfo: {
         totalResults: number
         resultsPerPage: number
@@ -142,11 +190,11 @@ declare global {
 
   namespace Props {
     interface WithVideoItem {
-      item: APIResponse.VideoItem
+      item: APIResponse.Video
     }
 
     interface WithVideoItems {
-      items: APIResponse.VideoItem[]
+      items: APIResponse.Video[]
     }
 
     interface NavbarItem {
