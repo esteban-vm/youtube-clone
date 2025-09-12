@@ -40,6 +40,13 @@ declare global {
           uploads: string
         }
       }
+      statistics: {
+        viewCount: string
+        likeCount: string
+        favoriteCount: string
+        commentCount: string
+        subscriberCount: string
+      }
     }
 
     interface ChannelList {
