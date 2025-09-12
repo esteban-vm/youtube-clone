@@ -17,7 +17,8 @@ export function VideoPlayer({ video }: Props.WithVideo) {
   const channelTitle = channels?.items[0].snippet.title ?? ''
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
   const channelThumbnail = channels?.items[0].snippet.thumbnails?.default?.url
-  // const subscribers= helpers.formatValue(statistics.likeCount)
+  const subscriberCount = channels?.items[0].statistics.subscriberCount ?? '0'
+  const subscribers = helpers.formatValue(subscriberCount, 'suscriptores')
 
   return (
     <>
@@ -30,13 +31,19 @@ export function VideoPlayer({ video }: Props.WithVideo) {
       <$.VideoTitle>{videoTitle}</$.VideoTitle>
       <$.InfoContainer>
         <$.InfoContent>
-          <Link href={channelLink}>
+          <Link href={channelLink} passHref>
             <$.StyledAvatar>
               {channelThumbnail && <$.AvatarImage alt={channelTitle} src={channelThumbnail} fill />}
             </$.StyledAvatar>
           </Link>
-          <span className='mr-2 text-sm text-gray-500'></span>
+          <$.ChannelInfo>
+            <Link href={channelLink} passHref>
+              <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
+            </Link>
+            <$.ChannelSubscribers>{subscribers}</$.ChannelSubscribers>
+          </$.ChannelInfo>
         </$.InfoContent>
+        <$.StyledButton>Suscríbete</$.StyledButton>
       </$.InfoContainer>
     </>
   )
