@@ -46,7 +46,7 @@ export const useFetchChannels = ({ params, queryKey }: UseFetchBaseProps) => {
     url: 'channels',
     params: {
       ...params,
-      part: ['snippet', 'contentDetails'].toString(),
+      part: ['snippet', 'statistics', 'contentDetails'].toString(),
     },
   })
 }
