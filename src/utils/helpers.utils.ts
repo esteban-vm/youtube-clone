@@ -38,6 +38,8 @@ export const formatValue = (value: string | number, type: 'vistas' | 'suscriptor
       return (numValue / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix + ' ' + type
     }
   }
+
+  return ''
 }
 
 export const typedRoute = <T extends string>(route: Route<T>) => route
