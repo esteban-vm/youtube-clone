@@ -28,9 +28,16 @@ export const CardTitle = tw(Card.Title)`
   hover:opacity-80
 `
 
+export const ChannelTitle = tw.span`
+  block
+  text-sm
+  hover:opacity-80
+`
+
 export const StyledAvatar = tw(Avatar)`
   relative
   size-14
+  hover:opacity-80
 `
 
 export const StyledBadge = tw(Badge)`

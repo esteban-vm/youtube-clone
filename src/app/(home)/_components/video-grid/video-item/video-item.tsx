@@ -31,7 +31,7 @@ export function VideoItem({ video }: Props.WithVideo) {
         </$.ThumbnailContainer>
       </Link>
       <$.CardContent>
-        <Link className='hover:opacity-90' href={channelLink}>
+        <Link href={channelLink}>
           <$.StyledAvatar>
             {isLoading && <$.StyledLoading color='neutral' />}
             {avatarLink && <$.AvatarImage alt='avatar' src={avatarLink} fill />}
@@ -41,8 +41,8 @@ export function VideoItem({ video }: Props.WithVideo) {
           <$.CardTitle>
             <Link href={videoLink}>{title}</Link>
           </$.CardTitle>
-          <Link className='block text-sm hover:opacity-80' href={channelLink}>
-            {channelTitle}
+          <Link href={channelLink}>
+            <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
           </Link>
           <small className='text-xs'>
             {views} • {date}
