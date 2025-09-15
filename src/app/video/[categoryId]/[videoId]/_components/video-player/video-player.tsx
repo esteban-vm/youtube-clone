@@ -29,8 +29,8 @@ export function VideoPlayer({ video }: Props.WithVideo) {
         allowFullScreen
       />
       <$.VideoTitle>{videoTitle}</$.VideoTitle>
-      <$.InfoContainer>
-        <$.InfoContent>
+      <$.VideoDetails>
+        <$.ChannelContainer>
           <Link href={channelLink} passHref>
             <$.StyledAvatar>
               {channelThumbnail && <$.AvatarImage alt={channelTitle} src={channelThumbnail} fill />}
@@ -42,9 +42,15 @@ export function VideoPlayer({ video }: Props.WithVideo) {
             </Link>
             <$.ChannelSubscribers>{subscribers}</$.ChannelSubscribers>
           </$.ChannelInfo>
-        </$.InfoContent>
-        <$.StyledButton>Suscríbete</$.StyledButton>
-      </$.InfoContainer>
+          <$.StyledButton>Suscríbete</$.StyledButton>
+        </$.ChannelContainer>
+        <$.ActionContainer>
+          <span>likes</span>
+          <span>dislikes</span>
+          <span>share</span>
+          <span>save</span>
+        </$.ActionContainer>
+      </$.VideoDetails>
     </>
   )
 }

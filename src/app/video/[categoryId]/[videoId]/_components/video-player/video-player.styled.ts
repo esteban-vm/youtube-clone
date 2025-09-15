@@ -2,8 +2,23 @@ import Image from 'next/image'
 import { Avatar, Button } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
+export const ActionContainer = tw.div`
+  flex
+  items-center
+  gap-1.5
+  border
+  border-primary
+`
+
 export const AvatarImage = tw(Image)`
   rounded-full
+`
+
+export const ChannelContainer = tw.div`
+  flex
+  items-center
+  justify-between
+  gap-3
 `
 
 export const ChannelInfo = tw.div`
@@ -24,21 +39,6 @@ export const ChannelTitle = tw.span`
   hover:opacity-80
 `
 
-export const InfoContainer = tw.div`
-  flex
-  flex-col
-  justify-between
-  space-x-4
-  md:flex-row
-`
-
-export const InfoContent = tw.div`
-  flex
-  items-center
-  justify-between
-  gap-3
-`
-
 export const StyledAvatar = tw(Avatar)`
   relative
   size-14
@@ -48,6 +48,15 @@ export const StyledAvatar = tw(Avatar)`
 export const StyledButton = tw(Button)`
   bg-red-500
   text-white
+  rounded-md
+`
+
+export const VideoDetails = tw.div`
+  flex
+  flex-col
+  justify-between
+  space-x-4
+  md:flex-row
 `
 
 export const VideoFrame = tw.iframe`
