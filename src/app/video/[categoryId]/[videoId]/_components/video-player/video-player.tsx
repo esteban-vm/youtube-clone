@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import { LuListMusic, LuShare2, LuThumbsDown, LuThumbsUp } from 'react-icons/lu'
 import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
 import * as $ from './video-player.styled'
 
 export function VideoPlayer({ video }: Props.WithVideo) {
-  const { id, snippet } = video
+  const { id, snippet, statistics } = video
   const { channelId } = snippet
 
   const { data: channels } = useFetchChannels({
@@ -45,10 +46,18 @@ export function VideoPlayer({ video }: Props.WithVideo) {
           <$.StyledButton>Suscríbete</$.StyledButton>
         </$.ChannelContainer>
         <$.ActionContainer>
-          <span>likes</span>
-          <span>dislikes</span>
-          <span>share</span>
-          <span>save</span>
+          <span>
+            <LuThumbsUp /> {helpers.formatValue(statistics.likeCount)}
+          </span>
+          <span>
+            <LuThumbsDown /> {helpers.formatValue(statistics.dislikeCount)}
+          </span>
+          <span>
+            <LuShare2 /> Share
+          </span>
+          <span>
+            <LuListMusic /> Save
+          </span>
         </$.ActionContainer>
       </$.VideoDetails>
     </>

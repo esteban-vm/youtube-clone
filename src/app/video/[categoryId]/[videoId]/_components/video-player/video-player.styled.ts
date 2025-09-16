@@ -5,9 +5,11 @@ import tw from 'tailwind-styled-components'
 export const ActionContainer = tw.div`
   flex
   items-center
-  gap-1.5
-  border
-  border-primary
+  gap-3
+  px-3.5
+  [&_svg]:inline
+  [&_svg]:fill-gray-600
+  [&_svg]:stroke-gray-600
 `
 
 export const AvatarImage = tw(Image)`
@@ -19,6 +21,7 @@ export const ChannelContainer = tw.div`
   items-center
   justify-between
   gap-3
+  px-3.5
 `
 
 export const ChannelInfo = tw.div`
