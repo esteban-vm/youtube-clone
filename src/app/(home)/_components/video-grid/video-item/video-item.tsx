@@ -45,7 +45,7 @@ export function VideoItem({ video }: Props.WithVideo) {
             <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
           </Link>
           <small className='text-xs'>
-            {views} • {date}
+            {views} vistas • {date}
           </small>
         </$.CardBody>
       </$.CardContent>

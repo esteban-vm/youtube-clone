@@ -22,7 +22,7 @@ export const formatDuration = (duration: string) => {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`
 }
 
-export const formatValue = (value: string | number, type: 'vistas' | 'suscriptores' = 'vistas') => {
+export const formatValue = (value: string | number) => {
   const numValue = typeof value === 'string' ? parseFloat(value) : value
 
   if (numValue < 1_000) return numValue.toString()
@@ -35,11 +35,11 @@ export const formatValue = (value: string | number, type: 'vistas' | 'suscriptor
 
   for (const unit of units) {
     if (numValue >= unit.value) {
-      return (numValue / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix + ' ' + type
+      return (numValue / unit.value).toFixed(1).replace(/\.0$/, '') + unit.suffix
     }
   }
 
-  return ''
+  return '0'
 }
 
 export const typedRoute = <T extends string>(route: Route<T>) => route
