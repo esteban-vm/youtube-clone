@@ -5,9 +5,8 @@ import tw from 'tailwind-styled-components'
 export const ActionContainer = tw.div`
   flex
   items-center
-  gap-3
+  gap-1.5
   px-3.5
-  [&_svg]:inline
   [&_svg]:fill-gray-600
   [&_svg]:stroke-gray-600
 `
@@ -27,7 +26,7 @@ export const ChannelContainer = tw.div`
 export const ChannelInfo = tw.div`
   flex
   flex-col
-  space-y-1
+  gap-1
 `
 
 export const ChannelSubscribers = tw.span`
@@ -52,6 +51,7 @@ export const StyledButton = tw(Button)`
   bg-red-500
   text-white
   rounded-md
+  hover:opacity-80
 `
 
 export const VideoDetails = tw.div`
