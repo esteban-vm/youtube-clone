@@ -7,8 +7,6 @@ export const ActionContainer = tw.div`
   items-center
   gap-1.5
   px-3.5
-  [&_svg]:fill-gray-600
-  [&_svg]:stroke-gray-600
 `
 
 export const AvatarImage = tw(Image)`
