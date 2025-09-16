@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { LuListMusic, LuShare2, LuThumbsDown, LuThumbsUp } from 'react-icons/lu'
+import { LuListMusic, LuShare2, LuThumbsUp } from 'react-icons/lu'
+import { Button } from 'rsc-daisyui'
 import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
 import * as $ from './video-player.styled'
@@ -19,7 +20,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
   const channelThumbnail = channels?.items[0].snippet.thumbnails?.default?.url
   const subscriberCount = channels?.items[0].statistics.subscriberCount ?? '0'
-  const subscribers = helpers.formatValue(subscriberCount, 'suscriptores')
+  const subscribers = helpers.formatValue(subscriberCount)
 
   return (
     <>
@@ -41,23 +42,20 @@ export function VideoPlayer({ video }: Props.WithVideo) {
             <Link href={channelLink} passHref>
               <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
             </Link>
-            <$.ChannelSubscribers>{subscribers}</$.ChannelSubscribers>
+            <$.ChannelSubscribers>{subscribers} suscriptores</$.ChannelSubscribers>
           </$.ChannelInfo>
           <$.StyledButton>Suscríbete</$.StyledButton>
         </$.ChannelContainer>
         <$.ActionContainer>
-          <span>
+          <Button size='sm' ghost>
             <LuThumbsUp /> {helpers.formatValue(statistics.likeCount)}
-          </span>
-          <span>
-            <LuThumbsDown /> {helpers.formatValue(statistics.dislikeCount)}
-          </span>
-          <span>
-            <LuShare2 /> Share
-          </span>
-          <span>
-            <LuListMusic /> Save
-          </span>
+          </Button>
+          <Button size='sm' ghost>
+            <LuShare2 /> Compartir
+          </Button>
+          <Button size='sm' ghost>
+            <LuListMusic /> Guardar
+          </Button>
         </$.ActionContainer>
       </$.VideoDetails>
     </>
