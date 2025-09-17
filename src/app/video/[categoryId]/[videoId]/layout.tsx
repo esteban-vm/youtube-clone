@@ -25,7 +25,7 @@ const Details = tw.main`
   w-full
   min-w-72
   flex-col
-  space-y-4
+  space-y-2
   md:col-span-2
 `
 
