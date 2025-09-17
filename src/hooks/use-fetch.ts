@@ -52,7 +52,7 @@ export const useFetchChannels = ({ params, queryKey }: UseFetchBaseProps) => {
 }
 
 export const useFetchComments = ({ params, queryKey }: UseFetchBaseProps) => {
-  return useFetch<APIResponse.CommentThread>({
+  return useFetch<APIResponse.CommentThreadList>({
     queryKey,
     url: 'commentThreads',
     params: {
