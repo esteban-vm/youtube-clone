@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Avatar, Button } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
@@ -7,10 +6,6 @@ export const ActionContainer = tw.div`
   items-center
   gap-1.5
   px-3.5
-`
-
-export const AvatarImage = tw(Image)`
-  rounded-full
 `
 
 export const ChannelContainer = tw.div`
@@ -58,14 +53,4 @@ export const VideoDetails = tw.div`
   justify-between
   space-x-4
   md:flex-row
-`
-
-export const VideoFrame = tw.iframe`
-  aspect-video
-  w-full
-`
-
-export const VideoTitle = tw.h3`
-  text-xl
-  font-semibold
 `
