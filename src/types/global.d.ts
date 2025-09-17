@@ -103,6 +103,17 @@ declare global {
       }
     }
 
+    interface CommentThreadList {
+      kind: 'youtube#commentThreadListResponse'
+      etag: string
+      nextPageToken: string
+      items: CommentThread[]
+      pageInfo: {
+        totalResults: number
+        resultsPerPage: number
+      }
+    }
+
     interface Video {
       kind: 'youtube#video'
       etag: string
@@ -191,6 +202,10 @@ declare global {
   namespace Props {
     interface WithVideo {
       video: APIResponse.Video
+    }
+
+    interface WithComment {
+      comment: APIResponse.Comment
     }
 
     interface WithVideos {
