@@ -205,7 +205,7 @@ declare global {
     }
 
     interface WithComment {
-      comment: APIResponse.Comment
+      comment: APIResponse.CommentThread
     }
 
     interface WithVideos {
