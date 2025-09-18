@@ -74,7 +74,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
           </Button>
         </$.ActionContainer>
       </$.VideoDetails>
-      <Collapse as='details' className='border-none bg-base-200 dark:rounded-md' icon='arrow'>
+      <Collapse as='details' className='bg-base-200 dark:rounded-md' icon='arrow'>
         <Collapse.Title as='summary' className='select-none'>
           {views} vistas • {date}
         </Collapse.Title>
