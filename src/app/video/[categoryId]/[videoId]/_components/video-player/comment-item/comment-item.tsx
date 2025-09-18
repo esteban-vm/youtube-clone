@@ -5,17 +5,19 @@ import { helpers } from '@/utils'
 import * as $ from './comment-item.styled'
 
 export function CommentItem({ comment }: Props.WithComment) {
-  const { authorDisplayName, updatedAt, textDisplay, likeCount } = comment.snippet.topLevelComment.snippet
+  const { authorDisplayName, authorProfileImageUrl, updatedAt, textDisplay, likeCount } =
+    comment.snippet.topLevelComment.snippet
+
   const date = helpers.formatDate(updatedAt)
   const likes = likeCount ? helpers.formatValue(likeCount) : ''
 
   return (
-    <List.Row>
+    <List.Row className='shadow-none'>
       <$.ImageContainer>
-        <Image alt='' className='' src='https://img.daisyui.com/images/profile/demo/1@94.webp' fill />
+        <Image alt={authorDisplayName} src={authorProfileImageUrl} fill />
       </$.ImageContainer>
       <$.InfoContainer>
-        <$.CommenterName>@{authorDisplayName}</$.CommenterName>
+        <$.CommenterName>{authorDisplayName}</$.CommenterName>
         <span className='opacity-60'>{date}</span>
         <p>{textDisplay}</p>
         <LuThumbsUp />
