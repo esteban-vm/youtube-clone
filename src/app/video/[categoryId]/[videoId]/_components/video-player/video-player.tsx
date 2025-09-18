@@ -1,13 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { LuListMusic, LuShare2, LuThumbsUp } from 'react-icons/lu'
-import { Button, Collapse } from 'rsc-daisyui'
+import { Button, Collapse, List } from 'rsc-daisyui'
 import { useFetchChannels, useFetchComments } from '@/hooks'
 import { helpers } from '@/utils'
+import { CommentItem } from './comment-item'
 import * as $ from './video-player.styled'
 
 export function VideoPlayer({ video }: Props.WithVideo) {
   const { id: videoId, snippet, statistics } = video
+  const { commentCount, viewCount } = statistics
   const { channelId, description, publishedAt } = snippet
 
   const { data: channels } = useFetchChannels({
@@ -15,7 +17,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
     params: { id: channelId },
   })
 
-  const { data: _comments } = useFetchComments({
+  const { data: commentThreads, isSuccess } = useFetchComments({
     queryKey: ['Comments', videoId],
     params: {
       videoId,
@@ -29,9 +31,11 @@ export function VideoPlayer({ video }: Props.WithVideo) {
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
   const channelThumbnail = channels?.items[0].snippet.thumbnails?.default?.url
   const subscriberCount = channels?.items[0].statistics.subscriberCount ?? '0'
-  const subscribers = helpers.formatValue(subscriberCount)
+
   const date = helpers.formatDate(publishedAt)
-  const views = helpers.formatValue(statistics.viewCount)
+  const views = helpers.formatValue(viewCount)
+  const subscribers = helpers.formatValue(subscriberCount)
+  const comments = helpers.formatValue(commentCount)
 
   return (
     <>
@@ -42,7 +46,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
         src={youtubeLink}
         allowFullScreen
       />
-      <h3 className='text-xl font-semibold'>{videoTitle}</h3>
+      <$.VideoTitle>{videoTitle}</$.VideoTitle>
       <$.VideoDetails>
         <$.ChannelContainer>
           <Link href={channelLink} passHref>
@@ -82,6 +86,10 @@ export function VideoPlayer({ video }: Props.WithVideo) {
           )}
         </Collapse.Content>
       </Collapse>
+      <List className='bg-base-200 shadow-none'>
+        <$.ListTitle>{comments} comentarios</$.ListTitle>
+        {isSuccess && commentThreads.items.map((comment) => <CommentItem key={comment.id} comment={comment} />)}
+      </List>
     </>
   )
 }
