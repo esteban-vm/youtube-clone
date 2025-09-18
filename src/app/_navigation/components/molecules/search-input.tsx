@@ -21,12 +21,15 @@ export function SearchInput() {
   }
 
   useEffect(() => {
-    document.addEventListener('keydown', (event) => {
+    const listener = (event: KeyboardEvent) => {
       if (event.key === 'k' && event.ctrlKey) {
         event.preventDefault()
         inputRef.current.focus()
       }
-    })
+    }
+
+    document.addEventListener('keydown', listener)
+    return () => document.removeEventListener('keydown', listener)
   }, [])
 
   return (
