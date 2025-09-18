@@ -7,7 +7,7 @@ import * as $ from './comment-item.styled'
 export function CommentItem({ comment }: Props.WithComment) {
   const { authorDisplayName, updatedAt, textDisplay, likeCount } = comment.snippet.topLevelComment.snippet
   const date = helpers.formatDate(updatedAt)
-  const likes = helpers.formatValue(likeCount)
+  const likes = likeCount ? helpers.formatValue(likeCount) : ''
 
   return (
     <List.Row>
