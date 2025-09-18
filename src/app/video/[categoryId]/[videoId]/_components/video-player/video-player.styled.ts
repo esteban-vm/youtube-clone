@@ -34,6 +34,13 @@ export const ChannelTitle = tw.span`
   hover:opacity-80
 `
 
+export const ListTitle = tw.li`
+  p-4
+  pb-2
+  text-sm
+  tracking-wide
+`
+
 export const StyledAvatar = tw(Avatar)`
   relative
   size-14
@@ -53,4 +60,9 @@ export const VideoDetails = tw.div`
   justify-between
   space-x-4
   md:flex-row
+`
+
+export const VideoTitle = tw.h3`
+  text-xl
+  font-semibold
 `
