@@ -5,8 +5,8 @@ export default async function ChannelPage({ params }: ChannelPageProps) {
 
   return (
     <section>
-      <h2>Channel Page</h2>
-      <p>Channel: {channelId}</p>
+      <p>Channel Page</p>
+      <p>Channel id: {channelId}</p>
     </section>
   )
 }
