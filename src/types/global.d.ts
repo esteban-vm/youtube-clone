@@ -48,6 +48,22 @@ declare global {
         hiddenSubscriberCount: boolean
         videoCount: number
       }
+      brandingSettings: {
+        channel: {
+          title: string
+          description: string
+          keywords: string
+          trackingAnalyticsAccountId: string
+          unsubscribedTrailer: string
+          defaultLanguage: string
+          country: string
+        }
+        watch: {
+          textColor: string
+          backgroundColor: string
+          featuredPlaylistId: string
+        }
+      }
     }
 
     interface ChannelList {
