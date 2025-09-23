@@ -9,7 +9,7 @@ export interface UseFetchBaseProps {
 }
 
 export interface UseFetchProps<TData, TError> extends UseFetchBaseProps {
-  url: 'videos' | 'channels' | 'commentThreads'
+  url: 'videos' | 'channels' | 'commentThreads' | 'playlistItems'
   requestConfig?: Omit<AxiosRequestConfig, 'baseURL' | 'url' | 'params'>
   queryOptions?: Omit<UseQueryOptions<TData, TError>, 'queryKey' | 'queryFn'>
 }
@@ -58,6 +58,17 @@ export const useFetchComments = ({ params, queryKey }: UseFetchBaseProps) => {
     params: {
       ...params,
       part: ['snippet', 'replies'].toString(),
+    },
+  })
+}
+
+export const useFetchPlayLists = ({ params, queryKey }: UseFetchBaseProps) => {
+  return useFetch<APIResponse.PlaylistItemList>({
+    queryKey,
+    url: 'playlistItems',
+    params: {
+      ...params,
+      part: ['snippet', 'contentDetails', 'status'].toString(),
     },
   })
 }
