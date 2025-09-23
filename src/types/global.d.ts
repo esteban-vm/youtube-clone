@@ -130,6 +130,76 @@ declare global {
       }
     }
 
+    interface PlaylistItem {
+      kind: 'youtube#playlistItem'
+      etag: string
+      id: string
+      snippet: {
+        publishedAt: string
+        channelId: string
+        title: string
+        description: string
+        thumbnails?: {
+          default?: {
+            url: string
+            width: number
+            height: number
+          }
+          medium?: {
+            url: string
+            width: number
+            height: number
+          }
+          high?: {
+            url: string
+            width: number
+            height: number
+          }
+          standard?: {
+            url: string
+            width: number
+            height: number
+          }
+          maxres?: {
+            url: string
+            width: number
+            height: number
+          }
+        }
+        channelTitle: string
+        videoOwnerChannelTitle: string
+        videoOwnerChannelId: string
+        playlistId: string
+        position: number
+        resourceId: {
+          kind: string
+          videoId: string
+        }
+      }
+      contentDetails: {
+        videoId: string
+        startAt: string
+        endAt: string
+        note: string
+        videoPublishedAt: datetime
+      }
+      status: {
+        privacyStatus: string
+      }
+    }
+
+    interface PlaylistItemList {
+      kind: 'youtube#playlistItemListResponse'
+      etag: string
+      nextPageToken: string
+      prevPageToken: string
+      items: PlaylistItem[]
+      pageInfo: {
+        totalResults: number
+        resultsPerPage: number
+      }
+    }
+
     interface Video {
       kind: 'youtube#video'
       etag: string
