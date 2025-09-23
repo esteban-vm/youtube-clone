@@ -216,12 +216,16 @@ declare global {
   }
 
   namespace Props {
-    interface WithVideo {
-      video: APIResponse.Video
+    interface WithChannel {
+      channel: APIResponse.Channel
     }
 
     interface WithComment {
       comment: APIResponse.CommentThread
+    }
+
+    interface WithVideo {
+      video: APIResponse.Video
     }
 
     interface WithVideos {
