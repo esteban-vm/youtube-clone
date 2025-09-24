@@ -1,5 +1,5 @@
-import type { QueryKey, UseQueryOptions } from '@tanstack/react-query'
-import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { QueryKey } from '@tanstack/react-query'
+import type { AxiosError, AxiosResponse } from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/utils'
 
@@ -8,35 +8,20 @@ export interface UseFetchBaseProps {
   params: Record<string, string>
 }
 
-export interface UseFetchProps<TData, TError> extends UseFetchBaseProps {
+export interface UseFetchProps extends UseFetchBaseProps {
   url: 'videos' | 'channels' | 'commentThreads' | 'playlistItems'
-  requestConfig?: Omit<AxiosRequestConfig, 'baseURL' | 'url' | 'params'>
-  queryOptions?: Omit<UseQueryOptions<TData, TError>, 'queryKey' | 'queryFn'>
 }
 
-export const useFetch = <TData, TError = AxiosError>({
-  url,
-  params,
-  queryKey,
-  requestConfig,
-  queryOptions,
-}: UseFetchProps<TData, TError>) => {
-  const queryFn = async (): Promise<TData> => {
+export const useFetch = <TData, TError = AxiosError>({ queryKey, ...restProps }: UseFetchProps) => {
+  const fetchData = async (): Promise<TData> => {
     const instance = api.getInstance()
-
-    const { data } = await instance.request<TData, AxiosResponse<TData, TError>>({
-      url,
-      params,
-      ...requestConfig,
-    })
-
+    const { data } = await instance.request<TData, AxiosResponse<TData, TError>>(restProps)
     return data
   }
 
   return useQuery<TData, TError>({
-    queryFn,
     queryKey,
-    ...queryOptions,
+    queryFn: fetchData,
   })
 }
 
