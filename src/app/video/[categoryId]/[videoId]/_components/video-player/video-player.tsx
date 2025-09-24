@@ -27,14 +27,15 @@ export function VideoPlayer({ video }: Props.WithVideo) {
 
   const videoTitle = snippet.title
   const youtubeLink = `https://www.youtube.com/embed/${videoId}?autoplay=1`
-  const channelTitle = channels?.items[0].snippet.title ?? ''
+
+  const channelTitle = channels?.items[0].snippet.title ?? 'Título no disponible'
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
   const channelThumbnail = channels?.items[0].snippet.thumbnails?.default?.url
-  const subscriberCount = channels?.items[0].statistics.subscriberCount ?? '0'
+  const channelSubscribers = channels?.items[0].statistics.subscriberCount
 
   const date = helpers.formatDate(publishedAt)
   const views = helpers.formatValue(viewCount)
-  const subscribers = helpers.formatValue(subscriberCount)
+  const subscribers = helpers.formatValue(channelSubscribers)
   const comments = helpers.formatValue(commentCount)
 
   return (

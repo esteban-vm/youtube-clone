@@ -17,32 +17,33 @@ export default function ChannelPage({ params }: ChannelPageProps) {
     params: { id: channelId },
   })
 
-  const title = channels?.items[0].brandingSettings.channel.title
-  const avatar = channels?.items[0].snippet.thumbnails?.default?.url
-  const banner = channels?.items[0].brandingSettings.image?.bannerExternalUrl
-  const url = channels?.items[0].snippet.customUrl
-  const subscriberCount = channels?.items[0].statistics.subscriberCount ?? '0'
-  const viewCount = channels?.items[0].statistics.videoCount ?? '0'
-  const subscribers = helpers.formatValue(subscriberCount)
-  const views = helpers.formatValue(viewCount)
+  const channelTitle = channels?.items[0].brandingSettings.channel.title ?? 'Título no disponible'
+  const channelThumbnail = channels?.items[0].snippet.thumbnails?.default?.url
+  const channelBanner = channels?.items[0].brandingSettings.image?.bannerExternalUrl
+  const channelUrl = channels?.items[0].snippet.customUrl ?? 'Dirección no disponible'
+  const channelSubscribers = channels?.items[0].statistics.subscriberCount
+  const channelViews = channels?.items[0].statistics.videoCount
+
+  const views = helpers.formatValue(channelViews)
+  const subscribers = helpers.formatValue(channelSubscribers)
 
   return (
     <>
       <div className='relative h-72 overflow-hidden rounded-lg'>
-        {banner && title && <Image alt={title} className='object-cover object-center' src={banner} fill />}
+        {channelBanner && <Image alt={channelTitle} className='object-cover object-center' src={channelBanner} fill />}
       </div>
       <div className='flex gap-4 p-4'>
         <div className='basis-1/4 text-center'>
           <Avatar>
             <div className='relative w-40 rounded-full'>
-              {avatar && title && <Image alt={title} src={avatar} fill />}
+              {channelThumbnail && <Image alt={channelTitle} src={channelThumbnail} fill />}
             </div>
           </Avatar>
         </div>
         <div className='basis-3/4'>
-          {title && <h1 className='text-2xl font-bold md:text-4xl'>{title}</h1>}
+          <h1 className='text-2xl font-bold md:text-4xl'>{channelTitle}</h1>
           <p>
-            <span className='font-extrabold'>{url} • </span>&nbsp;
+            <span className='font-extrabold'>{channelUrl} • </span>&nbsp;
             <span>{subscribers} suscriptores • </span>&nbsp;
             <span>{views} vídeos</span>
           </p>
