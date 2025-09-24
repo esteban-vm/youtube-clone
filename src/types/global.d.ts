@@ -63,6 +63,9 @@ declare global {
           backgroundColor: string
           featuredPlaylistId: string
         }
+        image?: {
+          bannerExternalUrl: string
+        }
       }
     }
 
