@@ -18,7 +18,8 @@
       "@/*": ["./src/*", "./public/*"],
       "@/nav/components": ["./src/app/_navigation/components"],
       "@/home/components": ["./src/app/(home)/_components"],
-      "@/video/components": ["./src/app/video/[categoryId]/[videoId]/_components"]
+      "@/video/components": ["./src/app/video/[categoryId]/[videoId]/_components"],
+      "@/channel/components": ["./src/app/channel/[channelId]/_components"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "*.config.mjs"],
