@@ -22,7 +22,7 @@ export const formatDuration = (duration: string) => {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`
 }
 
-export const formatValue = (value: string | number) => {
+export const formatValue = (value: string | number = 0) => {
   const numValue = typeof value === 'string' ? parseFloat(value) : value
 
   if (numValue < 1_000) return numValue.toString()
