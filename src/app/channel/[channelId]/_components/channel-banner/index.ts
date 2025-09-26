@@ -1,2 +1,1 @@
 export * from './channel-banner'
-export * from './channel-info'
