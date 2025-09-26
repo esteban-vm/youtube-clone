@@ -24,9 +24,7 @@ export default function ChannelPage({ params }: ChannelPageProps) {
 
   return (
     <>
-      <BannerContainer>
-        {channelBanner ? <BannerImage alt={channelTitle} src={channelBanner} fill /> : null}
-      </BannerContainer>
+      <BannerContainer>{channelBanner && <BannerImage alt={channelTitle} src={channelBanner} fill />}</BannerContainer>
       <ChannelInfo channel={channel} />
     </>
   )
