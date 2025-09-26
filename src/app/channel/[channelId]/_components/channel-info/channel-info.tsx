@@ -8,15 +8,15 @@ export function ChannelInfo({ channel }: Props.WithChannel) {
   const [isShowingDesc, setIsShowingDesc] = useState(false)
   const { brandingSettings, snippet, statistics } = channel
 
-  const channelTitle = brandingSettings.channel.title ?? 'Título no disponible'
-  const channelThumbnail = snippet.thumbnails?.default?.url
-  const channelUrl = snippet.customUrl ?? 'Dirección no disponible'
+  const channelUrl = snippet.customUrl
   const channelVideos = statistics.videoCount
-  const channelSubscribers = statistics.subscriberCount
-  const channelDescription = snippet.description ?? 'Descripción no disponible'
+  const channelDescription = snippet.description
+  const channelTitle = brandingSettings.channel.title
+  const channelSubs = statistics.subscriberCount
+  const channelThumbnail = snippet.thumbnails?.default?.url
 
-  const videos = helpers.formatValue(channelVideos)
-  const subscribers = helpers.formatValue(channelSubscribers)
+  const formattedVideos = helpers.formatValue(channelVideos)
+  const formattedSubs = helpers.formatValue(channelSubs)
 
   return (
     <$.InfoContainer>
@@ -31,8 +31,8 @@ export function ChannelInfo({ channel }: Props.WithChannel) {
         <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
         <p>
           <span className='font-extrabold'>{channelUrl} • </span>&nbsp;
-          <span>{subscribers} suscriptores • </span>&nbsp;
-          <span>{videos} vídeos</span>
+          <span>{formattedSubs} suscriptores • </span>&nbsp;
+          <span>{formattedVideos} vídeos</span>
         </p>
         <$.ChannelDescription className={tw.cn(!isShowingDesc && 'line-clamp-1')}>
           {channelDescription}

@@ -12,12 +12,12 @@ export function VideoPlayer({ video }: Props.WithVideo) {
   const { commentCount, viewCount } = statistics
   const { channelId, description, publishedAt } = snippet
 
-  const { data: channels } = useFetchChannels({
+  const { data: channels, isSuccess: isSuccessChannels } = useFetchChannels({
     queryKey: ['Channels', channelId],
     params: { id: channelId },
   })
 
-  const { data: commentThreads, isSuccess } = useFetchComments({
+  const { data: comments, isSuccess: isSuccessComments } = useFetchComments({
     queryKey: ['Comments', videoId],
     params: {
       videoId,
@@ -25,18 +25,21 @@ export function VideoPlayer({ video }: Props.WithVideo) {
     },
   })
 
+  if (!isSuccessChannels) return null
+  const [channel] = channels.items
+
   const videoTitle = snippet.title
   const youtubeLink = `https://www.youtube.com/embed/${videoId}?autoplay=1`
 
-  const channelTitle = channels?.items[0].snippet.title ?? 'Título no disponible'
+  const channelTitle = channel.snippet.title
+  const channelSubs = channel.statistics.subscriberCount
+  const channelThumbnail = channel.snippet.thumbnails?.default?.url
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
-  const channelThumbnail = channels?.items[0].snippet.thumbnails?.default?.url
-  const channelSubscribers = channels?.items[0].statistics.subscriberCount
 
-  const date = helpers.formatDate(publishedAt)
-  const views = helpers.formatValue(viewCount)
-  const subscribers = helpers.formatValue(channelSubscribers)
-  const comments = helpers.formatValue(commentCount)
+  const formattedDate = helpers.formatDate(publishedAt)
+  const formattedViews = helpers.formatValue(viewCount)
+  const formattedSubs = helpers.formatValue(channelSubs)
+  const formattedComments = helpers.formatValue(commentCount)
 
   return (
     <>
@@ -59,7 +62,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
             <Link href={channelLink} passHref>
               <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
             </Link>
-            <$.ChannelSubscribers>{subscribers} suscriptores</$.ChannelSubscribers>
+            <$.ChannelSubscribers>{formattedSubs} suscriptores</$.ChannelSubscribers>
           </$.ChannelInfo>
           <$.StyledButton>Suscríbete</$.StyledButton>
         </$.ChannelContainer>
@@ -77,7 +80,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
       </$.VideoDetails>
       <Collapse as='details' className='bg-base-200 dark:rounded-md' icon='arrow'>
         <Collapse.Title as='summary' className='select-none'>
-          {views} vistas • {date}
+          {formattedViews} vistas • {formattedDate}
         </Collapse.Title>
         <Collapse.Content className='text-balance'>
           {description.length ? (
@@ -88,8 +91,8 @@ export function VideoPlayer({ video }: Props.WithVideo) {
         </Collapse.Content>
       </Collapse>
       <List className='bg-base-200 shadow-none'>
-        <$.ListTitle>{comments} comentarios</$.ListTitle>
-        {isSuccess && commentThreads.items.map((comment) => <CommentItem key={comment.id} comment={comment} />)}
+        <$.ListTitle>{formattedComments} comentarios</$.ListTitle>
+        {isSuccessComments && comments.items.map((comment) => <CommentItem key={comment.id} comment={comment} />)}
       </List>
     </>
   )

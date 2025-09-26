@@ -17,12 +17,10 @@ export default function ChannelPage({ params }: ChannelPageProps) {
   })
 
   if (!isSuccess) return null
-
   const [channel] = channels.items
-  const { brandingSettings } = channel
 
-  const channelTitle = brandingSettings.channel.title ?? 'Título no disponible'
-  const channelBanner = brandingSettings.image?.bannerExternalUrl
+  const channelTitle = channel.brandingSettings.channel.title
+  const channelBanner = channel.brandingSettings.image?.bannerExternalUrl
 
   return (
     <>
