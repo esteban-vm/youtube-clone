@@ -1,13 +1,12 @@
 'use client'
 
-import type { ReactNode } from 'react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { Drawer } from 'rsc-daisyui'
 import { useSidebarStore } from '@/hooks'
 import { Atoms, Organisms, Templates } from '@/nav/components'
 
-export function Navigation({ children }: { children: ReactNode }) {
+export function Navigation({ children }: Props.WithChildren) {
   const { theme } = useTheme()
   const { drawerId } = useSidebarStore()
   const [isClient, setIsClient] = useState(false)

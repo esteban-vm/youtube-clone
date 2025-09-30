@@ -1,7 +1,6 @@
-import type { ReactNode } from 'react'
 import { ThemeProvider as NextThemeProvider } from 'next-themes'
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export function ThemeProvider({ children }: Props.WithChildren) {
   return (
     <NextThemeProvider
       defaultTheme='system'

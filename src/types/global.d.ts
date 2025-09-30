@@ -1,4 +1,5 @@
 import type { Route } from 'next'
+import type { ReactNode } from 'react'
 
 declare global {
   namespace APIResponse {
@@ -303,6 +304,10 @@ declare global {
 
     interface WithVideos {
       videos: APIResponse.Video[]
+    }
+
+    interface WithChildren {
+      children: ReactNode
     }
 
     interface NavbarItem {
