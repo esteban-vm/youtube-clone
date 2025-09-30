@@ -4,16 +4,16 @@ import { helpers } from '@/utils'
 import * as $ from './video-item.styled'
 
 export function VideoItem({ video }: Props.WithVideo) {
-  const { id, snippet, contentDetails, statistics } = video
+  const { id: videoId, snippet, contentDetails, statistics } = video
   const { categoryId, channelId, channelTitle, title, publishedAt, thumbnails } = snippet
 
   const { data: channels, isLoading } = useFetchChannels({
-    queryKey: [channelId],
     params: { id: channelId },
+    queryKey: ['channel by id', channelId],
   })
 
   const videoThumbnail = thumbnails?.standard?.url
-  const videoLink = helpers.typedRoute(`/video/${categoryId}/${id}`)
+  const videoLink = helpers.typedRoute(`/video/${categoryId}/${videoId}`)
   const channelLink = helpers.typedRoute(`/channel/${channelId}`)
   const avatarLink = channels?.items[0].snippet.thumbnails?.default?.url
 

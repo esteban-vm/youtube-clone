@@ -14,8 +14,8 @@ export default function DetailsPage({ params }: DetailsPageProps) {
     isLoading,
     isSuccess,
   } = useFetchVideos({
-    queryKey: [videoId],
     params: { id: videoId },
+    queryKey: ['video by id', videoId],
   })
 
   if (isLoading) return <LoadingSpinner />

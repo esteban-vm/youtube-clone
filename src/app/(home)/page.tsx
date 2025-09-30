@@ -15,7 +15,7 @@ export default function HomePage() {
     isSuccess,
     isError,
   } = useFetchVideos({
-    queryKey: [categoryId],
+    queryKey: ['home videos by category id', categoryId],
     params: {
       regionCode: 'MX',
       maxResults: '20',
