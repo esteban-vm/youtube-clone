@@ -5,11 +5,11 @@ import { helpers } from '@/utils'
 import * as $ from './comment-item.styled'
 
 export function CommentItem({ comment }: Props.WithComment) {
-  const { authorDisplayName, authorProfileImageUrl, updatedAt, textDisplay, likeCount } =
-    comment.snippet.topLevelComment.snippet
+  const { snippet } = comment.snippet.topLevelComment
+  const { authorDisplayName, authorProfileImageUrl, updatedAt, textDisplay, likeCount } = snippet
 
   const date = helpers.formatDate(updatedAt)
-  const likes = likeCount ? helpers.formatValue(likeCount) : ''
+  const likes = helpers.formatValue(likeCount)
 
   return (
     <List.Row className='shadow-none'>
