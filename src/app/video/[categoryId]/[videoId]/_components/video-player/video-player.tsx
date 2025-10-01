@@ -14,15 +14,12 @@ export function VideoPlayer({ video }: Props.WithVideo) {
 
   const { data: channels, isSuccess: isSuccessChannels } = useFetchChannels({
     params: { id: channelId },
-    queryKey: ['channel by id', channelId],
+    queryKey: [VideoPlayer.name, `CHANNEL ID: ${channelId}`],
   })
 
   const { data: comments, isSuccess: isSuccessComments } = useFetchComments({
-    queryKey: ['comments by video id', videoId],
-    params: {
-      videoId,
-      maxResults: '50',
-    },
+    params: { videoId, maxResults: '50' },
+    queryKey: [VideoPlayer.name, `COMMENTS BY VIDEO ID: ${videoId}`],
   })
 
   if (!isSuccessChannels) return null

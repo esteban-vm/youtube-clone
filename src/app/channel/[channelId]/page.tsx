@@ -11,19 +11,16 @@ export default function ChannelPage({ params }: ChannelPageProps) {
 
   const { data: channels, isSuccess } = useFetchChannels({
     params: { id: channelId },
-    queryKey: ['channel by id', channelId],
+    queryKey: [ChannelPage.name, `CHANNEL ID: ${channelId}`],
   })
 
-  if (isSuccess) {
-    const [channel] = channels.items
+  if (!isSuccess) return null
+  const [channel] = channels.items
 
-    return (
-      <>
-        <ChannelBanner channel={channel} />
-        <ChannelInfo channel={channel} />
-      </>
-    )
-  }
-
-  return null
+  return (
+    <>
+      <ChannelBanner channel={channel} />
+      <ChannelInfo channel={channel} />
+    </>
+  )
 }

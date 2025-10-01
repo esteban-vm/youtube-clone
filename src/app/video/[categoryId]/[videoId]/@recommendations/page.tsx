@@ -14,7 +14,7 @@ export default function RecommendationsPage({ params }: RecommendationsPageProps
     isLoading,
     isSuccess,
   } = useFetchVideos({
-    queryKey: ['recommended videos by category id', categoryId],
+    queryKey: [RecommendationsPage.name, `VIDEOS BY CATEGORY ID: ${categoryId}`],
     params: {
       regionCode: 'MX',
       maxResults: '12',

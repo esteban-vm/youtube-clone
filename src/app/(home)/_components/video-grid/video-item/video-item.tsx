@@ -9,7 +9,7 @@ export function VideoItem({ video }: Props.WithVideo) {
 
   const { data: channels, isLoading } = useFetchChannels({
     params: { id: channelId },
-    queryKey: ['channel by id', channelId],
+    queryKey: [VideoItem.name, `CHANNEL ID: ${channelId}`],
   })
 
   const videoThumbnail = thumbnails?.standard?.url
