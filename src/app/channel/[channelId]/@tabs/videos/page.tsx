@@ -4,8 +4,9 @@ export default async function VideosPage({ params }: VideosPageProps) {
   const { channelId } = await params
 
   return (
-    <section>
-      <p>Videos by Channel id: {channelId}</p>
-    </section>
+    <>
+      <p>Página de vídeos</p>
+      <p>{channelId}</p>
+    </>
   )
 }

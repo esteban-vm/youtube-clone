@@ -1,41 +1,59 @@
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { use } from 'react'
 import { Tabs } from 'rsc-daisyui'
+import { helpers } from '@/utils'
 
-export type TabsLayoutProps = LayoutProps<'/'>
+export type TabsLayoutProps = LayoutProps<'/channel/[channelId]'>
 
-export default function TabsLayout({ children }: TabsLayoutProps) {
+export default function TabsLayout({ children, params }: TabsLayoutProps) {
+  const { channelId } = use(params)
+  const pathname = usePathname()
+
+  const homeLink = helpers.typedRoute(`/channel/${channelId}`)
+  const videosLink = helpers.typedRoute(`/channel/${channelId}/videos`)
+
+  const isActiveHome = homeLink === pathname
+  const isActiveVideos = videosLink === pathname
+
   return (
-    <>
-      <Tabs className='w-full p-0.5 text-center md:p-1.5' decorate='border'>
-        <Tabs.Tab aria-label='Home' as='input' className='w-[calc(1/7*100%)]' name='my_tabs_2' type='radio' />
-        <Tabs.Content className='border-base-300 bg-base-100 p-10'>Tab content 1</Tabs.Content>
+    <Tabs className='w-full p-0.5 text-center md:p-1.5' decorate='border'>
+      <Tabs.Tab active={isActiveHome} as='span' className='w-[calc(1/7*100%)]'>
+        <Link href={homeLink}>Inicio</Link>
+      </Tabs.Tab>
+      <Tabs.Content className='border-base-300 bg-base-100 p-10'>{children}</Tabs.Content>
 
-        <Tabs.Tab
-          aria-label='Videos'
-          as='input'
-          className='w-[calc(1/7*100%)]'
-          name='my_tabs_2'
-          type='radio'
-          defaultChecked
-        />
-        <Tabs.Content className='border-base-300 bg-base-100 p-10'>Tab content 2</Tabs.Content>
+      <Tabs.Tab active={isActiveVideos} as='span' className='w-[calc(1/7*100%)]'>
+        <Link href={videosLink}>Vídeos</Link>
+      </Tabs.Tab>
+      <Tabs.Content className='border-base-300 bg-base-100 p-10'>{children}</Tabs.Content>
 
-        <Tabs.Tab aria-label='Shorts' as='input' className='w-[calc(1/7*100%)]' name='my_tabs_2' type='radio' />
-        <Tabs.Content className='border-base-300 bg-base-100 p-10'>Tab content 3</Tabs.Content>
+      <Tabs.Tab as='span' className='w-[calc(1/7*100%)]'>
+        <Link href={videosLink}>Cortos</Link>
+      </Tabs.Tab>
+      <Tabs.Content className='border-base-300 bg-base-100 p-10'>{children}</Tabs.Content>
 
-        <Tabs.Tab aria-label='Live' as='input' className='w-[calc(1/7*100%)]' name='my_tabs_2' type='radio' />
-        <Tabs.Content className='border-base-300 bg-base-100 p-10'>Tab content 4</Tabs.Content>
+      <Tabs.Tab as='span' className='w-[calc(1/7*100%)]'>
+        <Link href={videosLink}>En vivo</Link>
+      </Tabs.Tab>
+      <Tabs.Content className='border-base-300 bg-base-100 p-10'>{children}</Tabs.Content>
 
-        <Tabs.Tab aria-label='Podcasts' as='input' className='w-[calc(1/7*100%)]' name='my_tabs_2' type='radio' />
-        <Tabs.Content className='border-base-300 bg-base-100 p-10'>Tab content 5</Tabs.Content>
+      <Tabs.Tab as='span' className='w-[calc(1/7*100%)]'>
+        <Link href={videosLink}>Podcasts</Link>
+      </Tabs.Tab>
+      <Tabs.Content className='border-base-300 bg-base-100 p-10'>{children}</Tabs.Content>
 
-        <Tabs.Tab aria-label='Playlist' as='input' className='w-[calc(1/7*100%)]' name='my_tabs_2' type='radio' />
-        <Tabs.Content className='border-base-300 bg-base-100 p-10'>Tab content 6</Tabs.Content>
+      <Tabs.Tab as='span' className='w-[calc(1/7*100%)]'>
+        <Link href={videosLink}>Listas</Link>
+      </Tabs.Tab>
+      <Tabs.Content className='border-base-300 bg-base-100 p-10'>{children}</Tabs.Content>
 
-        <Tabs.Tab aria-label='Community' as='input' className='w-[calc(1/7*100%)]' name='my_tabs_2' type='radio' />
-        <Tabs.Content className='border-base-300 bg-base-100 p-10'>Tab content 7</Tabs.Content>
-      </Tabs>
-
-      {children}
-    </>
+      <Tabs.Tab as='span' className='w-[calc(1/7*100%)]'>
+        <Link href={videosLink}>Comunidad</Link>
+      </Tabs.Tab>
+      <Tabs.Content className='border-base-300 bg-base-100 p-10'>{children}</Tabs.Content>
+    </Tabs>
   )
 }
