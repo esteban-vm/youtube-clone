@@ -6,7 +6,7 @@ import { use } from 'react'
 import { Tabs } from 'rsc-daisyui'
 import { helpers } from '@/utils'
 
-export type TabsLayoutProps = LayoutProps<'/channel/[channelId]'>
+export type TabsLayoutProps = Omit<LayoutProps<'/channel/[channelId]'>, 'tabs'>
 
 export default function TabsLayout({ children, params }: TabsLayoutProps) {
   const { channelId } = use(params)
