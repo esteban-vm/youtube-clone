@@ -9,7 +9,7 @@ export function CommentItem({ comment }: Props.WithComment) {
   const { authorDisplayName, authorProfileImageUrl, updatedAt, textDisplay, likeCount } = snippet
 
   const date = helpers.formatDate(updatedAt)
-  const likes = helpers.formatValue(likeCount)
+  const likes = likeCount ? helpers.formatValue(likeCount) : ''
 
   return (
     <List.Row className='shadow-none'>
