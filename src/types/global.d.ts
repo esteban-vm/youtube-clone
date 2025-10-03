@@ -310,15 +310,22 @@ declare global {
       children: ReactNode
     }
 
-    interface NavbarItem {
+    interface BaseItem {
       id: string
-      label: string
+      label: Capitalize<string>
+    }
+
+    interface NavbarItem extends BaseItem {
       icon: IconType
       link?: Route
     }
 
     interface SidebarItem extends NavbarItem {
       categoryId: `${number}`
+    }
+
+    interface TabItem extends BaseItem, Partial<WithChildren> {
+      getLink: Route<`/channel/${string}`>
     }
   }
 }
