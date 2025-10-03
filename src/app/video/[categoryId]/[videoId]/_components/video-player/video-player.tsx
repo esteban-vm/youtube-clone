@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { LuListMusic, LuShare2, LuThumbsUp } from 'react-icons/lu'
@@ -14,12 +16,12 @@ export function VideoPlayer({ video }: Props.WithVideo) {
 
   const { data: channels, isSuccess: isSuccessChannels } = useFetchChannels({
     params: { id: channelId },
-    queryKey: [VideoPlayer.name, `CHANNEL ID: ${channelId}`],
+    queryKey: ['CHANNEL ID', channelId],
   })
 
   const { data: comments, isSuccess: isSuccessComments } = useFetchComments({
     params: { videoId, maxResults: '50' },
-    queryKey: [VideoPlayer.name, `COMMENTS BY VIDEO ID: ${videoId}`],
+    queryKey: ['COMMENTS BY VIDEO ID', videoId],
   })
 
   if (!isSuccessChannels) return null

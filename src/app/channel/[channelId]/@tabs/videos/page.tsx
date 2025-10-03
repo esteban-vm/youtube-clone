@@ -12,14 +12,14 @@ export default function VideosPage({ params }: VideosPageProps) {
 
   const { data: channels, isSuccess: isSuccessChannels } = useFetchChannels({
     params: { id: channelId },
-    queryKey: [VideosPage.name, `CHANNEL ID: ${channelId}`],
+    queryKey: ['CHANNEL ID', channelId],
   })
 
   const playlistId = channels?.items[0].contentDetails.relatedPlaylists.uploads ?? ''
 
   const { data: playlists, isSuccess: isSuccessPlaylists } = useFetchPlayLists({
     params: { playlistId, maxResults: '20' },
-    queryKey: [VideosPage.name, `UPLOAD PLAYLIST ID: ${playlistId}`],
+    queryKey: ['PLAYLIST ID', playlistId],
   })
 
   if (!isSuccessChannels || !isSuccessPlaylists) return null

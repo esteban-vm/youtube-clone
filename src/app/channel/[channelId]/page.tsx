@@ -11,7 +11,7 @@ export default function ChannelPage({ params }: ChannelPageProps) {
 
   const { data: channels, isSuccess } = useFetchChannels({
     params: { id: channelId },
-    queryKey: [ChannelPage.name, `CHANNEL ID: ${channelId}`],
+    queryKey: ['CHANNEL ID', channelId],
   })
 
   if (!isSuccess) return null

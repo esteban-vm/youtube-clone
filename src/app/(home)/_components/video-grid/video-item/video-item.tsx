@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
@@ -9,7 +11,7 @@ export function VideoItem({ video }: Props.WithVideo) {
 
   const { data: channels, isLoading } = useFetchChannels({
     params: { id: channelId },
-    queryKey: [VideoItem.name, `CHANNEL ID: ${channelId}`],
+    queryKey: ['CHANNEL ID', channelId],
   })
 
   const videoThumbnail = thumbnails?.standard?.url

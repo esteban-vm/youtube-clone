@@ -3,8 +3,6 @@
 import { ErrorAlert, LoadingGrid, VideoGrid } from '@/home/components'
 import { useFetchVideos, useSidebarStore } from '@/hooks'
 
-export type HomePageProps = PageProps<'/'>
-
 export default function HomePage() {
   const categoryId = useSidebarStore((state) => state.category)
 
@@ -15,7 +13,7 @@ export default function HomePage() {
     isSuccess,
     isError,
   } = useFetchVideos({
-    queryKey: [HomePage.name, `VIDEOS BY CATEGORY ID: ${categoryId}`],
+    queryKey: ['HOME VIDEOS BY CATEGORY ID', categoryId],
     params: {
       regionCode: 'MX',
       maxResults: '20',

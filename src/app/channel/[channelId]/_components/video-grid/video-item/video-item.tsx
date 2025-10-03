@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { useFetchVideos } from '@/hooks'
 import { helpers } from '@/utils'
@@ -8,7 +10,7 @@ export function VideoItem({ playlistItem }: Props.WithPlaylistItem) {
 
   const { data: videos, isSuccess } = useFetchVideos({
     params: { id: videoId },
-    queryKey: [VideoItem.name, `VIDEO ID: ${videoId}`],
+    queryKey: ['VIDEO ID', videoId],
   })
 
   if (!isSuccess) return null
