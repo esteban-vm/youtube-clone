@@ -33,7 +33,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
   const channelTitle = channel.snippet.title
   const channelSubs = channel.statistics.subscriberCount
   const channelThumbnail = channel.snippet.thumbnails?.default?.url
-  const channelLink = helpers.typedRoute(`/channel/${channelId}`)
+  const channelLink = helpers.typedRoute(`/channel/${channelId}/videos`)
 
   const formattedDate = helpers.formatDate(publishedAt)
   const formattedViews = helpers.formatValue(viewCount)
