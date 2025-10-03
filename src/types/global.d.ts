@@ -306,6 +306,14 @@ declare global {
       videos: APIResponse.Video[]
     }
 
+    interface WithPlaylistItem {
+      playlistItem: APIResponse.PlaylistItem
+    }
+
+    interface WithPlaylistItems {
+      playlistItems: APIResponse.PlaylistItem[]
+    }
+
     interface WithChildren {
       children: ReactNode
     }
