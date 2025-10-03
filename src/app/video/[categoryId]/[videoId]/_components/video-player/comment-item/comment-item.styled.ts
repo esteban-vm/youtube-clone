@@ -1,8 +1,9 @@
 import tw from 'tailwind-styled-components'
 
-export const CommenterName = tw.span`
+export const AuthorName = tw.span`
   text-base
   font-semibold
+  hover:opacity-80
 `
 
 export const ImageContainer = tw.div`
@@ -10,6 +11,7 @@ export const ImageContainer = tw.div`
   size-12
   overflow-hidden
   rounded-full
+  hover:opacity-80
 `
 
 export const InfoContainer = tw.div`
