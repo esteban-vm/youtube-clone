@@ -1,7 +1,7 @@
 import { helpers } from '@/utils'
 
-export const getTabItems = (channelId: string) => {
-  const tabItems: Props.TabItem[] = [
+export const getTabItems = (channelId: string): Props.TabItem[] => {
+  return [
     { id: crypto.randomUUID(), label: 'Inicio', link: helpers.typedRoute(`/channel/${channelId}`) },
     { id: crypto.randomUUID(), label: 'Vídeos', link: helpers.typedRoute(`/channel/${channelId}/videos`) },
     { id: crypto.randomUUID(), label: 'Cortos', link: helpers.typedRoute(`/channel/${channelId}/shorts`) },
@@ -10,6 +10,4 @@ export const getTabItems = (channelId: string) => {
     { id: crypto.randomUUID(), label: 'Listas', link: helpers.typedRoute(`/channel/${channelId}/playlists`) },
     { id: crypto.randomUUID(), label: 'Comunidad', link: helpers.typedRoute(`/channel/${channelId}/community`) },
   ]
-
-  return tabItems
 }
