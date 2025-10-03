@@ -334,6 +334,7 @@ declare global {
 
     interface TabItem extends BaseItem, Partial<WithChildren> {
       link: Route<`/channel/${string}`>
+      isDisabled?: boolean
     }
   }
 }

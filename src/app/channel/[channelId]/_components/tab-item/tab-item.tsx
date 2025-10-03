@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation'
 import { Tabs } from 'rsc-daisyui'
 
-export function TabItem({ label, link, children }: Props.TabItem) {
+export function TabItem({ label, link, isDisabled = true, children }: Props.TabItem) {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -11,7 +11,13 @@ export function TabItem({ label, link, children }: Props.TabItem) {
 
   return (
     <>
-      <Tabs.Tab active={pathname === link} as='button' className='w-[calc(1/7*100%)]' onClick={handleClick}>
+      <Tabs.Tab
+        active={pathname === link}
+        as='button'
+        className='w-[calc(1/7*100%)]'
+        disabled={isDisabled}
+        onClick={handleClick}
+      >
         {label}
       </Tabs.Tab>
       <Tabs.Content className='p-10'>{children}</Tabs.Content>
