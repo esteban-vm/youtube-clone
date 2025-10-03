@@ -37,7 +37,7 @@ export function VideoItem({ playlistItem }: Props.WithPlaylistItem) {
         </$.ThumbnailContainer>
       </Link>
       <$.CardBody>
-        <$.CardTitle>
+        <$.CardTitle title={videoTitle}>
           <Link href={videoLink}>{videoTitle}</Link>
         </$.CardTitle>
         <small className='text-xs'>

@@ -19,6 +19,7 @@ export const CardTitle = tw(Card.Title)`
 
 export const ChannelTitle = tw.span`
   block
+  truncate
   text-sm
   hover:opacity-80
 `
