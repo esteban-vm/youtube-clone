@@ -2,6 +2,7 @@ import { Button } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
 export const ChannelDescription = tw.p`
+  line-clamp-1
   max-w-5xl
   text-pretty
 `
@@ -20,6 +21,17 @@ export const InfoContainer = tw.div`
 
 export const LeftSide = tw.div`
   basis-3/4
+`
+
+export const ModalDescription = tw.p`
+  py-4
+  pb-0
+  text-pretty
+`
+
+export const ModalTitle = tw.h3`
+  text-lg
+  font-bold
 `
 
 export const RightSide = tw.div`

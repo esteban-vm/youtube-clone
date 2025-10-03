@@ -1,24 +1,28 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
-import { Avatar, Link } from 'rsc-daisyui'
-import { helpers, tw } from '@/utils'
+import { useRef } from 'react'
+import { Avatar, Button, Link, Modal } from 'rsc-daisyui'
+import { helpers } from '@/utils'
 import * as $ from './channel-info.styled'
 
 export function ChannelInfo({ channel }: Props.WithChannel) {
-  const [isShowingDesc, setIsShowingDesc] = useState(false)
+  const modalRef = useRef<HTMLDialogElement>(null!)
   const { brandingSettings, snippet, statistics } = channel
 
   const channelUrl = snippet.customUrl
   const channelVideos = statistics.videoCount
-  const channelDescription = snippet.description
+  const channelDescription = snippet.description || 'El dueño del canal no proporcionó ninguna descripción'
   const channelTitle = brandingSettings.channel.title
   const channelSubs = statistics.subscriberCount
   const channelThumbnail = snippet.thumbnails?.default?.url
 
   const formattedVideos = helpers.formatValue(channelVideos)
   const formattedSubs = helpers.formatValue(channelSubs)
+
+  const handleOpenModal = () => {
+    modalRef.current.showModal()
+  }
 
   return (
     <$.InfoContainer>
@@ -32,16 +36,24 @@ export function ChannelInfo({ channel }: Props.WithChannel) {
       <$.LeftSide>
         <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
         <p>
-          <span className='font-extrabold'>{channelUrl} • </span>&nbsp;
-          <span>{formattedSubs} suscriptores • </span>&nbsp;
-          <span>{formattedVideos} vídeos</span>
+          <span className='font-extrabold'>{channelUrl} • </span>
+          {formattedSubs} suscriptores • {formattedVideos} vídeos
         </p>
-        <$.ChannelDescription className={tw.cn(!isShowingDesc && 'line-clamp-1')}>
-          {channelDescription}
-        </$.ChannelDescription>
-        <Link as='span' className='text-sky-500' hover onClick={() => setIsShowingDesc(!isShowingDesc)}>
-          ver {isShowingDesc ? 'menos' : 'más'}
+        <$.ChannelDescription>{channelDescription}</$.ChannelDescription>
+        <Link as='span' className='text-sky-500' hover onClick={handleOpenModal}>
+          ver más
         </Link>
+        <Modal ref={modalRef} className='sm:modal-middle' backdrop>
+          <Modal.Box>
+            <$.ModalTitle>Descripción</$.ModalTitle>
+            <$.ModalDescription>{channelDescription}</$.ModalDescription>
+            <Modal.Action>
+              <Button className='rounded-lg' soft>
+                Cerrar
+              </Button>
+            </Modal.Action>
+          </Modal.Box>
+        </Modal>
         <$.StyledButton>Suscríbete</$.StyledButton>
       </$.LeftSide>
     </$.InfoContainer>
