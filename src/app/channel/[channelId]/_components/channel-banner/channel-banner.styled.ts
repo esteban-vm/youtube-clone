@@ -5,7 +5,7 @@ export const BannerContainer = tw.div`
   relative
   h-72
   overflow-hidden
-  rounded-lg
+  rounded-b-lg
 `
 
 export const BannerImage = tw(Image)`
