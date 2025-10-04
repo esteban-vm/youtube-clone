@@ -3,7 +3,7 @@
 import { use } from 'react'
 import tw from 'tailwind-styled-components'
 import { VideoGrid } from '@/channel/components'
-import { useFetchChannels, useFetchPlayLists } from '@/hooks'
+import { useFetchChannels, useFetchPlaylists } from '@/hooks'
 
 export type VideosPageProps = PageProps<'/channel/[channelId]/videos'>
 
@@ -17,7 +17,7 @@ export default function VideosPage({ params }: VideosPageProps) {
 
   const playlistId = channels?.items[0].contentDetails.relatedPlaylists.uploads ?? ''
 
-  const { data: playlists, isSuccess: isSuccessPlaylists } = useFetchPlayLists({
+  const { data: playlists, isSuccess: isSuccessPlaylists } = useFetchPlaylists({
     params: { playlistId, maxResults: '20' },
     queryKey: ['PLAYLIST ID', playlistId],
   })

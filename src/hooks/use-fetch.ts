@@ -47,7 +47,7 @@ export const useFetchComments = ({ params, queryKey }: UseFetchBaseProps) => {
   })
 }
 
-export const useFetchPlayLists = ({ params, queryKey }: UseFetchBaseProps) => {
+export const useFetchPlaylists = ({ params, queryKey }: UseFetchBaseProps) => {
   return useFetch<APIResponse.PlaylistItemList>({
     queryKey,
     url: 'playlistItems',
