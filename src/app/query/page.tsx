@@ -1,9 +1,12 @@
+'use client'
+
 import { notFound } from 'next/navigation'
+import { use } from 'react'
 
 export type QueryPageProps = PageProps<'/query'>
 
-export default async function QueryPage({ searchParams }: QueryPageProps) {
-  const { q } = await searchParams
+export default function QueryPage({ searchParams }: QueryPageProps) {
+  const { q } = use(searchParams)
 
   if (!q) notFound()
 
