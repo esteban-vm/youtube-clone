@@ -89,9 +89,9 @@ declare global {
       snippet: {
         authorDisplayName: string
         authorProfileImageUrl: string
-        authorChannelUrl: string
-        authorChannelId: {
-          value: string
+        authorChannelUrl?: string
+        authorChannelId?: {
+          value?: string
         }
         channelId: string
         textDisplay: string
