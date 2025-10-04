@@ -204,6 +204,65 @@ declare global {
       }
     }
 
+    interface SearchResult {
+      kind: 'youtube#searchResult'
+      etag: string
+      id: {
+        kind: string
+        videoId: string
+        channelId: string
+        playlistId: string
+      }
+      snippet: {
+        publishedAt: string
+        channelId: string
+        title: string
+        description: string
+        thumbnails?: {
+          default?: {
+            url: string
+            width: number
+            height: number
+          }
+          medium?: {
+            url: string
+            width: number
+            height: number
+          }
+          high?: {
+            url: string
+            width: number
+            height: number
+          }
+          standard?: {
+            url: string
+            width: number
+            height: number
+          }
+          maxres?: {
+            url: string
+            width: number
+            height: number
+          }
+        }
+        channelTitle: string
+        liveBroadcastContent: string
+      }
+    }
+
+    interface SearchList {
+      kind: 'youtube#searchListResponse'
+      etag: string
+      nextPageToken: string
+      prevPageToken: string
+      regionCode: string
+      items: SearchResult[]
+      pageInfo: {
+        totalResults: number
+        resultsPerPage: number
+      }
+    }
+
     interface Video {
       kind: 'youtube#video'
       etag: string
