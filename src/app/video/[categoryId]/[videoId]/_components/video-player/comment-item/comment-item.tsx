@@ -7,11 +7,11 @@ import * as $ from './comment-item.styled'
 
 export function CommentItem({ comment }: Props.WithComment) {
   const { snippet } = comment.snippet.topLevelComment
-  const { authorDisplayName, authorProfileImageUrl, channelId, updatedAt, textDisplay, likeCount } = snippet
+  const { authorDisplayName, authorChannelId, authorProfileImageUrl, updatedAt, textDisplay, likeCount } = snippet
 
-  const channelLink = helpers.typedRoute(`/channel/${channelId}/videos`)
   const formattedDate = helpers.formatDate(updatedAt)
   const formattedLikes = likeCount ? helpers.formatValue(likeCount) : ''
+  const channelLink = helpers.typedRoute(`/channel/${authorChannelId?.value}/videos`)
 
   return (
     <List.Row className='shadow-none'>
