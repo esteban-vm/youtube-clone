@@ -29,9 +29,9 @@ export default function VideosPage({ params }: VideosPageProps) {
   return (
     <div>
       <Title>Último vídeo</Title>
-      {playlistItems.length ? <VideoGrid playlistItems={playlistItems.slice(0, 1)} /> : <span>Sin vídeos</span>}
+      <VideoGrid playlistItems={playlistItems.slice(0, 1)} />
       <Title>Vídeos del canal</Title>
-      {playlistItems.length ? <VideoGrid playlistItems={playlistItems} /> : <span>Sin vídeos</span>}
+      <VideoGrid playlistItems={playlistItems} />
     </div>
   )
 }
