@@ -9,7 +9,7 @@ export interface UseFetchBaseProps {
 }
 
 export interface UseFetchProps extends UseFetchBaseProps {
-  url: 'videos' | 'channels' | 'commentThreads' | 'playlistItems'
+  url: 'videos' | 'channels' | 'commentThreads' | 'playlistItems' | 'search'
 }
 
 export const useFetch = <TData, TError = AxiosError>({ queryKey, ...restProps }: UseFetchProps) => {
@@ -54,6 +54,17 @@ export const useFetchPlayLists = ({ params, queryKey }: UseFetchBaseProps) => {
     params: {
       ...params,
       part: ['snippet', 'contentDetails', 'status'].toString(),
+    },
+  })
+}
+
+export const useFetchSearch = ({ params, queryKey }: UseFetchBaseProps) => {
+  return useFetch<APIResponse.SearchList>({
+    queryKey,
+    url: 'search',
+    params: {
+      ...params,
+      part: 'snippet',
     },
   })
 }
