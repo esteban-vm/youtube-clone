@@ -58,7 +58,7 @@ export const useFetchPlaylists = ({ params, queryKey }: UseFetchBaseProps) => {
   })
 }
 
-export const useFetchSearch = ({ params, queryKey }: UseFetchBaseProps) => {
+export const useFetchSearchResults = ({ params, queryKey }: UseFetchBaseProps) => {
   return useFetch<APIResponse.SearchList>({
     queryKey,
     url: 'search',
