@@ -18,6 +18,7 @@
       "@/*": ["./src/*", "./public/*"],
       "@/nav/components": ["./src/app/_navigation/components"],
       "@/home/components": ["./src/app/(home)/_components"],
+      "@/query/components": ["./src/app/query/_components"],
       "@/video/components": ["./src/app/video/[categoryId]/[videoId]/_components"],
       "@/channel/components": ["./src/app/channel/[channelId]/_components"]
     }
