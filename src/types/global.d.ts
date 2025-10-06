@@ -373,6 +373,14 @@ declare global {
       playlistItems: APIResponse.PlaylistItem[]
     }
 
+    interface WithSearchResult {
+      searchResult: APIResponse.SearchResult
+    }
+
+    interface WithSearchResults {
+      searchResults: APIResponse.SearchResult[]
+    }
+
     interface WithChildren {
       children: ReactNode
     }
