@@ -22,11 +22,11 @@ export default function QueryPage({ searchParams }: QueryPageProps) {
   })
 
   if (!isSuccess) return null
+  const searchResults = searchList.items
 
   return (
-    <section>
-      <h2>Query Page</h2>
-      <VideoGrid searchResults={searchList.items} />
-    </section>
+    <>
+      <VideoGrid searchResults={searchResults} />
+    </>
   )
 }
