@@ -14,31 +14,31 @@ export function VideoItem({ video }: Props.WithVideo) {
   const videoImage = thumbnails?.standard?.url
   const videoRoute = helpers.typedRoute(`/video/${categoryId}/${videoId}`)
 
-  const formattedDate = helpers.formatDate(publishedAt)
-  const formattedViews = helpers.formatValue(statistics.viewCount)
-  const formattedDuration = helpers.formatDuration(contentDetails.duration)
+  const videoDate = helpers.formatDate(publishedAt)
+  const videoViews = helpers.formatValue(statistics.viewCount)
+  const videoDuration = helpers.formatDuration(contentDetails.duration)
 
   return (
-    <$.StyledCard side>
+    <$.Container side>
       <Link className='w-2/5' href={videoRoute}>
-        <$.ThumbnailContainer>
-          {videoImage && <$.ThumbnailImage alt={videoTitle} src={videoImage} fill />}
-          <$.StyledBadge color='neutral' size='xs'>
-            {formattedDuration}
-          </$.StyledBadge>
-        </$.ThumbnailContainer>
+        <$.VideoImageContainer>
+          {videoImage && <$.VideoImage alt={videoTitle} src={videoImage} fill />}
+          <$.VideoDuration color='neutral' size='xs'>
+            {videoDuration}
+          </$.VideoDuration>
+        </$.VideoImageContainer>
       </Link>
-      <$.CardBody>
-        <$.CardTitle title={videoTitle}>
+      <$.Content>
+        <$.VideoTitle title={videoTitle}>
           <Link href={videoRoute}>{videoTitle}</Link>
-        </$.CardTitle>
+        </$.VideoTitle>
         <$.ChannelTitle title={channelTitle}>
           <Link href={channelRoute}>{channelTitle}</Link>
         </$.ChannelTitle>
         <small className='text-xs'>
-          {formattedViews} vistas • {formattedDate}
+          {videoViews} vistas • {videoDate}
         </small>
-      </$.CardBody>
-    </$.StyledCard>
+      </$.Content>
+    </$.Container>
   )
 }

@@ -8,7 +8,13 @@ export const ActionContainer = tw.div`
   px-3.5
 `
 
-export const ChannelContainer = tw.div`
+export const ChannelImageContainer = tw(Avatar)`
+  relative
+  size-14
+  hover:opacity-90
+`
+
+export const ChannelInfoContainer = tw.div`
   flex
   items-center
   justify-between
@@ -16,13 +22,13 @@ export const ChannelContainer = tw.div`
   px-3.5
 `
 
-export const ChannelInfo = tw.div`
+export const ChannelInfoContent = tw.div`
   flex
   flex-col
   gap-1
 `
 
-export const ChannelSubscribers = tw.span`
+export const ChannelSubs = tw.span`
   mr-1
   text-sm
   text-gray-500
@@ -41,13 +47,7 @@ export const ListTitle = tw.li`
   tracking-wide
 `
 
-export const StyledAvatar = tw(Avatar)`
-  relative
-  size-14
-  hover:opacity-90
-`
-
-export const StyledButton = tw(Button)`
+export const SubscriptionButton = tw(Button)`
   bg-red-500
   text-white
   rounded-md
@@ -60,6 +60,11 @@ export const VideoDetails = tw.div`
   justify-between
   space-x-4
   md:flex-row
+`
+
+export const VideoFrame = tw.iframe`
+  aspect-video
+  w-full
 `
 
 export const VideoTitle = tw.h3`

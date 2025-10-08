@@ -2,21 +2,6 @@ import Image from 'next/image'
 import { Badge, Card } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
-export const CardBody = tw(Card.Body)`
-  w-3/5
-  gap-0.5
-  p-1
-  pl-0
-`
-
-export const CardTitle = tw(Card.Title)`
-  inline-block
-  truncate
-  text-sm
-  font-semibold
-  hover:opacity-80
-`
-
 export const ChannelTitle = tw.span`
   block
   truncate
@@ -24,7 +9,21 @@ export const ChannelTitle = tw.span`
   hover:opacity-80
 `
 
-export const StyledBadge = tw(Badge)`
+export const Container = tw(Card)`
+  max-w-xl
+  gap-1
+  overflow-hidden
+  dark:rounded-lg
+`
+
+export const Content = tw(Card.Body)`
+  w-3/5
+  gap-0.5
+  p-1
+  pl-0
+`
+
+export const VideoDuration = tw(Badge)`
   absolute
   right-1
   bottom-1
@@ -32,22 +31,23 @@ export const StyledBadge = tw(Badge)`
   rounded-md
 `
 
-export const StyledCard = tw(Card)`
-  max-w-xl
-  gap-1
-  overflow-hidden
-  dark:rounded-lg
+export const VideoImage = tw(Image)`
+  size-full
+  rounded-lg
+  object-cover
+  object-center
 `
 
-export const ThumbnailContainer = tw.figure`
+export const VideoImageContainer = tw.figure`
   relative
   aspect-video
   hover:opacity-80
 `
 
-export const ThumbnailImage = tw(Image)`
-  size-full
-  rounded-lg
-  object-cover
-  object-center
+export const VideoTitle = tw(Card.Title)`
+  inline-block
+  truncate
+  text-sm
+  font-semibold
+  hover:opacity-80
 `

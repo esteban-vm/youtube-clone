@@ -26,44 +26,43 @@ export function VideoPlayer({ video }: Props.WithVideo) {
 
   if (!isSuccessChannels) return null
   const [channel] = channels.items
+
   const channelTitle = channel.snippet.title
-  const channelSubs = channel.statistics.subscriberCount
   const channelImage = channel.snippet.thumbnails?.default?.url
   const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
+  const channelSubs = helpers.formatValue(channel.statistics.subscriberCount)
 
   const videoTitle = snippet.title
   const youtubeLink = `https://www.youtube.com/embed/${videoId}?autoplay=1`
 
-  const formattedDate = helpers.formatDate(publishedAt)
-  const formattedViews = helpers.formatValue(viewCount)
-  const formattedSubs = helpers.formatValue(channelSubs)
-  const formattedComments = helpers.formatValue(commentCount)
+  const videoDate = helpers.formatDate(publishedAt)
+  const videoViews = helpers.formatValue(viewCount)
+  const videoComments = helpers.formatValue(commentCount)
 
   return (
     <>
-      <iframe
+      <$.VideoFrame
         allow='accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share'
-        className='aspect-video w-full'
         referrerPolicy='strict-origin-when-cross-origin'
         src={youtubeLink}
         allowFullScreen
       />
       <$.VideoTitle>{videoTitle}</$.VideoTitle>
       <$.VideoDetails>
-        <$.ChannelContainer>
+        <$.ChannelInfoContainer>
           <Link href={channelRoute} passHref>
-            <$.StyledAvatar>
+            <$.ChannelImageContainer>
               {channelImage && <Image alt={channelTitle} className='rounded-full' src={channelImage} fill />}
-            </$.StyledAvatar>
+            </$.ChannelImageContainer>
           </Link>
-          <$.ChannelInfo>
+          <$.ChannelInfoContent>
             <Link href={channelRoute} passHref>
               <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
             </Link>
-            <$.ChannelSubscribers>{formattedSubs} suscriptores</$.ChannelSubscribers>
-          </$.ChannelInfo>
-          <$.StyledButton>Suscríbete</$.StyledButton>
-        </$.ChannelContainer>
+            <$.ChannelSubs>{channelSubs} suscriptores</$.ChannelSubs>
+          </$.ChannelInfoContent>
+          <$.SubscriptionButton>Suscríbete</$.SubscriptionButton>
+        </$.ChannelInfoContainer>
         <$.ActionContainer>
           <Button ghost>
             <LuThumbsUp /> {helpers.formatValue(statistics.likeCount)}
@@ -78,7 +77,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
       </$.VideoDetails>
       <Collapse as='details' className='bg-base-200 dark:rounded-md' icon='arrow'>
         <Collapse.Title as='summary' className='select-none'>
-          {formattedViews} vistas • {formattedDate}
+          {videoViews} vistas • {videoDate}
         </Collapse.Title>
         <Collapse.Content className='text-balance'>
           {description.length ? (
@@ -89,7 +88,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
         </Collapse.Content>
       </Collapse>
       <List className='bg-base-200 shadow-none'>
-        <$.ListTitle>{formattedComments} comentarios</$.ListTitle>
+        <$.ListTitle>{videoComments} comentarios</$.ListTitle>
         {isSuccessComments && comments.items.map((comment) => <CommentItem key={comment.id} comment={comment} />)}
       </List>
     </>

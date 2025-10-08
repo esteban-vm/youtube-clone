@@ -26,38 +26,38 @@ export function VideoItem({ video }: Props.WithVideo) {
   const videoImage = thumbnails?.standard?.url
   const videoRoute = helpers.typedRoute(`/video/${categoryId}/${videoId}`)
 
-  const formattedDate = helpers.formatDate(publishedAt)
-  const formattedViews = helpers.formatValue(statistics.viewCount)
-  const formattedDuration = helpers.formatDuration(contentDetails.duration)
+  const videoDate = helpers.formatDate(publishedAt)
+  const videoViews = helpers.formatValue(statistics.viewCount)
+  const videoDuration = helpers.formatDuration(contentDetails.duration)
 
   return (
-    <$.StyledCard>
+    <$.Container>
       <Link href={videoRoute}>
-        <$.ThumbnailContainer>
-          {videoImage && <$.ThumbnailImage alt={videoTitle} src={videoImage} fill />}
-          <$.StyledBadge color='neutral' size='sm'>
-            {formattedDuration}
-          </$.StyledBadge>
-        </$.ThumbnailContainer>
+        <$.VideoImageContainer>
+          {videoImage && <$.VideoImage alt={videoTitle} src={videoImage} fill />}
+          <$.VideoDuration color='neutral' size='sm'>
+            {videoDuration}
+          </$.VideoDuration>
+        </$.VideoImageContainer>
       </Link>
-      <$.CardContent>
+      <$.MainContent>
         <Link href={channelRoute}>
-          <$.StyledAvatar>
-            {channelImage && <$.AvatarImage alt={channelTitle} src={channelImage} fill />}
-          </$.StyledAvatar>
+          <$.ChannelImageContainer>
+            {channelImage && <$.ChannelImage alt={channelTitle} src={channelImage} fill />}
+          </$.ChannelImageContainer>
         </Link>
-        <$.CardBody>
-          <$.CardTitle title={videoTitle}>
+        <$.InnerContent>
+          <$.VideoTitle title={videoTitle}>
             <Link href={videoRoute}>{videoTitle}</Link>
-          </$.CardTitle>
+          </$.VideoTitle>
           <$.ChannelTitle title={channelTitle}>
             <Link href={channelRoute}>{channelTitle}</Link>
           </$.ChannelTitle>
           <small className='text-xs'>
-            {formattedViews} vistas • {formattedDate}
+            {videoViews} vistas • {videoDate}
           </small>
-        </$.CardBody>
-      </$.CardContent>
-    </$.StyledCard>
+        </$.InnerContent>
+      </$.MainContent>
+    </$.Container>
   )
 }
