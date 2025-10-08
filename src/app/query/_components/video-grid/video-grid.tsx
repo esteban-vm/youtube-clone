@@ -12,9 +12,10 @@ export function VideoGrid({ searchResults }: Props.WithSearchResults) {
 }
 
 const Container = tw.div`
-  grid
+  flex
   size-full
-  grid-cols-[repeat(auto-fit,minmax(theme(spacing.80),1fr))]
+  flex-col
+  items-center
   gap-2.5
   p-2.5
 `
