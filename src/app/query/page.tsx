@@ -13,7 +13,7 @@ export default function QueryPage({ searchParams }: QueryPageProps) {
   if (!q) notFound()
 
   const { data: searchList, isSuccess } = useFetchSearchResults({
-    queryKey: ['QUERY', q],
+    queryKey: [QueryPage.name, 'VIDEOS BY SEARCH QUERY', q],
     params: {
       q: q.toString(),
       type: 'video',
