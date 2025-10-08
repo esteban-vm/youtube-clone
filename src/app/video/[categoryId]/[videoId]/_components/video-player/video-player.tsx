@@ -26,14 +26,13 @@ export function VideoPlayer({ video }: Props.WithVideo) {
 
   if (!isSuccessChannels) return null
   const [channel] = channels.items
+  const channelTitle = channel.snippet.title
+  const channelSubs = channel.statistics.subscriberCount
+  const channelImage = channel.snippet.thumbnails?.default?.url
+  const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
 
   const videoTitle = snippet.title
   const youtubeLink = `https://www.youtube.com/embed/${videoId}?autoplay=1`
-
-  const channelTitle = channel.snippet.title
-  const channelSubs = channel.statistics.subscriberCount
-  const channelThumbnail = channel.snippet.thumbnails?.default?.url
-  const channelLink = helpers.typedRoute(`/channel/${channelId}/videos`)
 
   const formattedDate = helpers.formatDate(publishedAt)
   const formattedViews = helpers.formatValue(viewCount)
@@ -52,13 +51,13 @@ export function VideoPlayer({ video }: Props.WithVideo) {
       <$.VideoTitle>{videoTitle}</$.VideoTitle>
       <$.VideoDetails>
         <$.ChannelContainer>
-          <Link href={channelLink} passHref>
+          <Link href={channelRoute} passHref>
             <$.StyledAvatar>
-              {channelThumbnail && <Image alt={channelTitle} className='rounded-full' src={channelThumbnail} fill />}
+              {channelImage && <Image alt={channelTitle} className='rounded-full' src={channelImage} fill />}
             </$.StyledAvatar>
           </Link>
           <$.ChannelInfo>
-            <Link href={channelLink} passHref>
+            <Link href={channelRoute} passHref>
               <$.ChannelTitle>{channelTitle}</$.ChannelTitle>
             </Link>
             <$.ChannelSubscribers>{formattedSubs} suscriptores</$.ChannelSubscribers>
