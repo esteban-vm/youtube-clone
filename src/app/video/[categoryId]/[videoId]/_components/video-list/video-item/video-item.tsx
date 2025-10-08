@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { helpers } from '@/utils'
 import * as $ from './video-item.styled'
 
+/**
+ * Video Item for Video Recommendations Page
+ */
 export function VideoItem({ video }: Props.WithVideo) {
   const { id: videoId, contentDetails, snippet, statistics } = video
   const { title: videoTitle, categoryId, channelId, channelTitle, publishedAt, thumbnails } = snippet

@@ -5,6 +5,9 @@ import { useFetchChannels, useFetchVideos } from '@/hooks'
 import { helpers } from '@/utils'
 import * as $ from './video-item.styled'
 
+/**
+ * Video Item for Query Page
+ */
 export function VideoItem({ searchResult }: Props.WithSearchResult) {
   const { videoId } = searchResult.id
   const { channelId } = searchResult.snippet

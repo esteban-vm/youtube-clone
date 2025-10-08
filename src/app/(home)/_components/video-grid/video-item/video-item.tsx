@@ -5,6 +5,9 @@ import { useFetchChannels } from '@/hooks'
 import { helpers } from '@/utils'
 import * as $ from './video-item.styled'
 
+/**
+ * Video Item for Home Page
+ */
 export function VideoItem({ video }: Props.WithVideo) {
   const { id: videoId, snippet, contentDetails, statistics } = video
   const { title: videoTitle, categoryId, channelId, channelTitle, publishedAt, thumbnails } = snippet

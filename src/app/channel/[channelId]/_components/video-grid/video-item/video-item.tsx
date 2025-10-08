@@ -5,6 +5,9 @@ import { useFetchVideos } from '@/hooks'
 import { helpers } from '@/utils'
 import * as $ from './video-item.styled'
 
+/**
+ * Video Item for Channel Videos Page
+ */
 export function VideoItem({ playlistItem }: Props.WithPlaylistItem) {
   const { videoId } = playlistItem.contentDetails
 
