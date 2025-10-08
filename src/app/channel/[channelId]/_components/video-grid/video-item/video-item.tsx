@@ -19,21 +19,19 @@ export function VideoItem({ playlistItem }: Props.WithPlaylistItem) {
   if (!isSuccess) return null
 
   const [video] = videos.items
-  const { id, snippet, statistics, contentDetails } = video
+  const videoTitle = video.snippet.title
+  const videoImage = video.snippet.thumbnails?.standard?.url
+  const videoRoute = helpers.typedRoute(`/video/${video.snippet.categoryId}/${videoId}`)
 
-  const videoTitle = snippet.title
-  const videoThumbnail = snippet.thumbnails?.standard?.url
-  const videoLink = helpers.typedRoute(`/video/${snippet.categoryId}/${id}`)
-
-  const formattedDate = helpers.formatDate(snippet.publishedAt)
-  const formattedViews = helpers.formatValue(statistics.viewCount)
-  const formattedDuration = helpers.formatDuration(contentDetails.duration)
+  const formattedDate = helpers.formatDate(video.snippet.publishedAt)
+  const formattedViews = helpers.formatValue(video.statistics.viewCount)
+  const formattedDuration = helpers.formatDuration(video.contentDetails.duration)
 
   return (
     <$.StyledCard>
-      <Link href={videoLink}>
+      <Link href={videoRoute}>
         <$.ThumbnailContainer>
-          {videoThumbnail && <$.ThumbnailImage alt={videoTitle} src={videoThumbnail} fill />}
+          {videoImage && <$.ThumbnailImage alt={videoTitle} src={videoImage} fill />}
           <$.StyledBadge color='neutral' size='sm'>
             {formattedDuration}
           </$.StyledBadge>
@@ -41,7 +39,7 @@ export function VideoItem({ playlistItem }: Props.WithPlaylistItem) {
       </Link>
       <$.CardBody>
         <$.CardTitle title={videoTitle}>
-          <Link href={videoLink}>{videoTitle}</Link>
+          <Link href={videoRoute}>{videoTitle}</Link>
         </$.CardTitle>
         <small className='text-xs'>
           {formattedViews} vistas • {formattedDate}
