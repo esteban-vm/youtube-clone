@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Avatar, Badge, Card, Loading } from 'rsc-daisyui'
+import { Avatar, Badge, Card } from 'rsc-daisyui'
 import tw from 'tailwind-styled-components'
 
 export const AvatarImage = tw(Image)`
@@ -53,13 +53,6 @@ export const StyledCard = tw(Card)`
   overflow-hidden
   shadow-sm
   dark:rounded-lg
-`
-
-export const StyledLoading = tw(Loading)`
-  absolute
-  top-1/2
-  left-1/2
-  -translate-1/2
 `
 
 export const ThumbnailContainer = tw.figure`

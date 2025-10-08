@@ -12,15 +12,19 @@ export function VideoItem({ video }: Props.WithVideo) {
   const { id: videoId, snippet, contentDetails, statistics } = video
   const { title: videoTitle, categoryId, channelId, channelTitle, publishedAt, thumbnails } = snippet
 
-  const { data: channels, isLoading } = useFetchChannels({
+  const { data: channels, isSuccess } = useFetchChannels({
     params: { id: channelId },
     queryKey: ['CHANNEL ID', channelId],
   })
 
-  const videoThumbnail = thumbnails?.standard?.url
-  const videoLink = helpers.typedRoute(`/video/${categoryId}/${videoId}`)
-  const channelLink = helpers.typedRoute(`/channel/${channelId}/videos`)
-  const avatarLink = channels?.items[0].snippet.thumbnails?.default?.url
+  if (!isSuccess) return null
+
+  const [channel] = channels.items
+  const channelImage = channel.snippet.thumbnails?.default?.url
+  const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
+
+  const videoImage = thumbnails?.standard?.url
+  const videoRoute = helpers.typedRoute(`/video/${categoryId}/${videoId}`)
 
   const formattedDate = helpers.formatDate(publishedAt)
   const formattedViews = helpers.formatValue(statistics.viewCount)
@@ -28,27 +32,26 @@ export function VideoItem({ video }: Props.WithVideo) {
 
   return (
     <$.StyledCard>
-      <Link href={videoLink}>
+      <Link href={videoRoute}>
         <$.ThumbnailContainer>
-          {videoThumbnail && <$.ThumbnailImage alt={videoTitle} src={videoThumbnail} fill />}
+          {videoImage && <$.ThumbnailImage alt={videoTitle} src={videoImage} fill />}
           <$.StyledBadge color='neutral' size='sm'>
             {formattedDuration}
           </$.StyledBadge>
         </$.ThumbnailContainer>
       </Link>
       <$.CardContent>
-        <Link href={channelLink}>
+        <Link href={channelRoute}>
           <$.StyledAvatar>
-            {isLoading && <$.StyledLoading color='neutral' />}
-            {avatarLink && <$.AvatarImage alt='avatar' src={avatarLink} fill />}
+            {channelImage && <$.AvatarImage alt={channelTitle} src={channelImage} fill />}
           </$.StyledAvatar>
         </Link>
         <$.CardBody>
           <$.CardTitle title={videoTitle}>
-            <Link href={videoLink}>{videoTitle}</Link>
+            <Link href={videoRoute}>{videoTitle}</Link>
           </$.CardTitle>
           <$.ChannelTitle title={channelTitle}>
-            <Link href={channelLink}>{channelTitle}</Link>
+            <Link href={channelRoute}>{channelTitle}</Link>
           </$.ChannelTitle>
           <small className='text-xs'>
             {formattedViews} vistas • {formattedDate}
