@@ -17,26 +17,22 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
     queryKey: ['VIDEO ID', videoId],
   })
 
-  const {
-    data: channels,
-    isSuccess: isSuccessChannels,
-    isLoading: isLoadingChannels,
-  } = useFetchChannels({
+  const { data: channels, isSuccess: isSuccessChannels } = useFetchChannels({
     params: { id: channelId },
     queryKey: ['CHANNEL ID', channelId],
   })
 
   if (!isSuccessVideos || !isSuccessChannels) return null
 
-  const [video] = videos.items
-  const videoTitle = video.snippet.title
-  const videoImage = video.snippet.thumbnails?.standard?.url
-  const videoRoute = helpers.typedRoute(`/video/${video.snippet.categoryId}/${video.id}`)
-
   const [channel] = channels.items
   const channelTitle = channel.snippet.title
   const channelImage = channel.snippet.thumbnails?.default?.url
   const channelRoute = helpers.typedRoute(`/channel/${channel.id}/videos`)
+
+  const [video] = videos.items
+  const videoTitle = video.snippet.title
+  const videoImage = video.snippet.thumbnails?.standard?.url
+  const videoRoute = helpers.typedRoute(`/video/${video.snippet.categoryId}/${video.id}`)
 
   const formattedDate = helpers.formatDate(video.snippet.publishedAt)
   const formattedViews = helpers.formatValue(video.statistics.viewCount)
@@ -54,10 +50,7 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
       </Link>
       <$.CardContent>
         <Link href={channelRoute}>
-          <$.StyledAvatar>
-            {isLoadingChannels && <$.StyledLoading color='neutral' />}
-            {channelImage && <$.AvatarImage alt='avatar' src={channelImage} fill />}
-          </$.StyledAvatar>
+          <$.StyledAvatar>{channelImage && <$.AvatarImage alt='avatar' src={channelImage} fill />}</$.StyledAvatar>
         </Link>
         <$.CardBody>
           <$.CardTitle title={videoTitle}>
