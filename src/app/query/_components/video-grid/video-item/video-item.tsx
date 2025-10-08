@@ -27,12 +27,12 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
   const [channel] = channels.items
   const channelTitle = channel.snippet.title
   const channelImage = channel.snippet.thumbnails?.default?.url
-  const channelRoute = helpers.typedRoute(`/channel/${channel.id}/videos`)
+  const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
 
   const [video] = videos.items
   const videoTitle = video.snippet.title
   const videoImage = video.snippet.thumbnails?.standard?.url
-  const videoRoute = helpers.typedRoute(`/video/${video.snippet.categoryId}/${video.id}`)
+  const videoRoute = helpers.typedRoute(`/video/${video.snippet.categoryId}/${videoId}`)
 
   const formattedDate = helpers.formatDate(video.snippet.publishedAt)
   const formattedViews = helpers.formatValue(video.statistics.viewCount)
