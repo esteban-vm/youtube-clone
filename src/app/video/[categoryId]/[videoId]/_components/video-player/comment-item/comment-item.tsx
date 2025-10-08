@@ -11,18 +11,18 @@ export function CommentItem({ comment }: Props.WithComment) {
 
   const formattedDate = helpers.formatDate(updatedAt)
   const formattedLikes = likeCount ? helpers.formatValue(likeCount) : ''
-  const channelLink = helpers.typedRoute(`/channel/${authorChannelId?.value}/videos`)
+  const channelRoute = helpers.typedRoute(`/channel/${authorChannelId?.value}/videos`)
 
   return (
     <List.Row className='shadow-none'>
-      <Link href={channelLink}>
+      <Link href={channelRoute}>
         <$.ImageContainer>
           <Image alt={authorDisplayName} src={authorProfileImageUrl} fill />
         </$.ImageContainer>
       </Link>
       <$.InfoContainer>
         <$.AuthorName title={authorDisplayName}>
-          <Link href={channelLink}>{authorDisplayName}</Link>
+          <Link href={channelRoute}>{authorDisplayName}</Link>
         </$.AuthorName>
         <span className='opacity-60'>{formattedDate}</span>
         <p>{textDisplay}</p>
