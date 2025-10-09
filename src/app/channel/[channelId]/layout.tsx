@@ -4,7 +4,7 @@ import { api } from '@/utils'
 
 export type ChannelLayoutProps = LayoutProps<'/channel/[channelId]'>
 
-export async function generateMetadata({ params }: ChannelPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Omit<ChannelPageProps, 'searchParams'>): Promise<Metadata> {
   const { channelId } = await params
   const channel = await fetchChannelData(channelId)
 
