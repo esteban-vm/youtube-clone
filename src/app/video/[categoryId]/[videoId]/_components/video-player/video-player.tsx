@@ -25,19 +25,19 @@ export function VideoPlayer({ video }: Props.WithVideo) {
   })
 
   if (!isSuccessChannels) return null
-  const [channel] = channels.items
 
+  const [channel] = channels.items
   const channelTitle = channel.snippet.title
   const channelImage = channel.snippet.thumbnails?.default?.url
   const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
   const channelSubs = helpers.formatValue(channel.statistics.subscriberCount)
 
   const videoTitle = snippet.title
-  const youtubeLink = `https://www.youtube.com/embed/${videoId}?autoplay=1`
-
   const videoDate = helpers.formatDate(publishedAt)
   const videoViews = helpers.formatValue(viewCount)
   const videoComments = helpers.formatValue(commentCount)
+
+  const youtubeLink = `https://www.youtube.com/embed/${videoId}?autoplay=1`
 
   return (
     <>
@@ -52,7 +52,7 @@ export function VideoPlayer({ video }: Props.WithVideo) {
         <$.ChannelInfoContainer>
           <Link href={channelRoute} passHref>
             <$.ChannelImageContainer>
-              {channelImage && <Image alt={channelTitle} className='rounded-full' src={channelImage} fill />}
+              {channelImage ? <Image alt={channelTitle} className='rounded-full' src={channelImage} fill /> : null}
             </$.ChannelImageContainer>
           </Link>
           <$.ChannelInfoContent>
@@ -89,7 +89,11 @@ export function VideoPlayer({ video }: Props.WithVideo) {
       </Collapse>
       <List className='bg-base-200 shadow-none'>
         <$.ListTitle>{videoComments} comentarios</$.ListTitle>
-        {isSuccessComments && comments.items.map((comment) => <CommentItem key={comment.id} comment={comment} />)}
+        {isSuccessComments
+          ? comments.items.map((comment) => {
+              return <CommentItem key={comment.id} comment={comment} />
+            })
+          : null}
       </List>
     </>
   )

@@ -9,8 +9,8 @@ export function CommentItem({ comment }: Props.WithComment) {
   const { snippet } = comment.snippet.topLevelComment
   const { authorDisplayName, authorChannelId, authorProfileImageUrl, updatedAt, textDisplay, likeCount } = snippet
 
-  const formattedDate = helpers.formatDate(updatedAt)
-  const formattedLikes = likeCount ? helpers.formatValue(likeCount) : ''
+  const commentDate = helpers.formatDate(updatedAt)
+  const commentLikes = likeCount ? helpers.formatValue(likeCount) : ''
   const channelRoute = helpers.typedRoute(`/channel/${authorChannelId?.value}/videos`)
 
   return (
@@ -24,10 +24,10 @@ export function CommentItem({ comment }: Props.WithComment) {
         <$.AuthorName title={authorDisplayName}>
           <Link href={channelRoute}>{authorDisplayName}</Link>
         </$.AuthorName>
-        <span className='opacity-60'>{formattedDate}</span>
+        <span className='opacity-60'>{commentDate}</span>
         <p>{textDisplay}</p>
         <LuThumbsUp />
-        <span className='align-middle'>{formattedLikes}</span>&nbsp;
+        <span className='align-middle'>{commentLikes}</span>&nbsp;
         <LuThumbsDown />
       </$.InfoContainer>
     </List.Row>

@@ -30,11 +30,9 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
   const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
 
   const [video] = videos.items
-
   const videoTitle = video.snippet.title
   const videoImage = video.snippet.thumbnails?.standard?.url
   const videoRoute = helpers.typedRoute(`/video/${video.snippet.categoryId}/${videoId}`)
-
   const videoDate = helpers.formatDate(video.snippet.publishedAt)
   const videoViews = helpers.formatValue(video.statistics.viewCount)
   const videoDuration = helpers.formatDuration(video.contentDetails.duration)
@@ -43,7 +41,7 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
     <$.Container side>
       <Link className='w-2/5' href={videoRoute}>
         <$.VideoImageContainer>
-          {videoImage && <$.VideoImage alt={videoTitle} src={videoImage} fill />}
+          {videoImage ? <$.VideoImage alt={videoTitle} src={videoImage} fill /> : null}
           <$.VideoDuration color='neutral' size='sm'>
             {videoDuration}
           </$.VideoDuration>
@@ -55,7 +53,7 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
         </$.VideoTitle>
         <Link href={channelRoute}>
           <$.ChannelImageContainer>
-            {channelImage && <$.ChannelImage alt={channelTitle} src={channelImage} fill />}
+            {channelImage ? <$.ChannelImage alt={channelTitle} src={channelImage} fill /> : null}
           </$.ChannelImageContainer>
         </Link>
         <$.ChannelTitle title={channelTitle}>

@@ -9,11 +9,9 @@ export function VideoItem({ video }: Props.WithVideo) {
   const { id: videoId, contentDetails, snippet, statistics } = video
   const { title: videoTitle, categoryId, channelId, channelTitle, publishedAt, thumbnails } = snippet
 
-  const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
-
   const videoImage = thumbnails?.standard?.url
   const videoRoute = helpers.typedRoute(`/video/${categoryId}/${videoId}`)
-
+  const channelRoute = helpers.typedRoute(`/channel/${channelId}/videos`)
   const videoDate = helpers.formatDate(publishedAt)
   const videoViews = helpers.formatValue(statistics.viewCount)
   const videoDuration = helpers.formatDuration(contentDetails.duration)
@@ -22,7 +20,7 @@ export function VideoItem({ video }: Props.WithVideo) {
     <$.Container side>
       <Link className='w-2/5' href={videoRoute}>
         <$.VideoImageContainer>
-          {videoImage && <$.VideoImage alt={videoTitle} src={videoImage} fill />}
+          {videoImage ? <$.VideoImage alt={videoTitle} src={videoImage} fill /> : null}
           <$.VideoDuration color='neutral' size='xs'>
             {videoDuration}
           </$.VideoDuration>

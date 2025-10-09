@@ -19,11 +19,9 @@ export function VideoItem({ playlistItem }: Props.WithPlaylistItem) {
   if (!isSuccess) return null
 
   const [video] = videos.items
-
   const videoTitle = video.snippet.title
   const videoImage = video.snippet.thumbnails?.standard?.url
   const videoRoute = helpers.typedRoute(`/video/${video.snippet.categoryId}/${videoId}`)
-
   const videoDate = helpers.formatDate(video.snippet.publishedAt)
   const videoViews = helpers.formatValue(video.statistics.viewCount)
   const videoDuration = helpers.formatDuration(video.contentDetails.duration)
@@ -32,7 +30,7 @@ export function VideoItem({ playlistItem }: Props.WithPlaylistItem) {
     <$.Container>
       <Link href={videoRoute}>
         <$.VideoImageContainer>
-          {videoImage && <$.VideoImage alt={videoTitle} src={videoImage} fill />}
+          {videoImage ? <$.VideoImage alt={videoTitle} src={videoImage} fill /> : null}
           <$.VideoDuration color='neutral' size='sm'>
             {videoDuration}
           </$.VideoDuration>
