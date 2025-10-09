@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import type { ChannelPageProps } from './page'
 import { api } from '@/utils'
 
 export type ChannelLayoutProps = LayoutProps<'/channel/[channelId]'>
 
-export async function generateMetadata({ params }: Omit<ChannelPageProps, 'searchParams'>): Promise<Metadata> {
+export async function generateMetadata({ params }: Omit<ChannelLayoutProps, 'children' | 'tabs'>): Promise<Metadata> {
   const { channelId } = await params
   const channel = await fetchChannelData(channelId)
 
