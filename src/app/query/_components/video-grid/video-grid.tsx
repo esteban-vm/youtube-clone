@@ -1,7 +1,29 @@
+'use client'
+
 import tw from 'tailwind-styled-components'
+import { useFetchSearchResults } from '@/hooks'
 import { VideoItem } from './video-item'
 
-export function VideoGrid({ searchResults }: Props.WithSearchResults) {
+export interface VideoGridProps {
+  q: string | string[]
+}
+
+export function VideoGrid({ q }: VideoGridProps) {
+  q = q.toString()
+
+  const { data: searchList, isSuccess } = useFetchSearchResults({
+    queryKey: [VideoGrid.name, 'VIDEOS BY SEARCH QUERY', q],
+    params: {
+      q,
+      type: 'video',
+      maxResults: '20',
+    },
+  })
+
+  if (!isSuccess) return null
+
+  const searchResults = searchList.items
+
   return (
     <Container>
       {searchResults.map((result) => (

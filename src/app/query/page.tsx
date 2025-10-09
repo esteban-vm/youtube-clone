@@ -1,32 +1,31 @@
-'use client'
-
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { use } from 'react'
-import { useFetchSearchResults } from '@/hooks'
 import { VideoGrid } from '@/query/components'
 
 export type QueryPageProps = PageProps<'/query'>
 
-export default function QueryPage({ searchParams }: QueryPageProps) {
-  const { q } = use(searchParams)
+export async function generateMetadata({ searchParams }: QueryPageProps): Promise<Metadata> {
+  const { q } = await searchParams
+
+  if (q) {
+    return {
+      title: `Resultados para: ${q}`,
+    }
+  }
+
+  return {
+    title: 'Sin resultados',
+  }
+}
+
+export default async function QueryPage({ searchParams }: QueryPageProps) {
+  const { q } = await searchParams
 
   if (!q) notFound()
 
-  const { data: searchList, isSuccess } = useFetchSearchResults({
-    queryKey: [QueryPage.name, 'VIDEOS BY SEARCH QUERY', q],
-    params: {
-      q: q.toString(),
-      type: 'video',
-      maxResults: '20',
-    },
-  })
-
-  if (!isSuccess) return null
-  const searchResults = searchList.items
-
   return (
     <>
-      <VideoGrid searchResults={searchResults} />
+      <VideoGrid q={q} />
     </>
   )
 }

@@ -1,6 +1,11 @@
+import type { Metadata } from 'next'
 import tw from 'tailwind-styled-components'
 
 export type HomeLayoutProps = LayoutProps<'/'>
+
+export const metadata: Metadata = {
+  title: 'Inicio',
+}
 
 export default function HomeLayout({ children }: HomeLayoutProps) {
   return <Container>{children}</Container>
