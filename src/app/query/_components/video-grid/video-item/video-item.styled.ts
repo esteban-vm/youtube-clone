@@ -20,18 +20,23 @@ export const ChannelTitle = tw.span`
 `
 
 export const Container = tw(Card)`
-  max-w-6xl
+  max-w-5xl
   w-full
   gap-1
   overflow-hidden
   dark:rounded-lg
 `
 
-export const Content = tw(Card.Body)`
+export const InnerContent = tw.div`
+  flex
+  items-center
+  gap-2.5
+`
+
+export const MainContent = tw(Card.Body)`
   w-3/5
-  gap-0.5
-  p-1
-  pl-0
+  gap-2.5
+  p-2.5
 `
 
 export const VideoDuration = tw(Badge)`

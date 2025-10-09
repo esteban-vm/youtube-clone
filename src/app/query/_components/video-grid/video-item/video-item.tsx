@@ -38,7 +38,7 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
   const videoDuration = helpers.formatDuration(video.contentDetails.duration)
 
   return (
-    <$.Container side>
+    <$.Container border side>
       <Link className='w-2/5' href={videoRoute}>
         <$.VideoImageContainer>
           {videoImage ? <$.VideoImage alt={videoTitle} src={videoImage} fill /> : null}
@@ -47,22 +47,26 @@ export function VideoItem({ searchResult }: Props.WithSearchResult) {
           </$.VideoDuration>
         </$.VideoImageContainer>
       </Link>
-      <$.Content>
+      <$.MainContent>
         <$.VideoTitle title={videoTitle}>
           <Link href={videoRoute}>{videoTitle}</Link>
         </$.VideoTitle>
-        <Link href={channelRoute}>
-          <$.ChannelImageContainer>
-            {channelImage ? <$.ChannelImage alt={channelTitle} src={channelImage} fill /> : null}
-          </$.ChannelImageContainer>
-        </Link>
-        <$.ChannelTitle title={channelTitle}>
-          <Link href={channelRoute}>{channelTitle}</Link>
-        </$.ChannelTitle>
-        <span className='text-sm'>
-          {videoViews} vistas • {videoDate}
-        </span>
-      </$.Content>
+        <$.InnerContent>
+          <Link href={channelRoute}>
+            <$.ChannelImageContainer>
+              {channelImage ? <$.ChannelImage alt={channelTitle} src={channelImage} fill /> : null}
+            </$.ChannelImageContainer>
+          </Link>
+          <div>
+            <$.ChannelTitle title={channelTitle}>
+              <Link href={channelRoute}>{channelTitle}</Link>
+            </$.ChannelTitle>
+            <div className='text-sm'>
+              {videoViews} vistas • {videoDate}
+            </div>
+          </div>
+        </$.InnerContent>
+      </$.MainContent>
     </$.Container>
   )
 }
