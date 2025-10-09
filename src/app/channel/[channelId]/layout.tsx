@@ -3,7 +3,7 @@ import { api } from '@/utils'
 
 export type ChannelLayoutProps = LayoutProps<'/channel/[channelId]'>
 
-export async function generateMetadata({ params }: Omit<ChannelLayoutProps, 'children' | 'tabs'>): Promise<Metadata> {
+export async function generateMetadata({ params }: ChannelLayoutProps): Promise<Metadata> {
   const { channelId } = await params
   const channel = await fetchChannelData(channelId)
 
