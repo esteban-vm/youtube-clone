@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { LuThumbsDown, LuThumbsUp } from 'react-icons/lu'
+import Markdown from 'react-markdown'
 import { List } from 'rsc-daisyui'
 import { helpers } from '@/utils'
 import * as $ from './comment-item.styled'
@@ -25,7 +26,7 @@ export function CommentItem({ comment }: Props.WithComment) {
           <Link href={channelRoute}>{authorDisplayName}</Link>
         </$.AuthorName>
         <span className='opacity-60'>{commentDate}</span>
-        <p>{textDisplay}</p>
+        <Markdown skipHtml>{textDisplay}</Markdown>
         <LuThumbsUp />
         <span className='align-middle'>{commentLikes}</span>&nbsp;
         <LuThumbsDown />

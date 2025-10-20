@@ -3,6 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { LuListMusic, LuShare2, LuThumbsUp } from 'react-icons/lu'
+import Markdown from 'react-markdown'
+import remarkBreaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
 import { Button, Collapse, List } from 'rsc-daisyui'
 import { useFetchChannels, useFetchComments } from '@/hooks'
 import { helpers } from '@/utils'
@@ -79,9 +82,9 @@ export function VideoPlayer({ video }: Props.WithVideo) {
         <Collapse.Title as='summary' className='select-none'>
           {videoViews} vistas • {videoDate}
         </Collapse.Title>
-        <Collapse.Content className='text-balance'>
+        <Collapse.Content className='prose text-balance dark:prose-invert'>
           {description.length ? (
-            description
+            <Markdown remarkPlugins={[remarkGfm, remarkBreaks]}>{description}</Markdown>
           ) : (
             <span className='italic'>El usuario no proporcionó ninguna descripción para este vídeo.</span>
           )}

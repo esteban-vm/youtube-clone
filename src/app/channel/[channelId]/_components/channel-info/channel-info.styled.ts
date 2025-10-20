@@ -23,10 +23,12 @@ export const LeftSide = tw.div`
   basis-3/4
 `
 
-export const ModalDescription = tw.p`
+export const ModalDescription = tw.div`
+  prose
   py-4
   pb-0
   text-pretty
+  dark:prose-invert
 `
 
 export const ModalTitle = tw.h3`

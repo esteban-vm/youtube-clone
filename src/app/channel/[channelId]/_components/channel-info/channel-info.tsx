@@ -2,6 +2,9 @@
 
 import Image from 'next/image'
 import { useRef } from 'react'
+import Markdown from 'react-markdown'
+import remarkBreaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
 import { Avatar, Button, Link, Modal } from 'rsc-daisyui'
 import { helpers } from '@/utils'
 import * as $ from './channel-info.styled'
@@ -46,7 +49,9 @@ export function ChannelInfo({ channel }: Props.WithChannel) {
         <Modal ref={modalRef} className='sm:modal-middle' backdrop>
           <Modal.Box>
             <$.ModalTitle>Descripción</$.ModalTitle>
-            <$.ModalDescription>{channelDescription}</$.ModalDescription>
+            <$.ModalDescription>
+              <Markdown remarkPlugins={[remarkGfm, remarkBreaks]}>{channelDescription}</Markdown>
+            </$.ModalDescription>
             <Modal.Action>
               <Button className='rounded-lg' soft>
                 Cerrar
